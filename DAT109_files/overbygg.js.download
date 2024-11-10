@@ -1,0 +1,33 @@
+/* Lastes opp som root-script i Canvas */
+
+
+	async function rwReady(fn) {
+		if (document.readyState != 'loading'){
+			fn();
+		}else{
+			document.addEventListener('DOMContentLoaded', fn);
+		}
+	}
+
+	rwReady(function () {
+		var rwSrcSrc = 'Ukjent';
+		try {	
+			var hvlVirtualScript = document.createElement('script');
+			if (!!ENV['html_url']){
+				hvlVirtualScript.src = 'https://v.hvl.no/canvas/js/index.php?url=' + encodeURI(ENV['html_url']);
+				rwSrcSrc = 'ENV';
+			}else if(typeof window.top.location.href != 'undefined'){
+				hvlVirtualScript.src = 'https://v.hvl.no/canvas/js/index.php?url=' + encodeURI(window.top.location.href);
+				rwSrcSrc = 'LOCREF';
+			}else{
+				console.log('HVL: ENV["html_url"] og/eller window.top.location.href er udefinert');
+			}
+		
+			document.body.appendChild(hvlVirtualScript);
+			console.log('HVL: Virtuelt script lagt til med src: ' + hvlVirtualScript.src + ' (Kilde: ' + rwSrcSrc + ')');
+		}catch(e){
+			console.log('HVL: Kunne ikke opprette virtuelt script (' + e + ')');
+		}
+	
+	})
+

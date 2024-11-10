@@ -1,0 +1,140 @@
+/*
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    background: #e6f5f5;
+    color: #000000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+.h1 {
+    text-align: center;
+    font-family: 'Corben', Georgia, Times, serif;
+    color: #1ab5e6;
+    font-weight: bold;
+    font-size: 2.5em; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    background-image: linear-gradient(45deg, #30d7f7 30%, #1ab9e6 50%, #30d7f7 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent; 
+    padding: 0.2em 0; 
+    margin: 0.5em 0; 
+    display: inline-block; 
+    border-radius: 20px;
+   
+}
+
+fieldset {
+    border: 2px solid #0a0a0a;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em;
+}
+
+input[type="button"] {
+    color: dimgray;
+    background-color: mintcream;
+    font-family: 'Corben', Georgia, Times, serif;
+    border-radius: 20px;
+    border: 1px solid Aqua;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: transform 0.3s ease-in-out;
+    margin-right: 5px;
+
+}
+
+
+input[type="button"]:hover {
+    transform: scale(1.1);
+    background-color: #e6f5f5;
+    border-color: Darkcyan;
+}
+legend{
+    margin: 5px;
+    font-family: 'Corben', Georgia, Times, serif;
+    color: dimgray;
+    padding-bottom: 15px;
+}
+
+.Brukernavninput, .passordinput, .brukernavninput, .Passordinput{
+    border-radius: 40px;
+    border: 1px solid #e3cece;
+    font-family: 'Arial', serif;
+    padding: 0.375rem 0.75rem;
+}
+.input{
+    background: #e6f5f5;
+    border-radius:40px;
+    outline: none!important;
+    resize: none;
+    font-size: 11px;
+    height: 17px;
+    margin: 0;
+    padding-right: 20px;
+    width: 265px;
+}
+
+.Chatterom_Big, .Chatterom_Melding_class, .IkkeInnlogget {
+    border: transparent;
+    border-radius: 20px;
+    padding: 1rem;
+    margin: 0.5rem;
+    background: #30d7f7;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.IkkeInnlogget {
+    width: 50%;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 100;
+    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1em;
+    overflow: auto;
+    color: dimgrey;
+    font-family:'Corben', Georgia, Times, serif;
+}
+
+.sentrerHorisontalt {
+    margin: auto;
+}
+
+input[type="button"][value="Slett"] {
+  opacity:0;
+}
+
+#Melding_Chatterom:hover [value="Slett"]  { 
+    visibility: visible;
+    opacity: 1;
+}
+#Melding_Chatterom{
+    border-radius:10px;
+    border:transparent;
+    background-color:#e6f5f5;
+    padding:0px;
+    display: flex;
+    justify-content:flex-start;
+    flex-direction:column-reverse;
+}
+
+
+#Program_Anchors, #body, #Chatterom_Big{
+border:transparent;
+}
+#Bruker_OptionsNotloggedin.div2, #Bruker_Options:Loggedin{
+border-color:dimgrey;
+border-radius:40px;
+}
+
+*/
