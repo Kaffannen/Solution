@@ -58,7 +58,7 @@ class TeacherUI extends UIElement{
     -->
     <br>
     <input data-input="regButton" type="button" value ="Magisk algoritmeknapp som organiserer 'rest' studenter i grupper"
-        onclick='find(this).regnewUser()'
+        onclick='find(this).doAction()'
         onkeydown="if (event.key === 'Escape') find(this).getNode().setState(Bruker.STATES.LOGGED_OUT)"
     ">
     <br>
@@ -69,25 +69,13 @@ class TeacherUI extends UIElement{
     /**
      * @returns {Bruker}
      */
-    regnewUser() {
-        let credentials = {
-            brukernavn: this.getInputElement("username").value,
-            passord: this.getInputElement("password").value
-        };
-
-        program.getApi().regUser(credentials)
-            .then(() => {
-                return program.getApi().loginUser(credentials);
-            })
+    doAction() {
+        fetch('https://hvl.instructure.com/api/v1/users/self/')
+            .then(response => response.json())
             .then(data => {
-                let bruker = new Bruker(data, program)
-                    .defineUIElements()
-                    .setState(Bruker.STATES.LOGGED_IN);
-                program.velgBruker(bruker);
+                console.log(data);
             })
-            .catch(error =>alert(error))
-        this.getInputElement("username").value = "";
-        this.getInputElement("password").value = "";
+            .catch(error => alert(error));
     }
 
 }
