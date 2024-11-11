@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>450</y>
+      <w>310</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>ElementController
+--
+-UIElements :Map &lt;String, UIElement&gt;
+--
++addUIElement(UIElement element)
++defineUIElements()
++getUIElement(id: String | Function)
++detachAllUIElements()
++infuseSearchPaths()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>450</y>
+      <w>310</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>StateController
+--
+-statesMap :Map &lt;String, Function&gt;
+-state: String
+--
+constructor()
+_parseStates()
+setState(Function): StateController
+getState(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>370</x>
+      <y>510</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>170</y>
+      <w>310</w>
+      <h>240</h>
+    </coordinates>
+    <panel_attributes>ElementNode
+--
+-data: Object
+-parent: ElementNode
+-children: Map&lt;Number, ElementNode&gt;
+-favourite: ElementNode
+--
++constructor(data: Object, parent: ElementNode)
++getParentNode(): ElementNode
++addChildNode(child: ElementNode)
++getChildNode(id: Number): ElementNode
++removeChild(child: ElementNode)
++getData(): Object
++setFavourite(favourite: ElementNode)
++getFavourite(): ElementNode
++getChildren()</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>160</x>
+      <y>400</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>170</y>
+      <w>330</w>
+      <h>260</h>
+    </coordinates>
+    <panel_attributes>UIElement
+--
+-attachmentAnchorElement: HTMLElement
+-detachmentAnchorElement: HTMLElement
+-rootElement: HTMLElement
+-inputElements: Map&lt;String, HTMLElement&gt;
+-anchorElements Map&lt;String, HTMLElement&gt;
+-node: ElementNode
+--
+constructor(htmlString: String, node: ElementNode)
+attach()
+detach()
+fixTo(uiElementClassDefinition: Function)
+getInputElement(name: String)
+_getAnchorElement(name: String)
+_infuseSearchPath(searchPatchObject: Object)
+getNode(): ElementNode</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>70</x>
+      <y>20</y>
+      <w>310</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>EzUI
+--
+-api :ApiRepresentation
+
+--
+constructor(api: ApiRepresentation)
+getApi() : ApiRepresentation
++find(element: HTMLElement): UIElement
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>160</x>
+      <y>130</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>460</x>
+      <y>20</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ApiRepresentation
+--
+getRequest()
+postRequest()
+putRequest()
+deleteRequest()
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>370</x>
+      <y>60</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>370</x>
+      <y>230</y>
+      <w>110</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;90.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>370</x>
+      <y>120</y>
+      <w>220</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;200.0;10.0;200.0;50.0</additional_attributes>
+  </element>
+</diagram>

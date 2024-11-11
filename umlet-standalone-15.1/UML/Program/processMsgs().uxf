@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLSequenceAllInOne</id>
+    <coordinates>
+      <x>10</x>
+      <y>30</y>
+      <w>930</w>
+      <h>370</h>
+    </coordinates>
+    <panel_attributes>title=Sekvensdiagram fetchContext()
+desc=x = 1 \ny = 0
+autoTick=false
+obj=UserInterface~a 
+obj=MsgService~b 
+obj=DBService~c
+gate-&gt;a :fetchContext()
+tick=
+a -&gt; b :msgs = fetchMsgs()
+tick=
+tick=
+id1:dbInput = processMsg(msg)
+tick=
+a -&gt; c :updateContext(dbInput)
+tick=
+a -&gt; b :sendAck(dbInput)
+tick=</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLFrame</id>
+    <coordinates>
+      <x>50</x>
+      <y>220</y>
+      <w>870</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>for msg in msgs</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>
