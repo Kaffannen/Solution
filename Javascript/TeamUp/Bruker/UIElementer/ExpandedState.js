@@ -7,7 +7,7 @@ export default class ExpandedState extends UIElement
             = `
 <fieldset>
     <legend>Hei ${jsonElement.user.name}</legend>
-    <input data-input="utvidButton" type="button" value="Kollaps" onclick="find(this).minimer()">
+    <input data-input="utvidButton" type="button" value="Kollaps" onclick="program.find(this).minimer()">
 </fieldset>
             `;
         super(htmlString,nexus);
