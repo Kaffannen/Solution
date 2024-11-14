@@ -1,3 +1,5 @@
+import { BasicSolution } from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Program/BasicSolution.js";
+
 let program;
 
 document.addEventListener("DOMContentLoaded", async function () {

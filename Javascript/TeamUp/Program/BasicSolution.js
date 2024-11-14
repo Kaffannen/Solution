@@ -1,4 +1,4 @@
-class BasicSolution extends EzUI {
+export default class BasicSolution extends EzUI {
 
     async defineUIElements(){
         super.defineUIElements();
