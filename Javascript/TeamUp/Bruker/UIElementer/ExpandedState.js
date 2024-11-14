@@ -1,3 +1,4 @@
+import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
 export default class ExpandedState extends UIElement
 {
     constructor(nexus) {
