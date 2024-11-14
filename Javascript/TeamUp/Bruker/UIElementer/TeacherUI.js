@@ -77,5 +77,17 @@ class TeacherUI extends UIElement{
             })
             .catch(error => alert(error));
     }
+    startUpShit(){
+        const promises = [];
+        promises.push(fetch('https://api.example.com/data1').then(res => res.json()));
+        promises.push(fetch('https://api.example.com/data2').then(res => res.json()));
+
+        try {
+            return await Promise.all(promises);
+        } catch (error) {
+            console.error("An error occurred:", error);
+            throw error;
+        }
+    }
 
 }
