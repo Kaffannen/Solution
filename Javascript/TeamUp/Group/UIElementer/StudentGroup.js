@@ -6,11 +6,8 @@ class StudentGroup extends UIElement {
             =`
 <fieldset class="IkkeInnlogget sentrerHorisontalt">
     <h3>Badass StudentGroup</h3>
-    <div data-anchor=${StudentGroup.name}>studentanchor</div>
+    <div data-anchor=${AssignmentGroupMember.name}></div>
     <br>
-    <input data-input="loginButton" type="button" value ="få SKYNET til å fikse en gruppe til deg"
-        onclick='find(this).studentAction()'
-    ">
     <br>
 </fieldset>
             `;

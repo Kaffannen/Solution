@@ -8,6 +8,7 @@ class Student extends ElementNode {
         this.addUIElement(new StudentUI(this))
             .fixTo();
         super.defineUIElements();
+        this.fetchGroup();
         return this;
     }
 
@@ -24,5 +25,15 @@ class Student extends ElementNode {
             this.getUIElement(ExpandedState).attach();
             this.getUIElement(StudentUI).attach();
         }
+    }
+    fetchGroup(){
+        return program.getApi().fetchGroup()
+            .then(groupInfo=>{
+                let group = new Group(groupInfo,this)
+                    .defineUIElements()
+                    .setState(Group.STATES.INIT);
+                this.setFavourite(group);
+                })
+            .catch(error =>alert(error))
     }
 }

@@ -2,23 +2,28 @@ class Group extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new StudentGroup(this))
-            .fixTo();
+            .fixTo(StudentUI);
         super.defineUIElements();
+        this.fetchGroupMembers();
         return this;
     }
 
     static STATES = {
         INIT: function(){
-        },
-        COLLAPSED: function(){
-            this.getUIElement(CollapsedState).attach();
-            this.getUIElement(ExpandedState).detach();
-            this.getUIElement(TeacherUI).detach();
-        },
-        EXPANDED: function(){
-            this.getUIElement(CollapsedState).detach();
-            this.getUIElement(ExpandedState).attach();
-            this.getUIElement(TeacherUI).attach();
+            this.getUIElement(StudentGroup).attach();
         }
     };
+    fetchGroupMembers(){
+        program.getApi().fetchGroupMembers()
+            .then(groupMembersInfo => {
+                groupMembersInfo.forEach(memberInfo => {
+                        let member = new GroupMember(memberInfo,this)
+                        .defineUIElements()
+                        .setState(GroupMember.STATES.INIT);
+                    });
+            })
+            .catch(error => {
+                console.log("Error fetching group members: " + error);
+            });
+    }
 }

@@ -4,14 +4,14 @@ class API{
     #persistence = CanvasDBMock;
 
     onLoadInfo(){
-    let courseId = 29406
-    let assignmentId = 80710
-    return Promise.all([
-        this.#canvasApi.getUserInfo(),
-        this.#canvasApi.getCourseInfo(courseId),
-        this.#canvasApi.getAssignmentInfo(assignmentId)])
-    .then(([user, course, assignment]) => {
-        return {
+        let courseId = 29406
+        let assignmentId = 80710
+        return Promise.all([
+            this.#canvasApi.getUserInfo(),
+            this.#canvasApi.getCourseInfo(courseId),
+            this.#canvasApi.getAssignmentInfo(assignmentId)])
+        .then(([user, course, assignment]) => {
+            return {
             id: user.id,
             user: user,
             course: course,
@@ -19,6 +19,13 @@ class API{
         }
     })
     }
+    fetchGroup(){
+        return this.#canvasApi.getAssignmentGroup()
+    }
+    fetchGroupMembers(){
+        return this.#canvasApi.getGroupMembers()
+    }
+
     fetchObject(endpoint, rejectreason, body= null) {
         return new Promise((resolve, reject) => {
             fetch(endpoint, {

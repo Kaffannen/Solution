@@ -83,7 +83,7 @@ static getCourseInfo(){
 }
 static getAssignmentInfo(){
     return new Promise((resolve, reject) => {
-                            const assignment = {
+                            const assignment = { //https://hvl.instructure.com/api/v1/courses/29406/assignments/80710
                                                    "id": 80710,
                                                    "description": "\u003cp\u003eAlle gruppene skal levera utfylt og signert samarbeidsavtale seinast 12. september. Bruk \u003ca class=\"instructure_file_link instructure_scribd_file inline_disabled\" title=\"Lenke\" href=\"https://hvl.instructure.com/courses/29406/files/2895778?wrap=1\" target=\"_blank\" data-canvas-previewable=\"true\" data-api-endpoint=\"https://hvl.instructure.com/api/v1/courses/29406/files/2895778\" data-api-returntype=\"File\"\u003emal for samarbeidsavtale\u003c/a\u003e\u0026nbsp;som utgangspunkt for å bli einige om innhaldet i avtalen internt i gruppa. Å levera signert samarbeidsavtale er eit arbeidskrav.\u003c/p\u003e",
                                                    "due_at": "2024-09-12T21:30:00Z",
@@ -182,5 +182,25 @@ static getGroupMembers(){
                                           ]
         resolve(group)
 })
+}
+static getAssignmentGroup(){
+    return new Promise((resolve, reject) => {
+    //https://hvl.instructure.com/api/v1/courses/29406/assignment_groups/32409
+
+        const group = {
+                        "id": 32409,
+                        "name": "Oppgåver",
+                        "position": 2,
+                        "group_weight": 0,
+                        "sis_source_id": null,
+                        "integration_data": {
+
+                        },
+                        "rules": {
+
+                        }
+                      }
+        resolve(group)
+    })
 }
 }

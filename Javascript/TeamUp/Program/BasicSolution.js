@@ -1,8 +1,8 @@
 class BasicSolution extends EzUI {
 
-    defineUIElements(){
+    async defineUIElements(){
         super.defineUIElements();
-        this.fetchBruker();
+        await this.fetchBruker();
         return this;
     }
 
@@ -12,7 +12,7 @@ class BasicSolution extends EzUI {
     };
 
     fetchBruker(){
-        this.getApi().onLoadInfo()
+        return program.getApi().onLoadInfo()
             .then(loadInfo=>{
                 if (loadInfo.course.enrollments[0].role === "StudentEnrollment"){
                     let bruker = new Student(loadInfo,this)

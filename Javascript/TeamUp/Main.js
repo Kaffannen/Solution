@@ -1,6 +1,7 @@
 let program;
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
     program = new BasicSolution(new API())
-    program.defineUIElements();
+    await program.defineUIElements();
+    program.getFavourite().setState(Student.STATES.EXPANDED);
 });
