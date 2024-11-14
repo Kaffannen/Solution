@@ -1,4 +1,5 @@
 import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
+import AssignmentGroupMember from "https://kaffannen.github.io/Solution/Javascript/TeamUp/GroupMember/UIElements.js";
 export default class StudentGroup extends UIElement {
 
     constructor(nexus) {
