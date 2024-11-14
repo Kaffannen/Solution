@@ -1,4 +1,4 @@
-class EzUI extends ElementNode{
+export default class EzUI extends ElementNode{
 
     #api;
 
