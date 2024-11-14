@@ -1,3 +1,5 @@
+import AssignmentGroupMember from "https://kaffannen.github.io/Solution/Javascript/TeamUp/GroupMember/UIElements.js";
+
 export default class GroupMember extends ElementNode {
 
     defineUIElements() {

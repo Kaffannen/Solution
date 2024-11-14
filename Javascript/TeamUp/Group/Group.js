@@ -1,3 +1,6 @@
+import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
+import StudentGroup from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Group/UIElementer/StudentGroup.js";
+
 export default class Group extends ElementNode {
 
     defineUIElements() {
