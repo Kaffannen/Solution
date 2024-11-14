@@ -1,6 +1,7 @@
 let program;
 import BasicSolution from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Program/BasicSolution.js";
 import API from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Api/API.js";
+import Student from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/Student.js"
 /**
 import StateController from "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/StateController.js"
 import ElementController from  "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/ElementController.js"
@@ -8,7 +9,7 @@ import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/Deve
 import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js"
 import EzUI from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/EzUI.js"
 import CanvasAPIMock from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Api/CanvasAPIMock.js"
-import Student from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/Student.js"
+
 import Underviser from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/Underviser.js"
 import TeacherUI from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/TeacherUI.js"
 import StudentUI from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/StudentUI.js"
