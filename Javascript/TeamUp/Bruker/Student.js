@@ -1,3 +1,5 @@
+import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
+
 export default class Student extends ElementNode {
 
     defineUIElements() {
