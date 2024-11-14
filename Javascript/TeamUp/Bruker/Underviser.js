@@ -1,4 +1,4 @@
-class Underviser extends ElementNode {
+export default class Underviser extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new CollapsedState(this))

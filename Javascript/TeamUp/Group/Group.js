@@ -1,4 +1,4 @@
-class Group extends ElementNode {
+export default class Group extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new StudentGroup(this))

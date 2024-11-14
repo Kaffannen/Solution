@@ -1,4 +1,4 @@
-class AssignmentGroupMember extends UIElement {
+export default class AssignmentGroupMember extends UIElement {
 
     constructor(nexus) {
         let jsonElement = nexus.getData();

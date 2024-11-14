@@ -1,4 +1,4 @@
-class TeacherUI extends UIElement{
+export default class TeacherUI extends UIElement{
     /**
      *
      * @param {ElementNode} nexus

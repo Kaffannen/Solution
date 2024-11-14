@@ -1,4 +1,4 @@
-class API{
+export default class API{
     #canvasApi = CanvasAPIMock;
     #msgBroker = CanvasMsgBrokerMock;
     #persistence = CanvasDBMock;

@@ -1,4 +1,4 @@
-class CanvasAPIMock {
+export default class CanvasAPIMock {
 
 static getUserInfo(){
     return new Promise((resolve, reject) => {

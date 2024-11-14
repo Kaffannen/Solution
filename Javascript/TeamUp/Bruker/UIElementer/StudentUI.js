@@ -1,4 +1,4 @@
-class StudentUI extends UIElement {
+export default class StudentUI extends UIElement {
 
     constructor(nexus) {
 

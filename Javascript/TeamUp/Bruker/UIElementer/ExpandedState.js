@@ -1,4 +1,4 @@
-class ExpandedState extends UIElement
+export default class ExpandedState extends UIElement
 {
     constructor(nexus) {
         let jsonElement = nexus.getData();

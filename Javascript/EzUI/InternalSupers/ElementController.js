@@ -1,4 +1,6 @@
-class ElementController extends StateController{
+import StateController from "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/StateController.js";
+
+export default class ElementController extends StateController{
     /**
      * Child UIElements
      * @type {Map<String, UIElement>}

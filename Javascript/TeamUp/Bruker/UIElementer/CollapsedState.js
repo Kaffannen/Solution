@@ -1,4 +1,4 @@
-class CollapsedState extends UIElement{
+export default class CollapsedState extends UIElement{
 
     constructor(nexus) {
         let jsonElement = nexus.getData();

@@ -1,4 +1,4 @@
-class StudentGroup extends UIElement {
+export default class StudentGroup extends UIElement {
 
     constructor(nexus) {
 

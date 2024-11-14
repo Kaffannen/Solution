@@ -1,4 +1,4 @@
-class Student extends ElementNode {
+export default class Student extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new CollapsedState(this))

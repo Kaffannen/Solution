@@ -1,4 +1,4 @@
-class GroupMember extends ElementNode {
+export default class GroupMember extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new AssignmentGroupMember(this))

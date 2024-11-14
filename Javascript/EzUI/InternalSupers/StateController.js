@@ -1,4 +1,4 @@
-class StateController {
+export default class StateController {
     /**
      * A map of the statefunctions
      * @type {Map<String,Function>}
