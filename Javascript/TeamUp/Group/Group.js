@@ -1,11 +1,7 @@
-class Underviser extends ElementNode {
+class Group extends ElementNode {
 
     defineUIElements() {
-        this.addUIElement(new CollapsedState(this))
-            .fixTo();
-        this.addUIElement(new ExpandedState(this))
-            .fixTo();
-        this.addUIElement(new TeacherUI(this))
+        this.addUIElement(new StudentGroup(this))
             .fixTo();
         super.defineUIElements();
         return this;

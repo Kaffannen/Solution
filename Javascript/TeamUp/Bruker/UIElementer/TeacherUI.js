@@ -28,34 +28,6 @@ class TeacherUI extends UIElement{
         <li>...</li>
         <li>25 studenter ikke i gruppe. 10 av dem har bedt å bli plassert i gruppe</li>
     </ul>
-
-    <!--
-    <input data-input="username" type="text" placeholder="asdfasdf"
-        onkeydown="
-            let regform = find(this);
-            switch (event.key){
-                case 'Enter':
-                    regform.getInputElement('regButton').click();
-                    break;
-                case 'Escape':
-                    regform.getNode().setState(Bruker.STATES.LOGGED_OUT);
-                    break;
-            }"
-    />
-
-    <input data-input="password" type="password" placeholder="Passord" 
-        onkeydown="
-            let regform = find(this);
-            switch (event.key){
-                case 'Enter':
-                    regform.getInputElement('regButton').click();
-                    break;
-                case 'Escape':
-                    regform.getNode().setState(Bruker.STATES.LOGGED_OUT);
-                    break;
-            }"
-    />
-    -->
     <br>
     <input data-input="regButton" type="button" value ="Magisk algoritmeknapp som organiserer 'rest' studenter i grupper"
         onclick='find(this).doAction()'
@@ -66,9 +38,7 @@ class TeacherUI extends UIElement{
             `;
         super(htmlString, nexus);
     }
-    /**
-     * @returns {Bruker}
-     */
+
     doAction() {
         fetch('https://hvl.instructure.com/api/v1/users/self/')
             .then(response => response.json())
@@ -77,17 +47,19 @@ class TeacherUI extends UIElement{
             })
             .catch(error => alert(error));
     }
+
     startUpShit(){
         const promises = [];
         promises.push(fetch('https://api.example.com/data1').then(res => res.json()));
         promises.push(fetch('https://api.example.com/data2').then(res => res.json()));
-
+        /**
         try {
             return await Promise.all(promises);
         } catch (error) {
             console.error("An error occurred:", error);
             throw error;
         }
+        */
     }
 
 }

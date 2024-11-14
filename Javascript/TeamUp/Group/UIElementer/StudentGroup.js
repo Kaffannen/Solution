@@ -1,11 +1,11 @@
-class StudentUI extends UIElement {
+class StudentGroup extends UIElement {
 
     constructor(nexus) {
 
         let htmlString
             =`
 <fieldset class="IkkeInnlogget sentrerHorisontalt">
-    <h3>Badass Student UI</h3>
+    <h3>Badass StudentGroup</h3>
     <div data-anchor=${StudentGroup.name}>studentanchor</div>
     <br>
     <input data-input="loginButton" type="button" value ="få SKYNET til å fikse en gruppe til deg"
