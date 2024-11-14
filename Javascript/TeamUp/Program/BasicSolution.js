@@ -1,4 +1,6 @@
 import EzUI from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/EzUI.js";
+import Student from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/Student.js";
+import Underviser from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/Underviser.js";
 
 export default class BasicSolution extends EzUI {
 
