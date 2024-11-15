@@ -490,11 +490,12 @@ class UIElement {
     getNode(){
        return this.#node;
     }
-}//export default class CanvasAPIMock {
-class CanvasAPIMock {
+}class CanvasAPI {
 
 static getUserInfo(){
-    return new Promise((resolve, reject) => {
+    return fetch('https://hvl.instructure.com/api/v1/users/self')
+                .then(response => response.json());
+    /**return new Promise((resolve, reject) => {
     const user = {
                                         //GET https://hvl.instructure.com/api/v1/users/self
                                          "id": 81736,
@@ -514,7 +515,7 @@ static getUserInfo(){
                                          }
                                      }
      resolve(user)
-    })
+    })**/
 }
 
 static getCourseInfo(){
