@@ -495,11 +495,11 @@ class UIElement {
        return this.#node;
     }
 }
-//export default class CanvasAPIMock {
-class CanvasAPIMock {
+class CanvasAPI {
 
 static getUserInfo(){
-    return new Promise((resolve, reject) => {
+    return fetch('https://hvl.instructure.com/api/v1/users/self')
+    /**return new Promise((resolve, reject) => {
     const user = {
                                         //GET https://hvl.instructure.com/api/v1/users/self
                                          "id": 81736,
@@ -519,7 +519,7 @@ static getUserInfo(){
                                          }
                                      }
      resolve(user)
-    })
+    })**/
 }
 
 static getCourseInfo(){
@@ -1171,7 +1171,7 @@ class BasicSolution extends EzUI {
 
 
 let api = new API()
-        .setCanvasApi(CanvasAPIMock)
+        .setCanvasApi(CanvasAPI)
         .setMsgBroker(MsgBrokerMock)
         .setPersistence(PersistenceMock)
 
