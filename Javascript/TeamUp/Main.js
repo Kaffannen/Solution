@@ -1171,9 +1171,9 @@ class BasicSolution extends EzUI {
 
 
 let api = new API()
-        .setCanvasApi(new CanvasAPIMock())
-        .setMsgBroker(new MsgBrokerMock())
-        .setPersistence(new PersistenceMock())
+        .setCanvasApi(CanvasAPIMock)
+        .setMsgBroker(MsgBrokerMock)
+        .setPersistence(PersistenceMock)
 
 
 let program = new BasicSolution(api)
