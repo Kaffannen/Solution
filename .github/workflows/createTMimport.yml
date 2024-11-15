@@ -40,6 +40,7 @@ jobs:
           Javascript/TeamUp/Bruker/Student.js \
           Javascript/TeamUp/Bruker/Underviser.js \
           Javascript/TeamUp/Program/BasicSolution.js \
+          Javascript/TeamUp/TamperMonkeyMain.js \
           > dist/bundle.js  # Concatenate all files into dist/bundle.js
 
       - name: Commit and Push Concatenated File
