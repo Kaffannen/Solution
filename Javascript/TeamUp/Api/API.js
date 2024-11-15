@@ -2,9 +2,9 @@
 
 //export default class API{
 class API{
-    #canvasApi = CanvasAPIMock;
-    #msgBroker = CanvasMsgBrokerMock;
-    #persistence = CanvasDBMock;
+    #canvasApi;
+    #msgBroker;
+    #persistence;
 
 setCanvasApi(canvasApi){
     this.#canvasApi = canvasApi;
