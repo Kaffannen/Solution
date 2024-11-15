@@ -12,5 +12,49 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Placeholder
-        run: echo "This is a placeholder workflow for concatenating JS files."
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install # Add a package.json if you need tools like concat-cli or rollup
+
+      - name: Concatenate JavaScript Files
+        run: |
+          mkdir -p dist
+          cat \
+          javascript/EzUI/InternalSupers/StateController.js \
+          javascript/EzUI/InternalSupers/ElementController.js \
+          javascript/EzUI/DeveloperClasses/ElementNode.js \
+          javascript/EzUI/DeveloperClasses/EzUI.js \
+          javascript/EzUI/DeveloperClasses/UIElement.js \
+          javascript/TeamUp/Api/CanvasAPIMock.js \
+          javascript/TeamUp/Api/API.js \
+          javascript/TeamUp/GroupMember/UIElements/AssignmentGroupMember.js \
+          javascript/TeamUp/GroupMember/GroupMember.js \
+          javascript/TeamUp/Group/UIElementer/StudentGroup.js \
+          javascript/TeamUp/Group/Group.js \
+          javascript/TeamUp/Bruker/UIElementer/CollapsedState.js \
+          javascript/TeamUp/Bruker/UIElementer/ExpandedState.js \
+          javascript/TeamUp/Bruker/UIElementer/StudentUI.js \
+          javascript/TeamUp/Bruker/UIElementer/TeacherUI.js \
+          javascript/TeamUp/Bruker/Student.js \
+          javascript/TeamUp/Bruker/Underviser.js \
+          javascript/TeamUp/Program/BasicSolution.js \
+          > dist/bundle.js
+
+      - name: Upload concatenated file as an artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: concatenated-js
+          path: dist/bundle.js
+
+      - name: Commit and Push Concatenated File
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          cp dist/bundle.js javascript/TeamUp/bundle.js
+          git add javascript/TeamUp/bundle.js
+          git commit -m "Add/update concatenated JS file [skip ci]"
+          git push origin main
