@@ -63,7 +63,7 @@ jobs:
           echo "Files in Javascript directory:"
           ls Javascript/  # Verify that the file has been moved
       
-          git add Javascript/bundle.js
+          git add Javascript/TeamUpBundle.js
           git commit -m "Add/update concatenated JS file [skip ci]"
       
           # Authenticate with the token
