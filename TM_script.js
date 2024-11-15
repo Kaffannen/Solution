@@ -29,13 +29,7 @@ window.addEventListener("load", function () {
         }
         const script = document.createElement('script');
         script.src = 'https://kaffannen.github.io/Solution/Javascript/TeamUp/Main.js';
+        script.type = 'module';
         document.head.appendChild(script);
     }, 2000);
 });
-
-/**
-download scripts -> wait
-monitor for span with content "Samarbeidsavtale" -> when found, insert div after -> wait
-when the above two are waiting the stage is set and a basicsolution object can be instatntiated
-
-**/
