@@ -25,7 +25,7 @@ jobs:
           Javascript/EzUI/DeveloperClasses/ElementNode.js \
           Javascript/EzUI/DeveloperClasses/EzUI.js \
           Javascript/EzUI/DeveloperClasses/UIElement.js \
-          Javascript/TeamUp/Api/CanvasAPIMock.js \
+          Javascript/TeamUp/Api/CanvasAPI.js \
           Javascript/TeamUp/Api/MsgBrokerMock.js \
           Javascript/TeamUp/Api/PersistenceMock.js \
           Javascript/TeamUp/Api/API.js \
