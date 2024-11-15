@@ -6,6 +6,8 @@ import Student from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruk
 window.BasicSolution = BasicSolution;
 window.API = API;
 window.Student = Student;
+
+window.program = new BasicSolution(new API())
 /**
 import StateController from "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/StateController.js"
 import ElementController from  "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/ElementController.js"
