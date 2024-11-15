@@ -2,6 +2,7 @@ class CanvasAPI {
 
 static getUserInfo(){
     return fetch('https://hvl.instructure.com/api/v1/users/self')
+                .then(response => response.json());
     /**return new Promise((resolve, reject) => {
     const user = {
                                         //GET https://hvl.instructure.com/api/v1/users/self
