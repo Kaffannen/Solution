@@ -1,10 +1,11 @@
-import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
-import CollapsedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/CollapsedState.js";
-import ExpandedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/ExpandedState.js";
-import StudentUI from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/StudentUI.js";
-import Group from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Group/Group.js";
+//import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
+//import CollapsedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/CollapsedState.js";
+//import ExpandedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/ExpandedState.js";
+//import StudentUI from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/StudentUI.js";
+//import Group from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Group/Group.js";
 
-export default class Student extends ElementNode {
+//export default class Student extends ElementNode {
+class Student extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new CollapsedState(this))

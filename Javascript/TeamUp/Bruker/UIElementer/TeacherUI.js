@@ -1,5 +1,6 @@
-import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
-export default class TeacherUI extends UIElement{
+//import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
+//export default class TeacherUI extends UIElement{
+class TeacherUI extends UIElement{
     /**
      *
      * @param {ElementNode} nexus

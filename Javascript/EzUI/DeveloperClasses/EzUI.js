@@ -1,7 +1,7 @@
-import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
+//import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
 
-export default class EzUI extends ElementNode{
-
+//export default class EzUI extends ElementNode{
+class EzUI extends ElementNode{
     #api;
 
     constructor(api) {

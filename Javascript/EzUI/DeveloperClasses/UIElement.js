@@ -1,7 +1,8 @@
 /**
  * Represents an UIElement - HTML code which can can be attached and detached from the DOM
  */
-export default class UIElement {
+//export default class UIElement {
+class UIElement {
     /**
      * the HTMLElement to which the UIElement this is fastened when attached
      * @type{HTMLElement}

@@ -1,5 +1,5 @@
 //export default class CanvasAPIMock {
-class CanvasAPIMock {
+class PersistenceMock {
 
 static getUserInfo(){
     return new Promise((resolve, reject) => {

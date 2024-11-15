@@ -1,9 +1,23 @@
-import CanvasAPIMock from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Api/CanvasAPIMock.js";
+//import CanvasAPIMock from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Api/CanvasAPIMock.js";
 
-export default class API{
+//export default class API{
+class API{
     #canvasApi = CanvasAPIMock;
     #msgBroker = CanvasMsgBrokerMock;
     #persistence = CanvasDBMock;
+
+setCanvasApi(canvasApi){
+    this.#canvasApi = canvasApi;
+    return this;
+}
+setMsgBroker(msgBroker){
+    this.#msgBroker = msgBroker;
+    return this;
+}
+setPersistence(persistence){
+    this.#persistence = persistence;
+    return this;
+}
 
     onLoadInfo(){
         let courseId = 29406
