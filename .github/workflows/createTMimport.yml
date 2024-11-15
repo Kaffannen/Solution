@@ -57,7 +57,7 @@ jobs:
           ls dist/ # Ensure the bundle.js file is in dist/
       
           # Move the concatenated file to the target directory
-          mv dist/bundle.js Javascript/bundle.js  # This line fails if the path is incorrect
+          mv dist/bundle.js Javascript/TeamUpBundle.js  # This line fails if the path is incorrect
       
           # Debugging: Confirm that the file was moved
           echo "Files in Javascript directory:"
