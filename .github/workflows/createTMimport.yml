@@ -5,6 +5,9 @@ on:
     branches:
       - master  # Run this workflow on pushes to the master branch.
 
+permissions:
+  contents: write  # Allows the token to push changes to the repository
+
 jobs:
   build:
     runs-on: ubuntu-latest
