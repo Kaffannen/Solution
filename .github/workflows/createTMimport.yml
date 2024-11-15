@@ -1,0 +1,16 @@
+name: Concatenate JS Files
+
+on:
+  push:
+    branches:
+      - main  # Run this workflow on pushes to the main branch.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Placeholder
+        run: echo "This is a placeholder workflow for concatenating JS files."
