@@ -1177,6 +1177,6 @@ let api = new API()
 
 
 let program = new BasicSolution(api)
-    .defineUIElements()
+await program.defineUIElements();
 
 
