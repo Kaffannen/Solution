@@ -28,7 +28,7 @@ window.addEventListener("load", function () {
             console.error('No span with the content "Samarbeidsavtale" and data-testid="title" found!');
         }
         const script = document.createElement('script');
-        script.src = 'https://kaffannen.github.io/Solution/Javascript/TeamUp/Main.js';
+        script.src = 'https://kaffannen.github.io/Solution/Javascript/TeamUpBundle.js';
         script.type = 'module';
         document.head.appendChild(script);
     }, 2000);
