@@ -986,3 +986,11 @@ window.addEventListener("load", function () {
         program.defineUIElements();
     }, 2000);
 });
+
+
+document.addEventListener("DOMContentLoaded", async function () {
+    window.program = new BasicSolution(new API())
+    program = window.program;
+    await program.defineUIElements();
+    program.getFavourite().setState(Student.STATES.EXPANDED);
+});

@@ -2,6 +2,10 @@ let program;
 import BasicSolution from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Program/BasicSolution.js";
 import API from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Api/API.js";
 import Student from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/Student.js"
+
+window.BasicSolution = BasicSolution;
+window.API = API;
+window.Student = Student;
 /**
 import StateController from "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/StateController.js"
 import ElementController from  "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/ElementController.js"
