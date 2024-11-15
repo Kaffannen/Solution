@@ -17,9 +17,9 @@ jobs:
         run: |
           mkdir -p dist
           cat \
-          javascript/EzUI/InternalSupers/StateController.js \
-          javascript/EzUI/InternalSupers/ElementController.js \
-          javascript/EzUI/DeveloperClasses/ElementNode.js \
+          Javascript/EzUI/InternalSupers/StateController.js \
+          Javascript/EzUI/InternalSupers/ElementController.js \
+          Javascript/EzUI/DeveloperClasses/ElementNode.js \
           > dist/bundle.js
 
       - name: Commit and Push Concatenated File
