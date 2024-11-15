@@ -4,7 +4,7 @@
 // @version      2024-11-14
 // @description  try to take over the world!
 // @author       You
-// @match        https://hvl.instructure.com/courses/29406/assignments/80710
+// @match        https://hvl.instructure.com/courses/\d+/assignments/\d+
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @grant        none
 // ==/UserScript==
