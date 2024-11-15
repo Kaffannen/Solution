@@ -24,9 +24,29 @@ jobs:
 
       - name: Commit and Push Concatenated File
         run: |
+          # Set up Git configuration
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          mv dist/bundle.js Javascript/bundle.js
+        
+          # Debugging: List files in the repository and the dist folder
+          echo "Listing repository files:"
+          ls -R # List all files in the repo for debugging
+      
+          echo "Listing files in dist directory:"
+          ls dist/ # Ensure the bundle.js file is in dist/
+      
+          # Move the concatenated file to the target directory
+          mv dist/bundle.js Javascript/bundle.js  # This line fails if the path is incorrect
+      
+          # Debugging: Confirm that the file was moved
+          echo "Files in Javascript directory:"
+          ls Javascript/  # Verify that the file has been moved
+      
           git add Javascript/bundle.js
           git commit -m "Add/update concatenated JS file [skip ci]"
+      
+          # Authenticate with the token
+          git remote set-url origin https://github-actions:${{ secrets.GH_TOKEN }}@github.com/Kaffannen/Solution.git
+      
+          # Push the changes
           git push origin master
