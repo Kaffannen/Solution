@@ -1,7 +1,3 @@
-//import StateController from "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/StateController.js";
-//import EzUI from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/EzUI.js";
-
-//export default class ElementController extends StateController{
 class ElementController extends StateController{
     /**
      * Child UIElements

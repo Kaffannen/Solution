@@ -1,6 +1,3 @@
-//import ElementController from "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/ElementController.js";
-
-//export default class ElementNode extends ElementController {
 class ElementNode extends ElementController {
     /**
      *@type {Object}

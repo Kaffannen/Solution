@@ -1,4 +1,3 @@
-//export default class StateController {
 class StateController {
     /**
      * A map of the statefunctions
