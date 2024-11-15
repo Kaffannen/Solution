@@ -1,4 +1,3 @@
-//export default class StateController {
 class StateController {
     /**
      * A map of the statefunctions
@@ -51,10 +50,7 @@ class StateController {
     getState(){
         return this.#state;
     }
-}//import StateController from "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/StateController.js";
-//import EzUI from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/EzUI.js";
-
-//export default class ElementController extends StateController{
+}
 class ElementController extends StateController{
     /**
      * Child UIElements
@@ -121,9 +117,7 @@ class ElementController extends StateController{
             }
         }
     }
-}//import ElementController from "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/ElementController.js";
-
-//export default class ElementNode extends ElementController {
+}
 class ElementNode extends ElementController {
     /**
      *@type {Object}
@@ -240,9 +234,7 @@ class ElementNode extends ElementController {
     _getChildren() {
         return this.#children;
     }
-}//import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
-
-//export default class EzUI extends ElementNode{
+}
 class EzUI extends ElementNode{
     #api;
 
@@ -258,49 +250,11 @@ class EzUI extends ElementNode{
     getApi(){
         return this.#api;
     }
-
-    // /**
-    //  *
-    //  * @param {HTMLElement |*} element
-    //  * @return {Node}
-    //  */
-    // findNode(element){
-    //     while (!element.hasAttribute("data-searchobject")&&element.parentElement)
-    //         element=element.parentElement;
-    //     let pathArray;
-    //     if (element.hasAttribute("data-searchobject"))
-    //         pathArray = JSON.parse(element.getAttribute("data-searchobject"))
-    //     else
-    //         pathArray = [];
-    //     let pojo=this;
-    //     while (pathArray.length!==0){
-    //         pojo=pojo.getChildNode(pathArray.pop());
-    //     }
-    //     return pojo;
-    // }
-    //
-    // /**
-    //  *
-    //  * @param {HTMLElement | *} element
-    //  * @param {Function} classConstructor
-    //  * @return {UIElement}
-    //  */
-    // findUIElement(element,classConstructor){
-    //     if (!(classConstructor instanceof Function))
-    //         throw new Error("FindUIElement was called with string not a function (remove.name from parameter)");
-    //     let node = this.findNode(element);
-    //     return node.getUIElement(classConstructor);
-    // }
-    // /**
-    //  * @param {HTMLElement | *} element
-    //  * @param {Function} classname
-    //  * @param {String} inputElementKey
-    //  * @returns {HTMLInputElement}
-    //  */
-    // findInputElement(element,classname,inputElementKey){
-    //     let uIElement = this.findUIElement(element,classname);
-    //     return uIElement.getInputElement(inputElementKey);
-    // }
+    /**
+     * Finds the UIElement which contains the HTMLElement
+     * @param element the element which triggers the function
+     * @return {UIElement|*}
+     */
     find(element){
         while (!element.hasAttribute("data-searchobject")&&element.parentElement)
             element=element.parentElement;
@@ -319,32 +273,9 @@ class EzUI extends ElementNode{
         return pojo.getUIElement(elementClassName);
     }
 }
-
 /**
- * Finds the UIElement which contains the HTMLElement
- * @param element the element which triggers the function
- * @return {UIElement|*}
- */
-function find(element){
-    while (!element.hasAttribute("data-searchobject")&&element.parentElement)
-        element=element.parentElement;
-    let pathArray;
-    let elementClassName;
-    if (element.hasAttribute("data-searchobject")){
-        pathArray = JSON.parse(element.getAttribute("data-searchobject"));
-        elementClassName=element.id;
-    }
-    else
-        pathArray = [];
-    let pojo=program;
-    while (pathArray.length!==0){
-        pojo=pojo.getChildNode(pathArray.pop());
-    }
-    return pojo.getUIElement(elementClassName);
-}/**
  * Represents an UIElement - HTML code which can can be attached and detached from the DOM
  */
-//export default class UIElement {
 class UIElement {
     /**
      * the HTMLElement to which the UIElement this is fastened when attached
@@ -490,7 +421,8 @@ class UIElement {
     getNode(){
        return this.#node;
     }
-}class CanvasAPI {
+}
+class CanvasAPI {
 
 static getUserInfo(){
     return fetch('https://hvl.instructure.com/api/v1/users/self')
