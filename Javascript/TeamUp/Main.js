@@ -1176,7 +1176,8 @@ let api = new API()
         .setPersistence(PersistenceMock)
 
 
-let program = new BasicSolution(api)
+window.program = new BasicSolution(api)
+let program = window.program;
 await program.defineUIElements();
 
 
