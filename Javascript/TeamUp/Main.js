@@ -8,6 +8,9 @@ window.API = API;
 window.Student = Student;
 
 window.program = new BasicSolution(new API())
+program = window.program;
+await program.defineUIElements();
+program.getFavourite().setState(Student.STATES.EXPANDED);
 /**
 import StateController from "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/StateController.js"
 import ElementController from  "https://kaffannen.github.io/Solution/Javascript/EzUI/InternalSupers/ElementController.js"
