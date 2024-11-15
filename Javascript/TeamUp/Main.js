@@ -1177,3 +1177,4 @@ let api = new API()
 
 window.program = new BasicSolution(api)
     .defineUIElements()
+program = window.program
