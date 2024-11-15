@@ -7,7 +7,7 @@ export default class StudentUI extends UIElement {
         let htmlString
             =`
 <fieldset class="IkkeInnlogget sentrerHorisontalt">
-    <h3>Badass Student UI</h3>
+    <h3>Total boss of a Badass Student UI</h3>
     <div data-anchor=${StudentGroup.name}>studentanchor</div>
     <br>
     <input data-input="loginButton" type="button" value ="få SKYNET til å fikse en gruppe til deg"
