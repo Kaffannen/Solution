@@ -6,8 +6,8 @@
 // @author       You
 // @match        https://hvl.instructure.com/courses/29406/assignments/80710
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
-// @updateURL    https://kaffannen.github.io/Solution/Javascript/TeamUp/TM_script.js
-// @downloadURL  https://kaffannen.github.io/Solution/Javascript/TeamUp/TM_script.js
+// @updateURL    https://kaffannen.github.io/Solution/Javascript/TM_script.js
+// @downloadURL  https://kaffannen.github.io/Solution/Javascript/TM_script.js
 // @grant        none
 // ==/UserScript==
 
