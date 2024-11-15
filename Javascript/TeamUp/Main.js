@@ -1175,6 +1175,8 @@ let api = new API()
         .setMsgBroker(new MsgBrokerMock())
         .setPersistence(new PersistenceMock())
 
-window.program = new BasicSolution(api)
+
+program = new BasicSolution(api)
     .defineUIElements()
-program = window.program
+
+
