@@ -447,8 +447,8 @@ static getAssignmentInfo(){
                 .then(response => response.json());
 }
 
-static getGroupMembers(){
-    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignments/${CanvasAPI.getAssignmentId()}/users/self/group_members`)
+static getGroupMembers(selfId){
+    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignments/${CanvasAPI.getAssignmentId()}/users/${selfId}/group_members`)
                 .then(response => response.json());
 }
 static getAssignmentGroup(assignmentGroupId){
@@ -907,8 +907,8 @@ setPersistence(persistence){
     fetchGroup(assignmentGroupId){
         return this.#canvasApi.getAssignmentGroup(assignmentGroupId)
     }
-    fetchGroupMembers(){
-        return this.#canvasApi.getGroupMembers()
+    fetchGroupMembers(selfId){
+        return this.#canvasApi.getGroupMembers(selfId)
     }
 
     fetchObject(endpoint, rejectreason, body= null) {
@@ -942,8 +942,6 @@ setPersistence(persistence){
     }
 
 }
-
-
 
 
 class CanvasMsgBrokerMock {
@@ -1043,7 +1041,7 @@ class Group extends ElementNode {
         }
     };
     fetchGroupMembers(){
-        program.getApi().fetchGroupMembers()
+        program.getApi().fetchGroupMembers(this.getParentNode().getData().id)
             .then(groupMembersInfo => {
                 groupMembersInfo.forEach(memberInfo => {
                         let member = new GroupMember(memberInfo,this)
