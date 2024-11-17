@@ -1057,13 +1057,11 @@ class CollapsedState extends UIElement{
         let jsonElement = nexus.getData();
         let htmlString
             = `
+
+<div>
+<br>
 <input data-input="utvidButton" type="button" value="TeamUp - Trykk for å utvide" onclick="program.find(this).utvid()">
-<!--
-<fieldset>
-    <legend>TeamUp™ - ${jsonElement.user.name} </legend>
-    <input data-input="utvidButton" type="button" value="Trykk for å utvide" onclick="program.find(this).utvid()">
-</fieldset>
--->
+</div>
             `;
         super(htmlString,nexus);
     }
@@ -1076,10 +1074,10 @@ class CollapsedState extends UIElement{
         let jsonElement = nexus.getData();
         let htmlString
             = `
-<fieldset>
-    <legend>Hei ${jsonElement.user.name}</legend>
-    <input data-input="utvidButton" type="button" value="Kollaps" onclick="program.find(this).minimer()">
-</fieldset>
+<div>
+<br>
+<input data-input="minimerButton" type="button" value="TeamUp - Trykk for å lukke" onclick="program.find(this).minimer()">
+</div>
             `;
         super(htmlString,nexus);
     }
@@ -1217,12 +1215,12 @@ class Student extends ElementNode {
         },
         COLLAPSED: function(){
             this.getUIElement(CollapsedState).attach();
-            //this.getUIElement(ExpandedState).detach();
+            this.getUIElement(ExpandedState).detach();
             this.getUIElement(StudentUI).detach();
         },
         EXPANDED: function(){
             this.getUIElement(CollapsedState).detach();
-            //this.getUIElement(ExpandedState).attach();
+            this.getUIElement(ExpandedState).attach();
             this.getUIElement(StudentUI).attach();
         }
     }
