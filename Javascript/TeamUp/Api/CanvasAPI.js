@@ -27,8 +27,8 @@ static getGroupMembers(){
     return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignments/${CanvasAPI.getAssignmentId()}/users/self/group_members`)
                 .then(response => response.json());
 }
-static getAssignmentGroup(){
-    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignment_groups/${CanvasAPI.getAssignmentId()}`)
+static getAssignmentGroup(assignmentGroupId){
+    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignment_groups/assignmentGroupId`)
                 .then(response => response.json());
 }
 }

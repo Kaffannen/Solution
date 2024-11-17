@@ -32,7 +32,7 @@ class BasicSolution extends EzUI {
                 }
 
             })
-            .catch(error =>alert(error))
+            .catch(error =>console.log(error))
     }
 
     velgBruker(bruker){

@@ -34,7 +34,7 @@ class Student extends ElementNode {
         }
     }
     fetchGroup(){
-        return program.getApi().fetchGroup()
+        return program.getApi().fetchGroup(this.#data.assignment.assignment_group_id)
             .then(groupInfo=>{
                 let group = new Group(groupInfo,this)
                     .defineUIElements()
