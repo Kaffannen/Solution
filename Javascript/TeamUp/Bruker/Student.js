@@ -24,12 +24,12 @@ class Student extends ElementNode {
         },
         COLLAPSED: function(){
             this.getUIElement(CollapsedState).attach();
-            //this.getUIElement(ExpandedState).detach();
+            this.getUIElement(ExpandedState).detach();
             this.getUIElement(StudentUI).detach();
         },
         EXPANDED: function(){
             this.getUIElement(CollapsedState).detach();
-            //this.getUIElement(ExpandedState).attach();
+            this.getUIElement(ExpandedState).attach();
             this.getUIElement(StudentUI).attach();
         }
     }

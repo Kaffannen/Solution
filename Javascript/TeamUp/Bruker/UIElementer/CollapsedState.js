@@ -7,13 +7,11 @@ class CollapsedState extends UIElement{
         let jsonElement = nexus.getData();
         let htmlString
             = `
+
+<div>
+<br>
 <input data-input="utvidButton" type="button" value="TeamUp - Trykk for å utvide" onclick="program.find(this).utvid()">
-<!--
-<fieldset>
-    <legend>TeamUp™ - ${jsonElement.user.name} </legend>
-    <input data-input="utvidButton" type="button" value="Trykk for å utvide" onclick="program.find(this).utvid()">
-</fieldset>
--->
+</div>
             `;
         super(htmlString,nexus);
     }

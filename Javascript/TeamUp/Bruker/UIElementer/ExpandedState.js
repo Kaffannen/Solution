@@ -4,10 +4,10 @@ class ExpandedState extends UIElement
         let jsonElement = nexus.getData();
         let htmlString
             = `
-<fieldset>
-    <legend>Hei ${jsonElement.user.name}</legend>
-    <input data-input="utvidButton" type="button" value="Kollaps" onclick="program.find(this).minimer()">
-</fieldset>
+<div>
+<br>
+<input data-input="minimerButton" type="button" value="TeamUp - Trykk for å lukke" onclick="program.find(this).minimer()">
+</div>
             `;
         super(htmlString,nexus);
     }
