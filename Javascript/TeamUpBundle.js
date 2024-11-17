@@ -1057,20 +1057,20 @@ class CollapsedState extends UIElement{
         let jsonElement = nexus.getData();
         let htmlString
             = `
-<fieldset> 
-    <legend>Hei ${jsonElement.user.name}</legend>
-    <input data-input="utvidButton" type="button" value="Utvid" onclick="program.find(this).utvid()">
+<input data-input="utvidButton" type="button" value="TeamUp - Trykk for å utvide" onclick="program.find(this).utvid()">
+<!--
+<fieldset>
+    <legend>TeamUp™ - ${jsonElement.user.name} </legend>
+    <input data-input="utvidButton" type="button" value="Trykk for å utvide" onclick="program.find(this).utvid()">
 </fieldset>
+-->
             `;
         super(htmlString,nexus);
     }
     utvid() {
         this.getNode().setState(Student.STATES.EXPANDED);
     }
-}//import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
-//import Student from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/Student.js";
-//export default class ExpandedState extends UIElement
-class ExpandedState extends UIElement
+}class ExpandedState extends UIElement
 {
     constructor(nexus) {
         let jsonElement = nexus.getData();
@@ -1086,22 +1086,22 @@ class ExpandedState extends UIElement
     minimer() {
         this.getNode().setState(Student.STATES.COLLAPSED);
     }
-}//import StudentGroup from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Group/UIElementer/StudentGroup.js";
-//import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
-//export default class StudentUI extends UIElement {
-class StudentUI extends UIElement {
+}class StudentUI extends UIElement {
 
     constructor(nexus) {
 
         let htmlString
             =`
 <fieldset class="IkkeInnlogget sentrerHorisontalt">
-    <h3>Total boss of a Badass Student UI</h3>
+    <h3>Student UI</h3>
     <div data-anchor=${StudentGroup.name}>studentanchor</div>
     <br>
     <input data-input="loginButton" type="button" value ="få SKYNET til å fikse en gruppe til deg"
-        onclick='find(this).studentAction()'
+        onclick='program.find(this).studentAction()'
     ">
+    <input data-input="loginButton" type="button" value ="Lukk"
+            onclick='program.find(this).closeTeamUp()'
+        ">
     <br>
 </fieldset>
             `;
@@ -1124,9 +1124,10 @@ class StudentUI extends UIElement {
         this.getInputElement("username").value = "";
         this.getInputElement("password").value = "";
     }
-}//import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
-//export default class TeacherUI extends UIElement{
-class TeacherUI extends UIElement{
+    closeTeamUp() {
+        this.getNode().setState(Student.STATES.COLLAPSED);
+    }
+}class TeacherUI extends UIElement{
     /**
      *
      * @param {ElementNode} nexus
@@ -1216,12 +1217,12 @@ class Student extends ElementNode {
         },
         COLLAPSED: function(){
             this.getUIElement(CollapsedState).attach();
-            this.getUIElement(ExpandedState).detach();
+            //this.getUIElement(ExpandedState).detach();
             this.getUIElement(StudentUI).detach();
         },
         EXPANDED: function(){
             this.getUIElement(CollapsedState).detach();
-            this.getUIElement(ExpandedState).attach();
+            //this.getUIElement(ExpandedState).attach();
             this.getUIElement(StudentUI).attach();
         }
     }
