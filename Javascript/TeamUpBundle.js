@@ -427,31 +427,13 @@ class CanvasAPI {
 static getUserInfo(){
     return fetch('https://hvl.instructure.com/api/v1/users/self')
                 .then(response => response.json());
-    /**return new Promise((resolve, reject) => {
-    const user = {
-                                        //GET https://hvl.instructure.com/api/v1/users/self
-                                         "id": 81736,
-                                         "name": "Christian Hagen",
-                                         "created_at": "2022-07-30T08:15:49+02:00",
-                                         "sortable_name": "Hagen, Christian",
-                                         "short_name": "Christian Hagen",
-                                         "avatar_url": "https://hvl.instructure.com/images/messages/avatar-50.png",
-                                         "last_name": "Hagen",
-                                         "first_name": "Christian",
-                                         "locale": "nb",
-                                         "effective_locale": "nb",
-                                         "permissions": {
-                                             "can_update_name": false,
-                                             "can_update_avatar": true,
-                                             "limit_parent_app_web_access": false
-                                         }
-                                     }
-     resolve(user)
-    })**/
 }
 
 static getCourseInfo(){
-    return new Promise((resolve, reject) => {
+    course id = window.location.pathname.split('/').filter(Boolean)[1];
+    return fetch(`https://hvl.instructure.com/api/v1/courses/${course_id}`)
+                .then(response => response.json());
+    /**return new Promise((resolve, reject) => {
         const course = { //GET https://hvl.instructure.com/api/v1/courses/29406
                                                 "id": 29406,
                                                 "name": "ING303-1 24H Systemtenking og innovasjon for ingeniører",
@@ -506,6 +488,7 @@ static getCourseInfo(){
                                             }
         resolve(course)
     })
+    **/
 }
 static getAssignmentInfo(){
     return new Promise((resolve, reject) => {
