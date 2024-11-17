@@ -28,7 +28,7 @@ static getGroupMembers(){
                 .then(response => response.json());
 }
 static getAssignmentGroup(assignmentGroupId){
-    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignment_groups/assignmentGroupId`)
+    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignment_groups/${assignmentGroupId}`)
                 .then(response => response.json());
 }
 }
