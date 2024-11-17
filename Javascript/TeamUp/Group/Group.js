@@ -20,7 +20,7 @@ class Group extends ElementNode {
         }
     };
     fetchGroupMembers(){
-        program.getApi().fetchGroupMembers()
+        program.getApi().fetchGroupMembers(this.getParentNode().getData().id)
             .then(groupMembersInfo => {
                 groupMembersInfo.forEach(memberInfo => {
                         let member = new GroupMember(memberInfo,this)

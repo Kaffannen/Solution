@@ -23,8 +23,8 @@ static getAssignmentInfo(){
                 .then(response => response.json());
 }
 
-static getGroupMembers(){
-    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignments/${CanvasAPI.getAssignmentId()}/users/self/group_members`)
+static getGroupMembers(selfId){
+    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignments/${CanvasAPI.getAssignmentId()}/users/${selfId}/group_members`)
                 .then(response => response.json());
 }
 static getAssignmentGroup(assignmentGroupId){

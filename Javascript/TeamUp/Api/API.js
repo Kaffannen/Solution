@@ -38,8 +38,8 @@ setPersistence(persistence){
     fetchGroup(assignmentGroupId){
         return this.#canvasApi.getAssignmentGroup(assignmentGroupId)
     }
-    fetchGroupMembers(){
-        return this.#canvasApi.getGroupMembers()
+    fetchGroupMembers(selfId){
+        return this.#canvasApi.getGroupMembers(selfId)
     }
 
     fetchObject(endpoint, rejectreason, body= null) {
@@ -73,8 +73,6 @@ setPersistence(persistence){
     }
 
 }
-
-
 
 
 class CanvasMsgBrokerMock {
