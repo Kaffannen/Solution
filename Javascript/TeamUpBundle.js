@@ -630,7 +630,7 @@ static getAssignmentGroup(){
         resolve(group)
     })**/
 }
-}}//export default class CanvasAPIMock {
+}//export default class CanvasAPIMock {
 class MsgBrokerMock {
 
 static getUserInfo(){
