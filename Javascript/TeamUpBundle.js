@@ -451,8 +451,8 @@ static getGroupMembers(){
     return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignments/${CanvasAPI.getAssignmentId()}/users/self/group_members`)
                 .then(response => response.json());
 }
-static getAssignmentGroup(){
-    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignment_groups/${CanvasAPI.getAssignmentId()}`)
+static getAssignmentGroup(assignmentGroupId){
+    return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignment_groups/assignmentGroupId`)
                 .then(response => response.json());
 }
 }//export default class CanvasAPIMock {
@@ -1233,7 +1233,7 @@ class Student extends ElementNode {
         }
     }
     fetchGroup(){
-        return program.getApi().fetchGroup()
+        return program.getApi().fetchGroup(this.#data.assignment.assignment_group_id)
             .then(groupInfo=>{
                 let group = new Group(groupInfo,this)
                     .defineUIElements()
@@ -1309,7 +1309,7 @@ class BasicSolution extends EzUI {
                 }
 
             })
-            .catch(error =>alert(error))
+            .catch(error =>console.log(error))
     }
 
     velgBruker(bruker){
