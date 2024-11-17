@@ -6,7 +6,7 @@ static getUserInfo(){
 }
 
 static getCourseInfo(){
-    course id = window.location.pathname.split('/').filter(Boolean)[1];
+    course_id = window.location.pathname.split('/').filter(Boolean)[1];
     return fetch(`https://hvl.instructure.com/api/v1/courses/${course_id}`)
                 .then(response => response.json());
     /**return new Promise((resolve, reject) => {
@@ -67,6 +67,11 @@ static getCourseInfo(){
     **/
 }
 static getAssignmentInfo(){
+    course_id = window.location.pathname.split('/').filter(Boolean)[1];
+    assignment_id = window.location.pathname.split('/').filter(Boolean)[3];
+    return fetch(`https://hvl.instructure.com/api/v1/courses/${course_id}/assignments/${assignment_id}`)
+                .then(response => response.json());
+    /**
     return new Promise((resolve, reject) => {
                             const assignment = { //https://hvl.instructure.com/api/v1/courses/29406/assignments/80710
                                                    "id": 80710,
@@ -134,9 +139,16 @@ static getAssignmentInfo(){
                                                    "restrict_quantitative_data": false
                                                }
         resolve(assignment)
-})
+
+})**/
 }
 static getGroupMembers(){
+    course_id = window.location.pathname.split('/').filter(Boolean)[1];
+    assignment_id = window.location.pathname.split('/').filter(Boolean)[3];
+    user_id = window.location.pathname.split('/').filter(Boolean)[5];
+    return fetch(`https://hvl.instructure.com/api/v1/courses/${course_id}/assignments/${assignment_id}/users/${user_id}/group_members`)
+                .then(response => response.json());
+    /**
     return new Promise((resolve, reject) => {
                             //https://hvl.instructure.com/api/v1/courses/29406/assignments/80710/users/81736/group_members
                             const group = [
@@ -166,9 +178,15 @@ static getGroupMembers(){
                                             }
                                           ]
         resolve(group)
-})
+
+})**/
 }
 static getAssignmentGroup(){
+    course_id = window.location.pathname.split('/').filter(Boolean)[1];
+    assignment_group = window.location.pathname.split('/').filter(Boolean)[3];
+    return fetch(`https://hvl.instructure.com/api/v1/courses/${course_id}/assignment_groups/${assignment_group}`)
+                .then(response => response.json());
+    /**
     return new Promise((resolve, reject) => {
     //https://hvl.instructure.com/api/v1/courses/29406/assignment_groups/32409
 
@@ -186,6 +204,6 @@ static getAssignmentGroup(){
                         }
                       }
         resolve(group)
-    })
+    })**/
 }
-}
+}}
