@@ -1019,13 +1019,7 @@ class StudentGroup extends UIElement {
         this.getInputElement("username").value = "";
         this.getInputElement("password").value = "";
     }
-}//import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
-//import StudentGroup from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Group/UIElementer/StudentGroup.js";
-//import StudentUI from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/StudentUI.js";
-//import GroupMember from "https://kaffannen.github.io/Solution/Javascript/TeamUp/GroupMember/GroupMember.js";
-
-//export default class Group extends ElementNode {
-class Group extends ElementNode {
+}class Group extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new StudentGroup(this))
@@ -1053,7 +1047,8 @@ class Group extends ElementNode {
                 console.log("Error fetching group members: " + error);
             });
     }
-}//import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
+}
+//import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
 //import Student from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/Student.js";
 //export default class CollapsedState extends UIElement{
 class CollapsedState extends UIElement{
