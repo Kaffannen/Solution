@@ -35,8 +35,8 @@ setPersistence(persistence){
         }
     })
     }
-    fetchGroup(){
-        return this.#canvasApi.getAssignmentGroup()
+    fetchGroup(assignmentGroupId){
+        return this.#canvasApi.getAssignmentGroup(assignmentGroupId)
     }
     fetchGroupMembers(){
         return this.#canvasApi.getGroupMembers()
