@@ -1,9 +1,3 @@
-//import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
-//import CollapsedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/CollapsedState.js";
-//import ExpandedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/ExpandedState.js";
-//import TeacherUI from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/TeacherUI.js";
-
-//export default class Underviser extends ElementNode {
 class Underviser extends ElementNode {
 
     defineUIElements() {
@@ -14,6 +8,7 @@ class Underviser extends ElementNode {
         this.addUIElement(new TeacherUI(this))
             .fixTo();
         super.defineUIElements();
+        this.fetchGroups();
         return this;
     }
 
@@ -31,4 +26,22 @@ class Underviser extends ElementNode {
             this.getUIElement(TeacherUI).attach();
         }
     };
+    fetchGroups(){
+            /**
+            https://hvl.instructure.com/api/v1/courses/29406/assignments/80710/users/82310/group_members
+            https://hvl.instructure.com/api/v1/courses/25563/assignments/75844/users/15686/group_members
+            gir tilgang til alle gruppemedlemmer i en gruppe - for alle jeg har ID på.
+            https://hvl.instructure.com/api/v1/courses/25563/users?page=1&per_page=1000&enrollment_type=teacher gir alle teachers
+            https://hvl.instructure.com/api/v1/courses/25563/users?page=1&per_page=1000&enrollment_type=student gir alle students
+            **/
+            return program.getApi().fetchGroups(this.getData().assignment.assignment_group_id)
+                .then(userGroups => {
+                    userGroups.studentgroups.forEach(groupInfo=>{
+                        let group = new Group(groupInfo,this)
+                            .defineUIElements()
+                            .setState(Group.STATES.INIT);
+                    });
+                })
+                .catch(error =>console.error(error))
+        }
 }

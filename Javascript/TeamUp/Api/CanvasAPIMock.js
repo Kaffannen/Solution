@@ -208,4 +208,534 @@ getAssignmentGroup(){
         resolve(group)
     })
 }
+async fetchGroups() {
+    return {
+             "studentgroups": [
+               {
+                 "id": "69281",
+                 "members": [
+                   {
+                     "id": "69281",
+                     "name": "Bjørnar Øvretveit Helgeland"
+                   },
+                   {
+                     "id": "79577",
+                     "name": "Storm Anders Sangolt"
+                   },
+                   {
+                     "id": "81078",
+                     "name": "Eren Akat"
+                   }
+                 ]
+               },
+               {
+                 "id": "80331",
+                 "members": [
+                   {
+                     "id": "80331",
+                     "name": "Justin Roland Schüttpelz"
+                   },
+                   {
+                     "id": "80992",
+                     "name": "Ole Martin Lystadmoen Amundsen"
+                   },
+                   {
+                     "id": "82546",
+                     "name": "Sondre Aasarmoen"
+                   }
+                 ]
+               },
+               {
+                 "id": "15686",
+                 "members": [
+                   {
+                     "id": "15686",
+                     "name": "Ole Kristoffer Høivaag Jensen"
+                   },
+                   {
+                     "id": "16967",
+                     "name": "Inger Lise Paulsen"
+                   },
+                   {
+                     "id": "81760",
+                     "name": "Elisabeth Orrebakken Vatnøy"
+                   },
+                   {
+                     "id": "82310",
+                     "name": "Vlad Nicusor Lipovanu"
+                   },
+                   {
+                     "id": "82715",
+                     "name": "Hannah Synnøve Hofseth"
+                   },
+                   {
+                     "id": "82814",
+                     "name": "Fermari John Angcos"
+                   }
+                 ]
+               },
+               {
+                 "id": "67355",
+                 "members": [
+                   {
+                     "id": "67355",
+                     "name": "Deni Zaudinovitsj Makhmadiyev"
+                   },
+                   {
+                     "id": "80459",
+                     "name": "Sidar Baran"
+                   },
+                   {
+                     "id": "83643",
+                     "name": "Emir Bulduk"
+                   }
+                 ]
+               },
+               {
+                 "id": "20931",
+                 "members": [
+                   {
+                     "id": "20931",
+                     "name": "Ulrik Hiis Bergh"
+                   },
+                   {
+                     "id": "67533",
+                     "name": "Niklas Aronsen Stokke"
+                   },
+                   {
+                     "id": "79636",
+                     "name": "Håvard Buner Færøvik"
+                   },
+                   {
+                     "id": "79969",
+                     "name": "Didrik Smidt Andersen"
+                   },
+                   {
+                     "id": "80535",
+                     "name": "August Håkonssøn Langfeldt"
+                   }
+                 ]
+               },
+               {
+                 "id": "68735",
+                 "members": [
+                   {
+                     "id": "68735",
+                     "name": "Einar Gangsøy Eide"
+                   },
+                   {
+                     "id": "80875",
+                     "name": "Sindri Olafur S Szarvas"
+                   },
+                   {
+                     "id": "81064",
+                     "name": "Eivind Bjørnli"
+                   }
+                 ]
+               },
+               {
+                 "id": "8801",
+                 "members": [
+                   {
+                     "id": "8801",
+                     "name": "Siri Norstrand Eielsen"
+                   },
+                   {
+                     "id": "66630",
+                     "name": "Ketil Jacobsen"
+                   },
+                   {
+                     "id": "84202",
+                     "name": "Tina Hansen Bolstad"
+                   }
+                 ]
+               },
+               {
+                 "id": "36543",
+                 "members": [
+                   {
+                     "id": "36543",
+                     "name": "Fredrik Nicolai Crook"
+                   },
+                   {
+                     "id": "46133",
+                     "name": "Gørild Mostraum Krabbedal"
+                   },
+                   {
+                     "id": "81189",
+                     "name": "Sara Hønsi"
+                   },
+                   {
+                     "id": "82966",
+                     "name": "Celine Habbestad Seland"
+                   }
+                 ]
+               },
+               {
+                 "id": "46345",
+                 "members": [
+                   {
+                     "id": "46345",
+                     "name": "Jan-Petter Dåvøy"
+                   }
+                 ]
+               },
+               {
+                 "id": "79615",
+                 "members": [
+                   {
+                     "id": "79615",
+                     "name": "Ibrahim Mohamad Elrahmoun"
+                   },
+                   {
+                     "id": "80009",
+                     "name": "Moussa Mohamad Elrahmoun"
+                   },
+                   {
+                     "id": "81893",
+                     "name": "Felix Berget"
+                   },
+                   {
+                     "id": "83099",
+                     "name": "Olav Osnes Devik"
+                   }
+                 ]
+               },
+               {
+                 "id": "83704",
+                 "members": [
+                   {
+                     "id": "83704",
+                     "name": "Tamer Kyed Gharz al Deen"
+                   }
+                 ]
+               },
+               {
+                 "id": "32974",
+                 "members": [
+                   {
+                     "id": "32974",
+                     "name": "Markus Nedreberg Gjerde"
+                   },
+                   {
+                     "id": "80430",
+                     "name": "Gard Molegoda"
+                   },
+                   {
+                     "id": "80687",
+                     "name": "Rahiima Abdilahi Mahamuud"
+                   },
+                   {
+                     "id": "81736",
+                     "name": "Christian Hagen"
+                   }
+                 ]
+               },
+               {
+                 "id": "80930",
+                 "members": [
+                   {
+                     "id": "80930",
+                     "name": "Shawn Grifon Helgesen"
+                   }
+                 ]
+               },
+               {
+                 "id": "66836",
+                 "members": [
+                   {
+                     "id": "66836",
+                     "name": "André Hetlevik"
+                   }
+                 ]
+               },
+               {
+                 "id": "69113",
+                 "members": [
+                   {
+                     "id": "69113",
+                     "name": "Isabel Nickelsen"
+                   },
+                   {
+                     "id": "79340",
+                     "name": "Dat Thanh Huynh"
+                   },
+                   {
+                     "id": "79682",
+                     "name": "Marius Alvestad Horn"
+                   },
+                   {
+                     "id": "80266",
+                     "name": "Adam Yasaev"
+                   }
+                 ]
+               },
+               {
+                 "id": "70900",
+                 "members": [
+                   {
+                     "id": "70900",
+                     "name": "Andréas Øihaugen"
+                   },
+                   {
+                     "id": "72909",
+                     "name": "Oskar Emil Jacobsen"
+                   },
+                   {
+                     "id": "73434",
+                     "name": "Simon Midthjell Bjørnsen"
+                   }
+                 ]
+               },
+               {
+                 "id": "40165",
+                 "members": [
+                   {
+                     "id": "40165",
+                     "name": "Eivind Løseth"
+                   },
+                   {
+                     "id": "45919",
+                     "name": "Muaz Mahmoud Alfarhan"
+                   },
+                   {
+                     "id": "55726",
+                     "name": "Håvard Nordheim Karlsen"
+                   },
+                   {
+                     "id": "81349",
+                     "name": "Ahmad Jahanmehmani"
+                   }
+                 ]
+               },
+               {
+                 "id": "11296",
+                 "members": [
+                   {
+                     "id": "11296",
+                     "name": "Ana Eleah Patricia Igesund Kleppe"
+                   }
+                 ]
+               },
+               {
+                 "id": "69916",
+                 "members": [
+                   {
+                     "id": "69916",
+                     "name": "Azzat Ammar Kouzi"
+                   }
+                 ]
+               },
+               {
+                 "id": "80861",
+                 "members": [
+                   {
+                     "id": "80861",
+                     "name": "Martin Sollesnes Kummeneje"
+                   }
+                 ]
+               },
+               {
+                 "id": "72835",
+                 "members": [
+                   {
+                     "id": "72835",
+                     "name": "Martin Lenes"
+                   },
+                   {
+                     "id": "72836",
+                     "name": "Andre Kristopher Ripman"
+                   },
+                   {
+                     "id": "79945",
+                     "name": "Leo Alexander Gilje"
+                   },
+                   {
+                     "id": "80946",
+                     "name": "Oliver Kvebek"
+                   }
+                 ]
+               },
+               {
+                 "id": "35526",
+                 "members": [
+                   {
+                     "id": "35526",
+                     "name": "Petter Tesdal"
+                   },
+                   {
+                     "id": "67835",
+                     "name": "Kristoffer Fjeldstad Madsen"
+                   }
+                 ]
+               },
+               {
+                 "id": "14539",
+                 "members": [
+                   {
+                     "id": "14539",
+                     "name": "Even Bakke"
+                   },
+                   {
+                     "id": "21890",
+                     "name": "Bjørn Renslo Instefjord"
+                   },
+                   {
+                     "id": "76188",
+                     "name": "Kamil Tomasz Matyjaszczyk"
+                   },
+                   {
+                     "id": "79986",
+                     "name": "Richard Persson"
+                   }
+                 ]
+               },
+               {
+                 "id": "69428",
+                 "members": [
+                   {
+                     "id": "69428",
+                     "name": "Mathias Hafstad Hetle"
+                   },
+                   {
+                     "id": "70991",
+                     "name": "Ferdinand August Sørlie"
+                   },
+                   {
+                     "id": "71466",
+                     "name": "Kristoffer Astrup Nedrebø"
+                   }
+                 ]
+               },
+               {
+                 "id": "69262",
+                 "members": [
+                   {
+                     "id": "69262",
+                     "name": "Seyit Siyar Yüce"
+                   },
+                   {
+                     "id": "70416",
+                     "name": "Kedirdin Keyser"
+                   },
+                   {
+                     "id": "72718",
+                     "name": "Saciid Ahmed Noor"
+                   },
+                   {
+                     "id": "81086",
+                     "name": "Eyüp Yayan"
+                   }
+                 ]
+               },
+               {
+                 "id": "67226",
+                 "members": [
+                   {
+                     "id": "67226",
+                     "name": "Kristina Gryting Olsen"
+                   }
+                 ]
+               },
+               {
+                 "id": "80629",
+                 "members": [
+                   {
+                     "id": "80629",
+                     "name": "Johan Severin Reitan"
+                   },
+                   {
+                     "id": "81060",
+                     "name": "Maxwell Andric Xavier Wogsland"
+                   }
+                 ]
+               },
+               {
+                 "id": "47849",
+                 "members": [
+                   {
+                     "id": "47849",
+                     "name": "Andreas Helleberg Rovik"
+                   },
+                   {
+                     "id": "69672",
+                     "name": "Mikal Bø"
+                   },
+                   {
+                     "id": "70587",
+                     "name": "Iver Sande"
+                   }
+                 ]
+               },
+               {
+                 "id": "73195",
+                 "members": [
+                   {
+                     "id": "73195",
+                     "name": "Rana Kelani"
+                   },
+                   {
+                     "id": "79876",
+                     "name": "Eirik Magnus Stenberg"
+                   },
+                   {
+                     "id": "83984",
+                     "name": "Jonas Stokkeland"
+                   }
+                 ]
+               }
+             ],
+             "teachers": [
+               {
+                 "id": 21705,
+                 "name": "Per Helge Litzheim Frøiland",
+                 "created_at": "2018-08-07T12:20:30+02:00",
+                 "sortable_name": "Frøiland, Per Helge Litzheim",
+                 "short_name": "Per Helge Litzheim Frøiland"
+               },
+               {
+                 "id": 4610,
+                 "name": "Richard Kjepso",
+                 "created_at": "2018-03-15T13:24:41+01:00",
+                 "sortable_name": "Kjepso, Richard",
+                 "short_name": "Richard Kjepso"
+               },
+               {
+                 "id": 1552,
+                 "name": "Remy Andre Monsen",
+                 "created_at": "2017-12-16T00:21:33+01:00",
+                 "sortable_name": "Monsen, Remy Andre",
+                 "short_name": "Remy Andre Monsen"
+               },
+               {
+                 "id": 73877,
+                 "name": "Ngoc Thanh Nguyen",
+                 "created_at": "2021-08-20T14:15:14+02:00",
+                 "sortable_name": "Nguyen, Ngoc Thanh",
+                 "short_name": "Ngoc Thanh Nguyen"
+               }
+             ],
+             "assistants": [
+               {
+                 "id": 70371,
+                 "name": "Martin Berg Alstad",
+                 "created_at": "2021-07-29T03:43:45+02:00",
+                 "sortable_name": "Alstad, Martin Berg",
+                 "short_name": "Martin Berg Alstad"
+               },
+               {
+                 "id": 46345,
+                 "name": "Jan-Petter Dåvøy",
+                 "created_at": "2020-07-29T08:14:37+02:00",
+                 "sortable_name": "Dåvøy, Jan-Petter",
+                 "short_name": "Jan-Petter Dåvøy"
+               }
+             ]
+           }
+
 }
+
+}
+
+
+

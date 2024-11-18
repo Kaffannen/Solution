@@ -6,7 +6,7 @@ class TeacherUI extends UIElement{
     constructor(nexus) {
         let htmlString
             =`
-<fieldset class="IkkeInnlogget sentrerHorisontalt">
+<fieldset class="fieldset-reset">
     <h3>Badass Teacher UI</h3>
     <p>Kjøre på med lister over grupper og hvem som er i dem - drag & drop funksjonalitet?</p>
     <ul>

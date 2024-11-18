@@ -71,7 +71,9 @@ setPersistence(persistence){
                 });
         });
     }
-
+    fetchGroups(assignmentId){
+        return this.#canvasApi.fetchGroups()
+    }
 }
 
 
