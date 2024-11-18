@@ -7,7 +7,7 @@ class AssignmentGroupMember extends UIElement {
         let jsonElement = nexus.getData();
         let htmlString
             =`
-<fieldset class="IkkeInnlogget sentrerHorisontalt">
+<fieldset>
     <p>${jsonElement.name}</p>
 </fieldset>
             `;

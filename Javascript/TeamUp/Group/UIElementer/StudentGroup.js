@@ -3,7 +3,7 @@ class StudentGroup extends UIElement {
         let jsonElement = nexus.getData();
         let htmlString
             =`
-<fieldset class="IkkeInnlogget sentrerHorisontalt">
+<fieldset>
     <p> 'Gruppenavn | Ingen gruppe funnet '</p>
     <p> 'Antall medlemmer / [minimum - maximum medlemmer for oblig] '</p>
     <div data-anchor=${AssignmentGroupMember.name}></div>

@@ -4,7 +4,7 @@ class StudentUI extends UIElement {
 
         let htmlString
             =`
-<fieldset class="IkkeInnlogget sentrerHorisontalt">
+<fieldset class="sentrerHorisontalt"> <!--IkkeInnlogget  -->
     <div data-anchor=${StudentGroup.name}></div>
 </fieldset>
             `;
