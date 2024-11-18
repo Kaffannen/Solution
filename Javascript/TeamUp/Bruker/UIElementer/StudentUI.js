@@ -5,16 +5,7 @@ class StudentUI extends UIElement {
         let htmlString
             =`
 <fieldset class="IkkeInnlogget sentrerHorisontalt">
-    <h3>Student UI</h3>
-    <div data-anchor=${StudentGroup.name}>studentanchor</div>
-    <br>
-    <input data-input="loginButton" type="button" value ="få SKYNET til å fikse en gruppe til deg"
-        onclick='program.find(this).studentAction()'
-    ">
-    <input data-input="loginButton" type="button" value ="Lukk"
-            onclick='program.find(this).closeTeamUp()'
-        ">
-    <br>
+    <div data-anchor=${StudentGroup.name}></div>
 </fieldset>
             `;
         super(htmlString, nexus);

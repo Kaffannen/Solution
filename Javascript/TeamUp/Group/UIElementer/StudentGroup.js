@@ -1,16 +1,22 @@
-//import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
-//import AssignmentGroupMember from "https://kaffannen.github.io/Solution/Javascript/TeamUp/GroupMember/UIElements/AssignmentGroupMember.js";
-//export default class StudentGroup extends UIElement {
 class StudentGroup extends UIElement {
     constructor(nexus) {
-
+        let jsonElement = nexus.getData();
         let htmlString
             =`
 <fieldset class="IkkeInnlogget sentrerHorisontalt">
-    <h3>Badass StudentGroup</h3>
+    <p> 'Gruppenavn | Ingen gruppe funnet '</p>
+    <p> 'Antall medlemmer / [minimum - maximum medlemmer for oblig] '</p>
     <div data-anchor=${AssignmentGroupMember.name}></div>
-    <br>
-    <br>
+    <input data-input="" type="button" value ="Inviter en person / gruppe"
+                        onclick='program.find(this).mergeRequest()'
+                    ">
+    <input data-input="" type="button" value ="Si til faglærer at gruppen ønsker å bli tilordnet medlemmer"
+            onclick='program.find(this).signalDisposition(open)'
+        ">
+    <input data-input="" type="button" value ="Forlat gruppe"
+                onclick='program.find(this).studentAction()'
+            ">
+
 </fieldset>
             `;
         super(htmlString, nexus);
