@@ -107,6 +107,14 @@ legend{
     font-family:'Corben', Georgia, Times, serif;
     **/
 }
+.fieldset-reset {
+    all: unset;
+    display: block; /* Resetting 'all' sets the display to 'inline', so we fix this */
+    margin: 0.5em 0; /* Default spacing */
+    padding: 0.35em 0.75em 0.625em; /* Default padding */
+    border: 2px groove ThreeDFace; /* Default fieldset border */
+    border-image: initial; /* Ensures the border is consistent */
+}
 
 .sentrerHorisontalt {
     margin: auto;

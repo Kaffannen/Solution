@@ -4,7 +4,7 @@ class StudentUI extends UIElement {
 
         let htmlString
             =`
-<fieldset class="sentrerHorisontalt IkkeInnlogget"> <!--  -->
+<fieldset class="fieldset-reset">
     <div data-anchor=${StudentGroup.name}></div>
 </fieldset>
             `;

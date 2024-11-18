@@ -7,7 +7,7 @@ class AssignmentGroupMember extends UIElement {
         let jsonElement = nexus.getData();
         let htmlString
             =`
-<fieldset>
+<fieldset class="fieldset-reset">
     <p>${jsonElement.name}</p>
 </fieldset>
             `;
