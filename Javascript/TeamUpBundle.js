@@ -556,7 +556,7 @@ class AssignmentGroupMember extends UIElement {
         let jsonElement = nexus.getData();
         let htmlString
             =`
-<fieldset>
+<fieldset class="fieldset-reset">
     <p>${jsonElement.name}</p>
 </fieldset>
             `;
@@ -586,7 +586,7 @@ class GroupMember extends ElementNode {
         let jsonElement = nexus.getData();
         let htmlString
             =`
-<fieldset>
+<fieldset class="fieldset-reset">
     <p> 'Gruppenavn | Ingen gruppe funnet '</p>
     <p> 'Antall medlemmer / [minimum - maximum medlemmer for oblig] '</p>
     <div data-anchor=${AssignmentGroupMember.name}></div>
@@ -689,7 +689,7 @@ class CollapsedState extends UIElement{
 
         let htmlString
             =`
-<fieldset class="sentrerHorisontalt IkkeInnlogget"> <!--  -->
+<fieldset class="fieldset-reset">
     <div data-anchor=${StudentGroup.name}></div>
 </fieldset>
             `;
