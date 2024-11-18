@@ -1,7 +1,19 @@
 //export default class CanvasAPIMock {
 class CanvasAPIMock {
+#rolle;
+constructor(rolle){
+    if (rolle === "student"){
+        this.#rolle = "StudentEnrollment"
+    }
+    else if (rolle === "underviser"){
+        this.#rolle = "TeacherEnrollment"
+    }
+    else{
+        throw new Error("Ugyldig rolle, velg student eller underviser")
+    }
+}
 
-static getUserInfo(){
+getUserInfo(){
     return new Promise((resolve, reject) => {
     const user = {
                                         //GET https://hvl.instructure.com/api/v1/users/self
@@ -25,7 +37,7 @@ static getUserInfo(){
     })
 }
 
-static getCourseInfo(){
+getCourseInfo(){
     return new Promise((resolve, reject) => {
         const course = { //GET https://hvl.instructure.com/api/v1/courses/29406
                                                 "id": 29406,
@@ -60,15 +72,7 @@ static getCourseInfo(){
                                                 "enrollments": [
                                                     {
                                                         "type": "student",
-                                                        "role": "StudentEnrollment",
-                                                        "role_id": 3,
-                                                        "user_id": 81736,
-                                                        "enrollment_state": "active",
-                                                        "limit_privileges_to_course_section": false
-                                                    },
-                                                    {
-                                                        "type": "student",
-                                                        "role": "StudentEnrollment",
+                                                        "role": this.#rolle,
                                                         "role_id": 3,
                                                         "user_id": 81736,
                                                         "enrollment_state": "active",
@@ -82,7 +86,7 @@ static getCourseInfo(){
         resolve(course)
     })
 }
-static getAssignmentInfo(){
+getAssignmentInfo(){
     return new Promise((resolve, reject) => {
                             const assignment = { //https://hvl.instructure.com/api/v1/courses/29406/assignments/80710
                                                    "id": 80710,
@@ -152,7 +156,7 @@ static getAssignmentInfo(){
         resolve(assignment)
 })
 }
-static getGroupMembers(){
+getGroupMembers(){
     return new Promise((resolve, reject) => {
                             //https://hvl.instructure.com/api/v1/courses/29406/assignments/80710/users/81736/group_members
                             const group = [
@@ -184,7 +188,7 @@ static getGroupMembers(){
         resolve(group)
 })
 }
-static getAssignmentGroup(){
+getAssignmentGroup(){
     return new Promise((resolve, reject) => {
     //https://hvl.instructure.com/api/v1/courses/29406/assignment_groups/32409
 

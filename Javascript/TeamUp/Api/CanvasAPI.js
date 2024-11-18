@@ -1,33 +1,33 @@
 class CanvasAPI {
 
-static getCourseId(){
+getCourseId(){
     return window.location.pathname.split('/').filter(Boolean)[1];
 }
 
-static getAssignmentId(){
+getAssignmentId(){
     return window.location.pathname.split('/').filter(Boolean)[3];
 }
 
-static getUserInfo(){
+getUserInfo(){
     return fetch('https://hvl.instructure.com/api/v1/users/self')
                 .then(response => response.json());
 }
 
-static getCourseInfo(){
+getCourseInfo(){
     return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}`)
                 .then(response => response.json());
 
 }
-static getAssignmentInfo(){
+getAssignmentInfo(){
     return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignments/${CanvasAPI.getAssignmentId()}`)
                 .then(response => response.json());
 }
 
-static getGroupMembers(selfId){
+getGroupMembers(selfId){
     return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignments/${CanvasAPI.getAssignmentId()}/users/${selfId}/group_members`)
                 .then(response => response.json());
 }
-static getAssignmentGroup(assignmentGroupId){
+getAssignmentGroup(assignmentGroupId){
     return fetch(`https://hvl.instructure.com/api/v1/courses/${CanvasAPI.getCourseId()}/assignment_groups/${assignmentGroupId}`)
                 .then(response => response.json());
 }
