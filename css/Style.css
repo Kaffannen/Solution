@@ -91,6 +91,7 @@ legend{
 }
 
 .IkkeInnlogget {
+    /**
     width: 50%;
     position: fixed;
     top: 20%;
@@ -104,6 +105,7 @@ legend{
     overflow: auto;
     color: dimgrey;
     font-family:'Corben', Georgia, Times, serif;
+    **/
 }
 
 .sentrerHorisontalt {
