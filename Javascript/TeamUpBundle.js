@@ -689,7 +689,7 @@ class CollapsedState extends UIElement{
 
         let htmlString
             =`
-<fieldset class="sentrerHorisontalt"> <!--IkkeInnlogget  -->
+<fieldset class="sentrerHorisontalt IkkeInnlogget"> <!--  -->
     <div data-anchor=${StudentGroup.name}></div>
 </fieldset>
             `;
