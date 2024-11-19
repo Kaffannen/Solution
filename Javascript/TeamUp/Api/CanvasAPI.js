@@ -1,6 +1,6 @@
 class CanvasAPI {
 
-constructor(roleOverride default="none"){
+constructor(roleOverride = "none"){
     if (roleOverride === "student")
         this.roleOverride = "StudentEnrollment"
     else if (roleOverride === "teacher")
