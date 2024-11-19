@@ -2,7 +2,7 @@ class Group extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new StudentGroup(this))
-            .fixTo(StudentUI);
+            .fixTo(this.getParentNode() instanceof Student ? StudentUI : TeacherUI);
         super.defineUIElements();
         this.fetchGroupMembers();
         return this;
