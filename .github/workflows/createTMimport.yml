@@ -25,27 +25,22 @@ jobs:
           Javascript/EzUI/DeveloperClasses/ElementNode.js \
           Javascript/EzUI/DeveloperClasses/EzUI.js \
           Javascript/EzUI/DeveloperClasses/UIElement.js \
-          
           Javascript/TeamUp/Api/CanvasAPI.js \
           Javascript/TeamUp/Api/MsgBrokerMock.js \
           Javascript/TeamUp/Api/PersistenceMock.js \
           Javascript/TeamUp/Api/API.js \
-          
           Javascript/TeamUp/GroupMember/UIElements/AssignmentGroupMember.js \
           Javascript/TeamUp/GroupMember/GroupMember.js \
-          
           Javascript/TeamUp/GroupStudent/UIElementer/StudentGroupUIE.js \
           Javascript/TeamUp/GroupStudent/StudentGroup.js \
           Javascript/TeamUp/GroupTeacher/UIElementer/TeacherGroupUIE.js \
           Javascript/TeamUp/GroupTeacher/TeacherGroup.js \
-          
           Javascript/TeamUp/Bruker/UIElementer/CollapsedState.js \
           Javascript/TeamUp/Bruker/UIElementer/ExpandedState.js \
           Javascript/TeamUp/Bruker/UIElementer/StudentUI.js \
           Javascript/TeamUp/Bruker/UIElementer/TeacherUI.js \
           Javascript/TeamUp/Bruker/Student.js \
           Javascript/TeamUp/Bruker/Underviser.js \
-          
           Javascript/TeamUp/Program/BasicSolution.js \
           Javascript/TeamUp/TamperMonkeyMain.js \
           > dist/bundle.js  # Concatenate all files into dist/bundle.js
