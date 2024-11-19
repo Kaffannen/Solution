@@ -673,7 +673,7 @@ class GroupMember extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new StudentGroup(this))
-            .fixTo(StudentUI);
+            .fixTo(this.getParentNode() instanceof Student ? StudentUI : TeacherUI);
         super.defineUIElements();
         this.fetchGroupMembers();
         return this;
@@ -774,23 +774,10 @@ class CollapsedState extends UIElement{
 <fieldset class="fieldset-reset">
     <h3>Badass Teacher UI</h3>
     <p>Kjøre på med lister over grupper og hvem som er i dem - drag & drop funksjonalitet?</p>
+    <div data-anchor=${StudentGroup.name}></div>
     <ul>
-        <li>Gruppe 1, 4/[8-12] studenter </li>
-        <li>Gruppe 2, 4/[8-12] studenter </li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
-        <li>Gruppe 1, 4/[8-12] studenter </li>
-        <li>Gruppe 2, 4/[8-12] studenter </li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
-        <li>Gruppe 1, 4/[8-12] studenter </li>
-        <li>Gruppe 2, 4/[8-12] studenter </li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
         <li>...</li>
+        <li>Gruppe 3, 4/[8-12] studenter </li>
         <li>25 studenter ikke i gruppe. 10 av dem har bedt å bli plassert i gruppe</li>
     </ul>
     <br>
