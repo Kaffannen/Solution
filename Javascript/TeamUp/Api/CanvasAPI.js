@@ -1,5 +1,14 @@
 class CanvasAPI {
 
+constructor(roleOverride default="none"){
+    if (roleOverride === "student")
+        this.roleOverride = "StudentEnrollment"
+    else if (roleOverride === "teacher")
+        this.roleOverride = "TeacherEnrollment"
+    else
+        this.roleOverride = "none"
+}
+
 getCourseId(){
     return window.location.pathname.split('/').filter(Boolean)[1];
 }
@@ -10,12 +19,18 @@ getAssignmentId(){
 
 getUserInfo(){
     return fetch('https://hvl.instructure.com/api/v1/users/self')
-                .then(response => response.json());
+                .then(response => response.json())
 }
 
 getCourseInfo(){
     return fetch(`https://hvl.instructure.com/api/v1/courses/${this.getCourseId()}`)
-                .then(response => response.json());
+                .then(response => response.json())
+                .then(courseInfo => {
+                    if (courseInfo.enrollments && courseInfo.enrollments.length > 0 && this.roleOverride !== "none") {
+                                    // Modify the 'role' attribute of the first entry in the 'enrollments' array
+                                    courseInfo.enrollments[0].role = this.roleOverride; // Replace "newRoleValue" with the desired value
+                                }
+                })
 
 }
 getAssignmentInfo(){
