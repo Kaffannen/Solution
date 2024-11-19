@@ -455,7 +455,53 @@ getAssignmentGroup(assignmentGroupId){
     return fetch(`https://hvl.instructure.com/api/v1/courses/${this.getCourseId()}/assignment_groups/${assignmentGroupId}`)
                 .then(response => response.json());
 }
-}//export default class CanvasAPIMock {
+async fetchGroups(assignmentId) {
+    let course = 25563;
+    let assignment = 75844;
+
+    // Fetch all users (students, teachers, assistants)
+    const [studentsResponse, teachersResponse, assistantsResponse] = await Promise.all([
+        fetch(`https://hvl.instructure.com/api/v1/courses/${course}/users?page=1&per_page=200&enrollment_type=student`),
+        fetch(`https://hvl.instructure.com/api/v1/courses/${course}/users?page=1&per_page=200&enrollment_type=teacher`),
+        fetch(`https://hvl.instructure.com/api/v1/courses/${course}/users?page=1&per_page=200&enrollment_type=ta`)
+    ]);
+
+    // Convert response to JSON
+    const students = await studentsResponse.json();
+    const teachers = await teachersResponse.json();
+    const assistants = await assistantsResponse.json();
+
+    const studentgroups = [];
+
+    // Process students
+    for (let i = 0; i < students.length; i++) {
+        // Fetch the group members for the current student
+        const groupResponse = await fetch(`https://hvl.instructure.com/api/v1/courses/${course}/assignments/${assignment}/users/${students[i].id}/group_members`);
+        let group = await groupResponse.json();
+
+        // Remove the students that are part of this group
+        group.forEach(student => {
+            const index = students.findIndex(s => s.id === Number(student.id));
+            if (index !== -1) {
+                students.splice(index, 1);
+            }
+        });
+
+        // Add the group to the studentgroups array
+        group = {
+            id: group[0].id,
+            members : group
+        }
+        studentgroups.push(group);
+    }
+    return {
+            studentgroups,
+            teachers,
+            assistants
+            };
+    }
+}
+//export default class CanvasAPIMock {
 class MsgBrokerMock {
 
 
@@ -536,7 +582,9 @@ setPersistence(persistence){
                 });
         });
     }
-
+    fetchGroups(assignmentId){
+        return this.#canvasApi.fetchGroups()
+    }
 }
 
 
@@ -723,7 +771,7 @@ class CollapsedState extends UIElement{
     constructor(nexus) {
         let htmlString
             =`
-<fieldset class="IkkeInnlogget sentrerHorisontalt">
+<fieldset class="fieldset-reset">
     <h3>Badass Teacher UI</h3>
     <p>Kjøre på med lister over grupper og hvem som er i dem - drag & drop funksjonalitet?</p>
     <ul>
@@ -779,14 +827,7 @@ class CollapsedState extends UIElement{
         */
     }
 
-}//import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
-//import CollapsedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/CollapsedState.js";
-//import ExpandedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/ExpandedState.js";
-//import StudentUI from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/StudentUI.js";
-//import Group from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Group/Group.js";
-
-//export default class Student extends ElementNode {
-class Student extends ElementNode {
+}class Student extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new CollapsedState(this))
@@ -824,13 +865,7 @@ class Student extends ElementNode {
                 })
             .catch(error =>alert(error))
     }
-}//import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
-//import CollapsedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/CollapsedState.js";
-//import ExpandedState from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/ExpandedState.js";
-//import TeacherUI from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Bruker/UIElementer/TeacherUI.js";
-
-//export default class Underviser extends ElementNode {
-class Underviser extends ElementNode {
+}class Underviser extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new CollapsedState(this))
@@ -840,6 +875,7 @@ class Underviser extends ElementNode {
         this.addUIElement(new TeacherUI(this))
             .fixTo();
         super.defineUIElements();
+        this.fetchGroups();
         return this;
     }
 
@@ -857,7 +893,26 @@ class Underviser extends ElementNode {
             this.getUIElement(TeacherUI).attach();
         }
     };
-}class BasicSolution extends EzUI {
+    fetchGroups(){
+            /**
+            https://hvl.instructure.com/api/v1/courses/29406/assignments/80710/users/82310/group_members
+            https://hvl.instructure.com/api/v1/courses/25563/assignments/75844/users/15686/group_members
+            gir tilgang til alle gruppemedlemmer i en gruppe - for alle jeg har ID på.
+            https://hvl.instructure.com/api/v1/courses/25563/users?page=1&per_page=1000&enrollment_type=teacher gir alle teachers
+            https://hvl.instructure.com/api/v1/courses/25563/users?page=1&per_page=1000&enrollment_type=student gir alle students
+            **/
+            return program.getApi().fetchGroups(this.getData().assignment.assignment_group_id)
+                .then(userGroups => {
+                    userGroups.studentgroups.forEach(groupInfo=>{
+                        let group = new Group(groupInfo,this)
+                            .defineUIElements()
+                            .setState(Group.STATES.INIT);
+                    });
+                })
+                .catch(error =>console.error(error))
+        }
+}
+class BasicSolution extends EzUI {
     async defineUIElements(){
         super.defineUIElements();
         await this.fetchBruker();
