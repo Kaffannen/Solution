@@ -27,8 +27,7 @@ getCourseInfo(){
                 .then(response => response.json())
                 .then(courseInfo => {
                     if (courseInfo.enrollments && courseInfo.enrollments.length > 0 && this.roleOverride !== "none") {
-                                    // Modify the 'role' attribute of the first entry in the 'enrollments' array
-                                    courseInfo.enrollments[0].role = this.roleOverride; // Replace "newRoleValue" with the desired value
+                                    courseInfo.enrollments[0].role = this.roleOverride;
                                 }
                 })
 
