@@ -424,6 +424,15 @@ class UIElement {
 }
 class CanvasAPI {
 
+constructor(roleOverride default="none"){
+    if (roleOverride === "student")
+        this.roleOverride = "StudentEnrollment"
+    else if (roleOverride === "teacher")
+        this.roleOverride = "TeacherEnrollment"
+    else
+        this.roleOverride = "none"
+}
+
 getCourseId(){
     return window.location.pathname.split('/').filter(Boolean)[1];
 }
@@ -434,12 +443,17 @@ getAssignmentId(){
 
 getUserInfo(){
     return fetch('https://hvl.instructure.com/api/v1/users/self')
-                .then(response => response.json());
+                .then(response => response.json())
 }
 
 getCourseInfo(){
     return fetch(`https://hvl.instructure.com/api/v1/courses/${this.getCourseId()}`)
-                .then(response => response.json());
+                .then(response => response.json())
+                .then(courseInfo => {
+                    if (courseInfo.enrollments && courseInfo.enrollments.length > 0 && this.roleOverride !== "none") {
+                                    courseInfo.enrollments[0].role = this.roleOverride;
+                                }
+                })
 
 }
 getAssignmentInfo(){
@@ -619,7 +633,7 @@ class GroupMember extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new AssignmentGroupMember(this))
-            .fixTo(StudentGroup);
+            .fixTo(this.getParentNode() instanceof StudentGroup ? StudentGroupUIE : TeacherGroupUIE);
         super.defineUIElements();
         return this;
     }
@@ -629,7 +643,7 @@ class GroupMember extends ElementNode {
             this.getUIElement(AssignmentGroupMember).attach();
         }
     };
-}class StudentGroup extends UIElement {
+}class StudentGroupUIE extends UIElement {
     constructor(nexus) {
         let jsonElement = nexus.getData();
         let htmlString
@@ -669,10 +683,10 @@ class GroupMember extends ElementNode {
         this.getInputElement("username").value = "";
         this.getInputElement("password").value = "";
     }
-}class Group extends ElementNode {
+}class StudentGroup extends ElementNode {
 
     defineUIElements() {
-        this.addUIElement(new StudentGroup(this))
+        this.addUIElement(new StudentGroupUIE(this))
             .fixTo(this.getParentNode() instanceof Student ? StudentUI : TeacherUI);
         super.defineUIElements();
         this.fetchGroupMembers();
@@ -681,7 +695,7 @@ class GroupMember extends ElementNode {
 
     static STATES = {
         INIT: function(){
-            this.getUIElement(StudentGroup).attach();
+            this.getUIElement(StudentGroupUIE).attach();
         }
     };
     fetchGroupMembers(){
@@ -696,6 +710,69 @@ class GroupMember extends ElementNode {
             .catch(error => {
                 console.log("Error fetching group members: " + error);
             });
+    }
+}
+class TeacherGroupUIE extends UIElement {
+    constructor(nexus) {
+        let jsonElement = nexus.getData();
+        let htmlString
+            =`
+<fieldset class="fieldset-reset">
+    <p> 'Gruppenavn | Ingen gruppe funnet '</p>
+    <p> 'Antall medlemmer / [minimum - maximum medlemmer for oblig] '</p>
+    <div data-anchor=${AssignmentGroupMember.name}></div>
+    <input data-input="" type="button" value ="Inviter en person / gruppe"
+                        onclick='program.find(this).mergeRequest()'
+                    ">
+    <input data-input="" type="button" value ="Si til faglærer at gruppen ønsker å bli tilordnet medlemmer"
+            onclick='program.find(this).signalDisposition(open)'
+        ">
+    <input data-input="" type="button" value ="Forlat gruppe"
+                onclick='program.find(this).studentAction()'
+            ">
+
+</fieldset>
+            `;
+        super(htmlString, nexus);
+    }
+
+    studentAction() {
+        let credentials ={
+            brukernavn:this.getInputElement("username").value,
+            passord:this.getInputElement("password").value
+        };
+        program.getApi().loginUser(credentials)
+            .then(data=>{
+                let bruker= new Bruker(data,program)
+                    .defineUIElements()
+                    .setState(Bruker.STATES.LOGGED_IN);
+                program.velgBruker(bruker);
+            })
+            .catch(error => alert(error))
+        this.getInputElement("username").value = "";
+        this.getInputElement("password").value = "";
+    }
+}class TeacherGroup extends ElementNode {
+
+    defineUIElements() {
+        this.addUIElement(new TeacherGroupUIE(this))
+            .fixTo(this.getParentNode() instanceof Student ? StudentUI : TeacherUI);
+        super.defineUIElements();
+        this.fetchGroupMembers();
+        return this;
+    }
+
+    static STATES = {
+        INIT: function(){
+            this.getUIElement(TeacherGroupUIE).attach();
+        }
+    };
+    fetchGroupMembers(){
+        this.getData().members.forEach(memberInfo => {
+                                let member = new GroupMember(memberInfo,this)
+                                .defineUIElements()
+                                .setState(GroupMember.STATES.INIT);
+                            });
     }
 }
 class CollapsedState extends UIElement{
@@ -738,7 +815,7 @@ class CollapsedState extends UIElement{
         let htmlString
             =`
 <fieldset class="fieldset-reset">
-    <div data-anchor=${StudentGroup.name}></div>
+    <div data-anchor=${StudentGroupUIE.name}></div>
 </fieldset>
             `;
         super(htmlString, nexus);
@@ -774,7 +851,7 @@ class CollapsedState extends UIElement{
 <fieldset class="fieldset-reset">
     <h3>Badass Teacher UI</h3>
     <p>Kjøre på med lister over grupper og hvem som er i dem - drag & drop funksjonalitet?</p>
-    <div data-anchor=${StudentGroup.name}></div>
+    <div data-anchor=${TeacherGroupUIE.name}></div>
     <ul>
         <li>...</li>
         <li>Gruppe 3, 4/[8-12] studenter </li>
@@ -845,12 +922,12 @@ class CollapsedState extends UIElement{
     fetchGroup(){
         return program.getApi().fetchGroup(this.getData().assignment.assignment_group_id)
             .then(groupInfo=>{
-                let group = new Group(groupInfo,this)
+                let group = new StudentGroup(groupInfo,this)
                     .defineUIElements()
-                    .setState(Group.STATES.INIT);
+                    .setState(StudentGroup.STATES.INIT);
                 this.setFavourite(group);
                 })
-            .catch(error =>alert(error))
+            .catch(error =>console.error(error))
     }
 }class Underviser extends ElementNode {
 
@@ -891,9 +968,9 @@ class CollapsedState extends UIElement{
             return program.getApi().fetchGroups(this.getData().assignment.assignment_group_id)
                 .then(userGroups => {
                     userGroups.studentgroups.forEach(groupInfo=>{
-                        let group = new Group(groupInfo,this)
+                        let group = new TeacherGroup(groupInfo,this)
                             .defineUIElements()
-                            .setState(Group.STATES.INIT);
+                            .setState(TeacherGroup.STATES.INIT);
                     });
                 })
                 .catch(error =>console.error(error))
@@ -943,7 +1020,7 @@ class BasicSolution extends EzUI {
 }
 
 let api = new API()
-        .setCanvasApi(new CanvasAPI())
+        .setCanvasApi(new CanvasAPI('teacher'))
         .setMsgBroker(new MsgBrokerMock())
         .setPersistence(new PersistenceMock())
 
