@@ -29,11 +29,11 @@ class Student extends ElementNode {
     fetchGroup(){
         return program.getApi().fetchGroup(this.getData().assignment.assignment_group_id)
             .then(groupInfo=>{
-                let group = new Group(groupInfo,this)
+                let group = new StudentGroup(groupInfo,this)
                     .defineUIElements()
-                    .setState(Group.STATES.INIT);
+                    .setState(StudentGroup.STATES.INIT);
                 this.setFavourite(group);
                 })
-            .catch(error =>alert(error))
+            .catch(error =>console.error(error))
     }
 }

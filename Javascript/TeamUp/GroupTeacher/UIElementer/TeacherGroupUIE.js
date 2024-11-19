@@ -1,4 +1,4 @@
-class StudentGroup extends UIElement {
+class TeacherGroupUIE extends UIElement {
     constructor(nexus) {
         let jsonElement = nexus.getData();
         let htmlString

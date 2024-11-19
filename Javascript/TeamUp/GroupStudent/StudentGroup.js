@@ -1,7 +1,7 @@
-class Group extends ElementNode {
+class StudentGroup extends ElementNode {
 
     defineUIElements() {
-        this.addUIElement(new StudentGroup(this))
+        this.addUIElement(new StudentGroupUIE(this))
             .fixTo(this.getParentNode() instanceof Student ? StudentUI : TeacherUI);
         super.defineUIElements();
         this.fetchGroupMembers();
@@ -10,7 +10,7 @@ class Group extends ElementNode {
 
     static STATES = {
         INIT: function(){
-            this.getUIElement(StudentGroup).attach();
+            this.getUIElement(StudentGroupUIE).attach();
         }
     };
     fetchGroupMembers(){

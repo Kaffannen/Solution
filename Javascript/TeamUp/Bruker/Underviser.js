@@ -37,9 +37,9 @@ class Underviser extends ElementNode {
             return program.getApi().fetchGroups(this.getData().assignment.assignment_group_id)
                 .then(userGroups => {
                     userGroups.studentgroups.forEach(groupInfo=>{
-                        let group = new Group(groupInfo,this)
+                        let group = new TeacherGroup(groupInfo,this)
                             .defineUIElements()
-                            .setState(Group.STATES.INIT);
+                            .setState(TeacherGroup.STATES.INIT);
                     });
                 })
                 .catch(error =>console.error(error))

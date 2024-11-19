@@ -9,7 +9,7 @@ class TeacherUI extends UIElement{
 <fieldset class="fieldset-reset">
     <h3>Badass Teacher UI</h3>
     <p>Kjøre på med lister over grupper og hvem som er i dem - drag & drop funksjonalitet?</p>
-    <div data-anchor=${StudentGroup.name}></div>
+    <div data-anchor=${TeacherGroupUIE.name}></div>
     <ul>
         <li>...</li>
         <li>Gruppe 3, 4/[8-12] studenter </li>

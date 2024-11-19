@@ -7,7 +7,7 @@ class GroupMember extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new AssignmentGroupMember(this))
-            .fixTo(StudentGroup);
+            .fixTo(this.getParentNode() instanceof StudentGroup ? StudentGroupUIE : TeacherGroupUIE);
         super.defineUIElements();
         return this;
     }
