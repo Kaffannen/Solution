@@ -18,7 +18,7 @@ if (override === "teacher")
 else if (override === "student")
     scriptUrl = 'https://kaffannen.github.io/Solution/Javascript/bundle_TMStudentProtoMain.js';
 else
-    scriptUrl = 'https://kaffannen.github.io/Solution/Javascript/bundle_TMMain.js';
+    scriptUrl = 'https://kaffannen.github.io/Solution/Javascript/bundle_TMMain.js'; 
 
 window.addEventListener("load", function () {
     setTimeout(function () {
