@@ -44,9 +44,10 @@ jobs:
             Javascript/TeamUp/Program/BasicSolution.js \
             > dist/bundle.js  
           # Create new files with additional JS files concatenated
-          cat dist/bundle.js Javascript/TeamUp/Program/TMMain.js > dist/bundle_TMMain.js
-          cat dist/bundle.js Javascript/TeamUp/Program/TMStudentProtoMain.js > dist/bundle_TMStudentProtoMain.js
-          cat dist/bundle.js Javascript/TeamUp/Program/TMTeacherProtoMain.js > dist/bundle_TMTeacherProtoMain.js
+          
+          cat dist/bundle.js Javascript/TeamUp/TMMain.js > dist/bundle_TMMain.js
+          cat dist/bundle.js Javascript/TeamUp/TMStudentProtoMain.js > dist/bundle_TMStudentProtoMain.js
+          cat dist/bundle.js Javascript/TeamUp/TMTeacherProtoMain.js > dist/bundle_TMTeacherProtoMain.js
 
       - name: Commit and Push Concatenated Files
         run: |
