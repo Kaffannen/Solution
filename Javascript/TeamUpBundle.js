@@ -453,6 +453,7 @@ getCourseInfo(){
                     if (courseInfo.enrollments && courseInfo.enrollments.length > 0 && this.roleOverride !== "none") {
                                     courseInfo.enrollments[0].role = this.roleOverride;
                                 }
+                    return courseInfo
                 })
 
 }
