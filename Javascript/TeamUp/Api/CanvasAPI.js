@@ -52,9 +52,9 @@ async fetchGroups(assignmentId) {
 
     // Fetch all users (students, teachers, assistants)
     const [studentsResponse, teachersResponse, assistantsResponse] = await Promise.all([
-        fetch(`https://hvl.instructure.com/api/v1/courses/${course}/users?page=1&per_page=200&enrollment_type=student`),
-        fetch(`https://hvl.instructure.com/api/v1/courses/${course}/users?page=1&per_page=200&enrollment_type=teacher`),
-        fetch(`https://hvl.instructure.com/api/v1/courses/${course}/users?page=1&per_page=200&enrollment_type=ta`)
+        fetch(`https://hvl.instructure.com/api/v1/courses/${this.getCourseId()}/users?page=1&per_page=200&enrollment_type=student`),
+        fetch(`https://hvl.instructure.com/api/v1/courses/${this.getCourseId()}/users?page=1&per_page=200&enrollment_type=teacher`),
+        fetch(`https://hvl.instructure.com/api/v1/courses/${this.getCourseId()}/users?page=1&per_page=200&enrollment_type=ta`)
     ]);
 
     // Convert response to JSON
