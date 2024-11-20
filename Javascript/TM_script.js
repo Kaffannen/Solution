@@ -42,7 +42,7 @@ window.addEventListener("load", function () {
 
         // Load the external script
         const script = document.createElement('script');
-        script.src = 'https://kaffannen.github.io/Solution/Javascript/TeamUpBundle.js';
+        script.src = scriptUrl;
         script.type = 'module';
         document.head.appendChild(script);
     }, 2000);
