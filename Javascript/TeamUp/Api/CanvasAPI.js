@@ -67,7 +67,7 @@ async fetchGroups(assignmentId) {
     // Process students
     for (let i = 0; i < students.length; i++) {
         // Fetch the group members for the current student
-        const groupResponse = await fetch(`https://hvl.instructure.com/api/v1/courses/${course}/assignments/${assignment}/users/${students[i].id}/group_members`);
+        const groupResponse = await fetch(`https://hvl.instructure.com/api/v1/courses/${this.getCourseId()}/assignments/${this.getAssignmentId()}/users/${students[i].id}/group_members`);
         let group = await groupResponse.json();
 
         // Remove the students that are part of this group
