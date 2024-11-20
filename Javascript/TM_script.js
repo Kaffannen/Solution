@@ -9,6 +9,17 @@
 // @grant        none
 // ==/UserScript==
 
+/** Velg override 'teacher', 'student' eller 'ingen'**/
+const override = "teacher" 
+
+let scriptUrl;
+if (override === "teacher")
+    scriptUrl = 'https://kaffannen.github.io/Solution/Javascript/TeamUp/TMTeacherProtoMain.js';
+else if (override === "student")
+    scriptUrl = 'https://kaffannen.github.io/Solution/Javascript/TeamUp/TMStudentProtoMain.js';
+else
+    scriptUrl = 'https://kaffannen.github.io/Solution/Javascript/TeamUp/TMMain.js';
+
 window.addEventListener("load", function () {
     setTimeout(function () {
         // Select all span elements with data-testid="title"
@@ -21,7 +32,7 @@ window.addEventListener("load", function () {
             break; // Break after finding the first match
         }
 
-        if (targetSpan) {
+    if (targetSpan) {                                                               
             const ezAnchor = document.createElement("div");
             ezAnchor.id = "EzAnchor";
             targetSpan.insertAdjacentElement("afterend", ezAnchor);
