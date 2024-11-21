@@ -710,7 +710,7 @@ class GroupMember extends ElementNode {
                 groupMembersInfo.forEach(memberInfo => {
                         let member = new GroupMember(memberInfo,this)
                         .defineUIElements()
-                        .setState(GroupMember.STATES.INIT);
+                        .setState(GroupMember.STATES.ATTACHED);
                     });
             })
             .catch(error => {
@@ -755,10 +755,13 @@ class TeacherGroupUIE extends UIElement {
             =`
 <p> 
         'Gruppenavn | #medlemmer '
-        <input type = "button" data-input="" value = "utvid" onclick = "program.find(this).getNode().setState(TeacherGroup.STATES.EXPANDED)">
+        <input type = "button" data-input="" value = "utvid" onclick = "program.find(this).expand()">
 </p>
             `;
         super(htmlString, nexus);
+    }
+    expand(){
+        this.getNode().setState(TeacherGroup.STATES.EXPANDED);
     }
 }
 
@@ -769,10 +772,13 @@ class HeaderbarExpanded extends UIElement {
             =`
 <p> 
         'Gruppenavn | #medlemmer '
-        <input type = "button" data-input="" value = "kollaps" onclick = "program.find(this).getNode().setState(TeacherGroup.STATES.COLLAPSED)">
+        <input type = "button" data-input="" value = "kollaps" onclick = "program.find(this).collapse()">
 </p>
             `;
         super(htmlString, nexus);
+    }
+    collapse(){
+        this.getNode().setState(TeacherGroup.STATES.COLLAPSED);
     }
 }
 
