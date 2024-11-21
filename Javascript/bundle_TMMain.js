@@ -641,7 +641,12 @@ class GroupMember extends ElementNode {
 
     static STATES = {
         INIT: function(){
+        },
+        ATTACHED: function(){
             this.getUIElement(AssignmentGroupMember).attach();
+        },
+        DETACHED: function(){
+            this.getUIElement(AssignmentGroupMember).detach();
         }
     };
 }class StudentGroupUIE extends UIElement {
@@ -719,19 +724,9 @@ class TeacherGroupUIE extends UIElement {
         let htmlString
             =`
 <fieldset class="fieldset-reset">
-    <p> 'Gruppenavn | Ingen gruppe funnet '</p>
-    <p> 'Antall medlemmer / [minimum - maximum medlemmer for oblig] '</p>
+    <div data-anchor=${HeaderbarCollapsed.name}></div>
+    <div data-anchor=${HeaderbarExpanded.name}></div>
     <div data-anchor=${AssignmentGroupMember.name}></div>
-    <input data-input="" type="button" value ="Inviter en person / gruppe"
-                        onclick='program.find(this).mergeRequest()'
-                    ">
-    <input data-input="" type="button" value ="Si til faglærer at gruppen ønsker å bli tilordnet medlemmer"
-            onclick='program.find(this).signalDisposition(open)'
-        ">
-    <input data-input="" type="button" value ="Forlat gruppe"
-                onclick='program.find(this).studentAction()'
-            ">
-
 </fieldset>
             `;
         super(htmlString, nexus);
@@ -753,11 +748,43 @@ class TeacherGroupUIE extends UIElement {
         this.getInputElement("username").value = "";
         this.getInputElement("password").value = "";
     }
-}class TeacherGroup extends ElementNode {
+}class HeaderbarCollapsed extends UIElement {
+    constructor(nexus) {
+        let jsonElement = nexus.getData();
+        let htmlString
+            =`
+<p> 
+        'Gruppenavn | #medlemmer '
+        <input type = "button" data-input="" value = "utvid" onclick = "program.find(this).getNode().setState(TeacherGroup.STATES.EXPANDED)">
+</p>
+            `;
+        super(htmlString, nexus);
+    }
+}
+
+class HeaderbarExpanded extends UIElement {
+    constructor(nexus) {
+        let jsonElement = nexus.getData();
+        let htmlString
+            =`
+<p> 
+        'Gruppenavn | #medlemmer '
+        <input type = "button" data-input="" value = "kollaps" onclick = "program.find(this).getNode().setState(TeacherGroup.STATES.COLLAPSED)">
+</p>
+            `;
+        super(htmlString, nexus);
+    }
+}
+
+class TeacherGroup extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new TeacherGroupUIE(this))
             .fixTo(this.getParentNode() instanceof Student ? StudentUI : TeacherUI);
+        this.addUIElement(new HeaderbarCollapsed(this))
+            .fixTo(TeacherGroupUIE);
+        this.addUIElement(new HeaderbarExpanded(this))
+            .fixTo(TeacherGroupUIE);
         super.defineUIElements();
         this.fetchGroupMembers();
         return this;
@@ -766,8 +793,17 @@ class TeacherGroupUIE extends UIElement {
     static STATES = {
         INIT: function(){
             this.getUIElement(TeacherGroupUIE).attach();
-        }
-    };
+        },
+        COLLAPSED: function(){
+            this._getChildren().forEach(node => node.setState(GroupMember.STATES.DETACHED));
+            this.getUIElement(HeaderbarCollapsed).attach();
+            this.getUIElement(HeaderbarExpanded).detach();
+        },
+        EXPANDED: function(){
+            this._getChildren().forEach(node => node.setState(GroupMember.STATES.ATTACHED));
+            this.getUIElement(HeaderbarCollapsed).detach();
+            this.getUIElement(HeaderbarExpanded).attach();
+    }};
     fetchGroupMembers(){
         this.getData().members.forEach(memberInfo => {
                                 let member = new GroupMember(memberInfo,this)
@@ -971,7 +1007,7 @@ class CollapsedState extends UIElement{
                     userGroups.studentgroups.forEach(groupInfo=>{
                         let group = new TeacherGroup(groupInfo,this)
                             .defineUIElements()
-                            .setState(TeacherGroup.STATES.INIT);
+                            .setState(TeacherGroup.STATES.COLLAPSED);
                     });
                 })
                 .catch(error =>console.error(error))
