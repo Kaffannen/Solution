@@ -4,8 +4,11 @@ class TeacherGroupUIE extends UIElement {
         let htmlString
             =`
 <fieldset class="fieldset-reset">
-    <div data-anchor=${HeaderbarCollapsed.name}></div>
-    <div data-anchor=${HeaderbarExpanded.name}></div>
+    <p>
+        'Gruppenavn | medlemmer: ${jsonElement.members.length} | (Oblig levert Y/N | Oblig godkjent Y/N)'
+        <span data-anchor=${HeaderbarCollapsed.name}></div>
+        <span data-anchor=${HeaderbarExpanded.name}></div>
+    </p>
     <div data-anchor=${AssignmentGroupMember.name}></div>
 </fieldset>
             `;

@@ -7,15 +7,10 @@ class TeacherUI extends UIElement{
         let htmlString
             =`
 <fieldset class="fieldset-reset">
-    <h3>Badass Teacher UI</h3>
-    <p>Kjøre på med lister over grupper og hvem som er i dem - drag & drop funksjonalitet?</p>
+    <p> #Antall studenter i kurset</p>
+    <p>Drag & drop funksjonalitet?</p>
     <div data-anchor=${TeacherGroupUIE.name}></div>
-    <ul>
-        <li>...</li>
-        <li>Gruppe 3, 4/[8-12] studenter </li>
-        <li>25 studenter ikke i gruppe. 10 av dem har bedt å bli plassert i gruppe</li>
-    </ul>
-    <br>
+    <p>stor gruppe med studenter 'i enmannsgruppe' (rent logisk)</p>
     <input data-input="regButton" type="button" value ="Magisk algoritmeknapp som organiserer 'rest' studenter i grupper"
         onclick='find(this).doAction()'
         onkeydown="if (event.key === 'Escape') find(this).getNode().setState(Bruker.STATES.LOGGED_OUT)"

@@ -3,10 +3,7 @@ class HeaderbarCollapsed extends UIElement {
         let jsonElement = nexus.getData();
         let htmlString
             =`
-<p> 
-        'Gruppenavn | #medlemmer '
-        <input type = "button" data-input="" value = "utvid" onclick = "program.find(this).expand()">
-</p>
+<input type = "button" data-input="" value = "utvid" onclick = "program.find(this).expand()">
             `;
         super(htmlString, nexus);
     }
