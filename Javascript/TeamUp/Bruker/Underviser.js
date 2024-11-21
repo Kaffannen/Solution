@@ -39,7 +39,7 @@ class Underviser extends ElementNode {
                     userGroups.studentgroups.forEach(groupInfo=>{
                         let group = new TeacherGroup(groupInfo,this)
                             .defineUIElements()
-                            .setState(TeacherGroup.STATES.INIT);
+                            .setState(TeacherGroup.STATES.COLLAPSED);
                     });
                 })
                 .catch(error =>console.error(error))

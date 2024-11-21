@@ -4,19 +4,9 @@ class TeacherGroupUIE extends UIElement {
         let htmlString
             =`
 <fieldset class="fieldset-reset">
-    <p> 'Gruppenavn | Ingen gruppe funnet '</p>
-    <p> 'Antall medlemmer / [minimum - maximum medlemmer for oblig] '</p>
+    <div data-anchor=${HeaderbarCollapsed.name}></div>
+    <div data-anchor=${HeaderbarExpanded.name}></div>
     <div data-anchor=${AssignmentGroupMember.name}></div>
-    <input data-input="" type="button" value ="Inviter en person / gruppe"
-                        onclick='program.find(this).mergeRequest()'
-                    ">
-    <input data-input="" type="button" value ="Si til faglærer at gruppen ønsker å bli tilordnet medlemmer"
-            onclick='program.find(this).signalDisposition(open)'
-        ">
-    <input data-input="" type="button" value ="Forlat gruppe"
-                onclick='program.find(this).studentAction()'
-            ">
-
 </fieldset>
             `;
         super(htmlString, nexus);

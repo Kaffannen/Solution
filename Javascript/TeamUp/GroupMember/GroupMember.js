@@ -14,7 +14,12 @@ class GroupMember extends ElementNode {
 
     static STATES = {
         INIT: function(){
+        },
+        ATTACHED: function(){
             this.getUIElement(AssignmentGroupMember).attach();
+        },
+        DETACHED: function(){
+            this.getUIElement(AssignmentGroupMember).detach();
         }
     };
 }
