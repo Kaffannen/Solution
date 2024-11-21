@@ -19,7 +19,7 @@ class StudentGroup extends ElementNode {
                 groupMembersInfo.forEach(memberInfo => {
                         let member = new GroupMember(memberInfo,this)
                         .defineUIElements()
-                        .setState(GroupMember.STATES.INIT);
+                        .setState(GroupMember.STATES.ATTACHED);
                     });
             })
             .catch(error => {

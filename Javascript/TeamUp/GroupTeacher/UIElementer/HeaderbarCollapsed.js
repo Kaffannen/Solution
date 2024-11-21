@@ -5,10 +5,13 @@ class HeaderbarCollapsed extends UIElement {
             =`
 <p> 
         'Gruppenavn | #medlemmer '
-        <input type = "button" data-input="" value = "utvid" onclick = "program.find(this).getNode().setState(TeacherGroup.STATES.EXPANDED)">
+        <input type = "button" data-input="" value = "utvid" onclick = "program.find(this).expand()">
 </p>
             `;
         super(htmlString, nexus);
+    }
+    expand(){
+        this.getNode().setState(TeacherGroup.STATES.EXPANDED);
     }
 }
 
