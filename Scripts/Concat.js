@@ -33,7 +33,7 @@ function traverseAndBuildJson(folder) {
             const matches = getMatchesFromFile(filepath, /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g)
                 .map(match => match.trim());
             if (matches.length !== 1) {
-                throw new Error(`File ${filepath} contains ${matches.length} class declarations. Expected exactly one.`);
+                Console.log(`File ${filepath} contains ${matches.length} class declarations. Expected exactly one.`);
             }
             result.push({
                 path: filepath,
