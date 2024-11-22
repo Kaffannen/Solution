@@ -37,7 +37,7 @@ function traverseAndBuildJson(folder) {
             }
             result.push({
                 path: filepath,
-                provides: matches[0].split(' ')[1] 
+                provides: matches.length>0 ? matches[0].split(' ')[1] : ""
             });
         }
     });
