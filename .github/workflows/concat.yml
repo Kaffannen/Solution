@@ -23,6 +23,7 @@ jobs:
 
       - name: Concatenate JavaScript Files with Node.js
         run: |
+          ls -l /Scripts  # List the files in the Scripts directory
           node /Scripts/Concat.js  # Run the Node.js script to concatenate the JS files
 
       - name: Commit and Push Concatenated Files
