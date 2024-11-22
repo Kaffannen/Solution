@@ -1,117 +1,35 @@
-class ElementNode class EzUI class UIElement class ElementController class StateController class CanvasMsgBrokerMock 
-class CanvasDBMock class CanvasAPI class CanvasAPIMock 
-class CanvasAPIMock class CanvasAPIMock 
-class MsgBrokerMock class CanvasAPIMock 
-class PersistenceMock class Student class CollapsedState class ExpandedState class StudentUI class TeacherUI class Underviser class GroupMember 
-class GroupMember class AssignmentGroupMember 
-class AssignmentGroupMember class StudentGroup class StudentGroupUIE class TeacherGroup class HeaderbarCollapsed class HeaderbarExpanded class TeacherGroupUIE class BasicSolution class StateController 
-class ElementController 
-class ElementNode 
-class EzUI 
-class UIElement 
-class CanvasAPI 
-class CanvasAPIMock 
-class MsgBrokerMock 
-class CanvasAPIMock 
-class PersistenceMock 
-class CanvasMsgBrokerMock 
-class CanvasDBMock 
-class AssignmentGroupMember 
-class AssignmentGroupMember 
-class GroupMember 
-class GroupMember 
-class StudentGroupUIE 
-class StudentGroup 
-class TeacherGroupUIE 
-class TeacherGroup 
-class CollapsedState 
-class ExpandedState 
-class StudentUI 
-class TeacherUI 
-class Student 
-class Underviser 
-class BasicSolution class StateController 
-class ElementController 
-class ElementNode 
-class EzUI 
-class UIElement 
-class CanvasAPI 
-class CanvasAPIMock 
-class MsgBrokerMock 
-class CanvasAPIMock 
-class PersistenceMock 
-class CanvasMsgBrokerMock 
-class CanvasDBMock 
-class AssignmentGroupMember 
-class AssignmentGroupMember 
-class GroupMember 
-class GroupMember 
-class StudentGroupUIE 
-class StudentGroup 
-class TeacherGroupUIE 
-class HeaderbarCollapsed 
-class HeaderbarExpanded 
-class TeacherGroup 
-class CollapsedState 
-class ExpandedState 
-class StudentUI 
-class TeacherUI 
-class Student 
-class Underviser 
-class BasicSolution class StateController 
-class ElementController 
-class ElementNode 
-class EzUI 
-class UIElement 
-class CanvasAPI 
-class CanvasAPIMock 
-class MsgBrokerMock 
-class CanvasAPIMock 
-class PersistenceMock 
-class CanvasMsgBrokerMock 
-class CanvasDBMock 
-class AssignmentGroupMember 
-class AssignmentGroupMember 
-class GroupMember 
-class GroupMember 
-class StudentGroupUIE 
-class StudentGroup 
-class TeacherGroupUIE 
-class HeaderbarCollapsed 
-class HeaderbarExpanded 
-class TeacherGroup 
-class CollapsedState 
-class ExpandedState 
-class StudentUI 
-class TeacherUI 
-class Student 
-class Underviser 
-class BasicSolution class StateController 
-class ElementController 
-class ElementNode 
-class EzUI 
-class UIElement 
-class CanvasAPI 
-class CanvasAPIMock 
-class MsgBrokerMock 
-class CanvasAPIMock 
-class PersistenceMock 
-class CanvasMsgBrokerMock 
-class CanvasDBMock 
-class AssignmentGroupMember 
-class AssignmentGroupMember 
-class GroupMember 
-class GroupMember 
-class StudentGroupUIE 
-class StudentGroup 
-class TeacherGroupUIE 
-class HeaderbarCollapsed 
-class HeaderbarExpanded 
-class TeacherGroup 
-class CollapsedState 
-class ExpandedState 
-class StudentUI 
-class TeacherUI 
-class Student 
-class Underviser 
-class BasicSolution 
+class ElementNode  : /home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js
+class EzUI  : /home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/EzUI.js
+class UIElement  : /home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js
+class ElementController  : /home/runner/work/Solution/Solution/Javascript/EzUI/InternalSupers/ElementController.js
+class StateController  : /home/runner/work/Solution/Solution/Javascript/EzUI/InternalSupers/StateController.js
+  : /home/runner/work/Solution/Solution/Javascript/TM_script.js
+class CanvasMsgBrokerMock, class CanvasDBMock  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Api/API.js
+class CanvasAPI  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Api/CanvasAPI.js
+class CanvasAPIMock, class CanvasAPIMock  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Api/CanvasAPIMock.js
+class CanvasAPIMock, class MsgBrokerMock  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Api/MsgBrokerMock.js
+class CanvasAPIMock, class PersistenceMock  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Api/PersistenceMock.js
+class Student  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/Student.js
+class CollapsedState  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/CollapsedState.js
+class ExpandedState  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/ExpandedState.js
+class StudentUI  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/StudentUI.js
+class TeacherUI  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/TeacherUI.js
+class Underviser  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/Underviser.js
+  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Dev_Student_Main.js
+  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Dev_Teacher_Main.js
+class GroupMember, class GroupMember  : /home/runner/work/Solution/Solution/Javascript/TeamUp/GroupMember/GroupMember.js
+class AssignmentGroupMember, class AssignmentGroupMember  : /home/runner/work/Solution/Solution/Javascript/TeamUp/GroupMember/UIElements/AssignmentGroupMember.js
+class StudentGroup  : /home/runner/work/Solution/Solution/Javascript/TeamUp/GroupStudent/StudentGroup.js
+class StudentGroupUIE  : /home/runner/work/Solution/Solution/Javascript/TeamUp/GroupStudent/UIElementer/StudentGroupUIE.js
+class TeacherGroup  : /home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/TeacherGroup.js
+class HeaderbarCollapsed  : /home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/UIElementer/HeaderbarCollapsed.js
+class HeaderbarExpanded  : /home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/UIElementer/HeaderbarExpanded.js
+class TeacherGroupUIE  : /home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/UIElementer/TeacherGroupUIE.js
+class BasicSolution  : /home/runner/work/Solution/Solution/Javascript/TeamUp/Program/BasicSolution.js
+  : /home/runner/work/Solution/Solution/Javascript/TeamUp/TMMain.js
+  : /home/runner/work/Solution/Solution/Javascript/TeamUp/TMStudentProtoMain.js
+  : /home/runner/work/Solution/Solution/Javascript/TeamUp/TMTeacherProtoMain.js
+class StateController, class ElementController, class ElementNode, class EzUI, class UIElement, class CanvasAPI, class CanvasAPIMock, class MsgBrokerMock, class CanvasAPIMock, class PersistenceMock, class CanvasMsgBrokerMock, class CanvasDBMock, class AssignmentGroupMember, class AssignmentGroupMember, class GroupMember, class GroupMember, class StudentGroupUIE, class StudentGroup, class TeacherGroupUIE, class TeacherGroup, class CollapsedState, class ExpandedState, class StudentUI, class TeacherUI, class Student, class Underviser, class BasicSolution  : /home/runner/work/Solution/Solution/Javascript/TeamUpBundle.js
+class StateController, class ElementController, class ElementNode, class EzUI, class UIElement, class CanvasAPI, class CanvasAPIMock, class MsgBrokerMock, class CanvasAPIMock, class PersistenceMock, class CanvasMsgBrokerMock, class CanvasDBMock, class AssignmentGroupMember, class AssignmentGroupMember, class GroupMember, class GroupMember, class StudentGroupUIE, class StudentGroup, class TeacherGroupUIE, class HeaderbarCollapsed, class HeaderbarExpanded, class TeacherGroup, class CollapsedState, class ExpandedState, class StudentUI, class TeacherUI, class Student, class Underviser, class BasicSolution  : /home/runner/work/Solution/Solution/Javascript/bundle_TMMain.js
+class StateController, class ElementController, class ElementNode, class EzUI, class UIElement, class CanvasAPI, class CanvasAPIMock, class MsgBrokerMock, class CanvasAPIMock, class PersistenceMock, class CanvasMsgBrokerMock, class CanvasDBMock, class AssignmentGroupMember, class AssignmentGroupMember, class GroupMember, class GroupMember, class StudentGroupUIE, class StudentGroup, class TeacherGroupUIE, class HeaderbarCollapsed, class HeaderbarExpanded, class TeacherGroup, class CollapsedState, class ExpandedState, class StudentUI, class TeacherUI, class Student, class Underviser, class BasicSolution  : /home/runner/work/Solution/Solution/Javascript/bundle_TMStudentProtoMain.js
+class StateController, class ElementController, class ElementNode, class EzUI, class UIElement, class CanvasAPI, class CanvasAPIMock, class MsgBrokerMock, class CanvasAPIMock, class PersistenceMock, class CanvasMsgBrokerMock, class CanvasDBMock, class AssignmentGroupMember, class AssignmentGroupMember, class GroupMember, class GroupMember, class StudentGroupUIE, class StudentGroup, class TeacherGroupUIE, class HeaderbarCollapsed, class HeaderbarExpanded, class TeacherGroup, class CollapsedState, class ExpandedState, class StudentUI, class TeacherUI, class Student, class Underviser, class BasicSolution  : /home/runner/work/Solution/Solution/Javascript/bundle_TMTeacherProtoMain.js
