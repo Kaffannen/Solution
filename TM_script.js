@@ -14,11 +14,11 @@ const override = "teacher"
 
 let scriptUrl;
 if (override === "teacher")
-    scriptUrl = 'https://kaffannen.github.io/Compiles/bundle_TMTeacherProtoMain.js';
+    scriptUrl = 'https://kaffannen.github.io/Solution/Compiles/bundle_TMTeacherProtoMain.js';
 else if (override === "student")
-    scriptUrl = 'https://kaffannen.github.io/Compiles/bundle_TMStudentProtoMain.js';
+    scriptUrl = 'https://kaffannen.github.io/Solution/Compiles/bundle_TMStudentProtoMain.js';
 else
-    scriptUrl = 'https://kaffannen.github.io/Compiles/bundle_TMMain.js'; 
+    scriptUrl = 'https://kaffannen.github.io/Solution/Compiles/bundle_TMMain.js'; 
 
 window.addEventListener("load", function () {
     setTimeout(function () {
