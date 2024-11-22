@@ -54,6 +54,8 @@ function discoverDependencies(classes) {
             if (thisclass.path !== otherclass.path && thisclassContent.includes(otherclass.provides)) {
                 thisclass.requires.push(otherclass.provides);
             }
+            else
+                console.log(`\n ${otherclass.provides} not in:  ${thisclassContent} \n`);
         }); 
     });
 }
