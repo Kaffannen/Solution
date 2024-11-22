@@ -1,4 +1,5 @@
 const fs = require('fs');
+const { get } = require('http');
 const path = require('path');
 
 // Define the directory where the test file will be created
@@ -9,6 +10,14 @@ fs.mkdirSync(dist, { recursive: true });
 
 
 const folderpath = path.join(__dirname, '../Javascript');
+
+
+
+function getMatchesFromFile(filepath, regex) {
+    const content = fs.readFileSync(filepath, 'utf8');
+    const matches = content.match(regex);
+    return matches || [];
+}
 
 function concatenateFiles(folder) {
     let content = '';
@@ -21,10 +30,9 @@ function concatenateFiles(folder) {
         if (stat.isDirectory()) {
             content += concatenateFiles(filepath);
         } else {
-            content += fs.readFileSync(filepath, 'utf8');
+            content += getMatchesFromFile(filepath, /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g).join('\n');
         }
     });
-
     return content;
 }
 
