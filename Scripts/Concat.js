@@ -30,7 +30,10 @@ function concatenateFiles(folder) {
         if (stat.isDirectory()) {
             content += concatenateFiles(filepath);
         } else {
-            content += getMatchesFromFile(filepath, /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g).join("  : "+ filepath).join('\n');
+            content += getMatchesFromFile(filepath, /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g)
+                .map(match => match.trim())  // Optional: Trim any excess whitespace
+                .join(', ') + '  : ' + filepath + '\n';
+
         }
     });
     return content;
