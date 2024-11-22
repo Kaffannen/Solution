@@ -783,7 +783,7 @@ class TeacherGroup extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new TeacherGroupUIE(this))
-            .fixTo(this.getParentNode() instanceof Student ? StudentUI : TeacherUI);
+            .fixTo(TeacherUI);
         this.addUIElement(new HeaderbarCollapsed(this))
             .fixTo(TeacherGroupUIE);
         this.addUIElement(new HeaderbarExpanded(this))
