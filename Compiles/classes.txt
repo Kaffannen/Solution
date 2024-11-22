@@ -3,8 +3,6 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js",
     "provides": "ElementNode",
     "requires": [
-      "EzUI",
-      "UIElement",
       "ElementController"
     ]
   },
@@ -12,24 +10,18 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/EzUI.js",
     "provides": "EzUI",
     "requires": [
-      "ElementNode",
-      "UIElement"
+      "ElementNode"
     ]
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js",
     "provides": "UIElement",
-    "requires": [
-      "ElementNode"
-    ]
+    "requires": []
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/InternalSupers/ElementController.js",
     "provides": "ElementController",
     "requires": [
-      "ElementNode",
-      "EzUI",
-      "UIElement",
       "StateController"
     ]
   },
@@ -42,12 +34,9 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/Dev_Student_Main.js",
     "provides": "",
     "requires": [
-      "UIElement",
-      "CanvasAPI",
       "CanvasAPIMock",
       "MsgBrokerMock",
       "PersistenceMock",
-      "Student",
       "BasicSolution"
     ]
   },
@@ -55,12 +44,9 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/Dev_Teacher_Main.js",
     "provides": "",
     "requires": [
-      "UIElement",
-      "CanvasAPI",
       "CanvasAPIMock",
       "MsgBrokerMock",
       "PersistenceMock",
-      "Student",
       "BasicSolution"
     ]
   },
@@ -68,7 +54,6 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/TMMain.js",
     "provides": "",
     "requires": [
-      "UIElement",
       "CanvasAPI",
       "MsgBrokerMock",
       "PersistenceMock",
@@ -79,7 +64,6 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/TMStudentProtoMain.js",
     "provides": "",
     "requires": [
-      "UIElement",
       "CanvasAPI",
       "MsgBrokerMock",
       "PersistenceMock",
@@ -90,7 +74,6 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/TMTeacherProtoMain.js",
     "provides": "",
     "requires": [
-      "UIElement",
       "CanvasAPI",
       "MsgBrokerMock",
       "PersistenceMock",
@@ -100,27 +83,17 @@
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/API.js",
     "provides": "CanvasMsgBrokerMock",
-    "requires": [
-      "MsgBrokerMock",
-      "GroupMember"
-    ]
+    "requires": []
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/CanvasAPI.js",
     "provides": "CanvasAPI",
-    "requires": [
-      "Student",
-      "GroupMember"
-    ]
+    "requires": []
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/CanvasAPIMock.js",
     "provides": "CanvasAPIMock",
-    "requires": [
-      "CanvasAPI",
-      "Student",
-      "GroupMember"
-    ]
+    "requires": []
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/MsgBrokerMock.js",
@@ -137,7 +110,6 @@
     "provides": "Student",
     "requires": [
       "ElementNode",
-      "UIElement",
       "CollapsedState",
       "ExpandedState",
       "StudentUI",
@@ -148,16 +120,14 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/CollapsedState.js",
     "provides": "CollapsedState",
     "requires": [
-      "UIElement",
-      "Student"
+      "UIElement"
     ]
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/ExpandedState.js",
     "provides": "ExpandedState",
     "requires": [
-      "UIElement",
-      "Student"
+      "UIElement"
     ]
   },
   {
@@ -165,8 +135,6 @@
     "provides": "StudentUI",
     "requires": [
       "UIElement",
-      "Student",
-      "StudentGroup",
       "StudentGroupUIE"
     ]
   },
@@ -174,9 +142,7 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/TeacherUI.js",
     "provides": "TeacherUI",
     "requires": [
-      "ElementNode",
       "UIElement",
-      "TeacherGroup",
       "TeacherGroupUIE"
     ]
   },
@@ -185,7 +151,6 @@
     "provides": "Underviser",
     "requires": [
       "ElementNode",
-      "UIElement",
       "CollapsedState",
       "ExpandedState",
       "TeacherUI",
@@ -197,21 +162,14 @@
     "provides": "GroupMember",
     "requires": [
       "ElementNode",
-      "UIElement",
-      "Student",
-      "AssignmentGroupMember",
-      "StudentGroup",
-      "StudentGroupUIE",
-      "TeacherGroup",
-      "TeacherGroupUIE"
+      "AssignmentGroupMember"
     ]
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupMember/UIElements/AssignmentGroupMember.js",
     "provides": "AssignmentGroupMember",
     "requires": [
-      "UIElement",
-      "GroupMember"
+      "UIElement"
     ]
   },
   {
@@ -219,10 +177,6 @@
     "provides": "StudentGroup",
     "requires": [
       "ElementNode",
-      "UIElement",
-      "Student",
-      "StudentUI",
-      "TeacherUI",
       "GroupMember",
       "StudentGroupUIE"
     ]
@@ -232,10 +186,7 @@
     "provides": "StudentGroupUIE",
     "requires": [
       "UIElement",
-      "Student",
-      "GroupMember",
-      "AssignmentGroupMember",
-      "StudentGroup"
+      "AssignmentGroupMember"
     ]
   },
   {
@@ -243,8 +194,6 @@
     "provides": "TeacherGroup",
     "requires": [
       "ElementNode",
-      "UIElement",
-      "TeacherUI",
       "GroupMember",
       "HeaderbarCollapsed",
       "HeaderbarExpanded",
@@ -255,16 +204,14 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/UIElementer/HeaderbarCollapsed.js",
     "provides": "HeaderbarCollapsed",
     "requires": [
-      "UIElement",
-      "TeacherGroup"
+      "UIElement"
     ]
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/UIElementer/HeaderbarExpanded.js",
     "provides": "HeaderbarExpanded",
     "requires": [
-      "UIElement",
-      "TeacherGroup"
+      "UIElement"
     ]
   },
   {
@@ -272,9 +219,7 @@
     "provides": "TeacherGroupUIE",
     "requires": [
       "UIElement",
-      "GroupMember",
       "AssignmentGroupMember",
-      "TeacherGroup",
       "HeaderbarCollapsed",
       "HeaderbarExpanded"
     ]
@@ -284,7 +229,6 @@
     "provides": "BasicSolution",
     "requires": [
       "EzUI",
-      "UIElement",
       "Student",
       "Underviser"
     ]
