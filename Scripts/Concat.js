@@ -59,6 +59,7 @@ function discoverDependencies(classes) {
         }); 
     });
 }
+discoverDependencies(classes);
 
 
 fs.writeFileSync(path.join(dist, 'classes.txt'), JSON.stringify(classes, null, 2));
