@@ -1,173 +1,122 @@
 [
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js",
-    "matches": [
-      "class ElementNode"
-    ]
+    "provides": "ElementNode"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/EzUI.js",
-    "matches": [
-      "class EzUI"
-    ]
+    "provides": "EzUI"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js",
-    "matches": [
-      "class UIElement"
-    ]
+    "provides": "UIElement"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/InternalSupers/ElementController.js",
-    "matches": [
-      "class ElementController"
-    ]
+    "provides": "ElementController"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/InternalSupers/StateController.js",
-    "matches": [
-      "class StateController"
-    ]
+    "provides": "StateController"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/Dev_Student_Main.js",
-    "matches": []
+    "provides": ""
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/Dev_Teacher_Main.js",
-    "matches": []
+    "provides": ""
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/TMMain.js",
-    "matches": []
+    "provides": ""
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/TMStudentProtoMain.js",
-    "matches": []
+    "provides": ""
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/TMTeacherProtoMain.js",
-    "matches": []
+    "provides": ""
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/API.js",
-    "matches": [
-      "class CanvasMsgBrokerMock",
-      "class CanvasDBMock"
-    ]
+    "provides": "CanvasMsgBrokerMock"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/CanvasAPI.js",
-    "matches": [
-      "class CanvasAPI"
-    ]
+    "provides": "CanvasAPI"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/CanvasAPIMock.js",
-    "matches": [
-      "class CanvasAPIMock"
-    ]
+    "provides": "CanvasAPIMock"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/MsgBrokerMock.js",
-    "matches": [
-      "class MsgBrokerMock"
-    ]
+    "provides": "MsgBrokerMock"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/PersistenceMock.js",
-    "matches": [
-      "class PersistenceMock"
-    ]
+    "provides": "PersistenceMock"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/Student.js",
-    "matches": [
-      "class Student"
-    ]
+    "provides": "Student"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/CollapsedState.js",
-    "matches": [
-      "class CollapsedState"
-    ]
+    "provides": "CollapsedState"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/ExpandedState.js",
-    "matches": [
-      "class ExpandedState"
-    ]
+    "provides": "ExpandedState"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/StudentUI.js",
-    "matches": [
-      "class StudentUI"
-    ]
+    "provides": "StudentUI"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/UIElementer/TeacherUI.js",
-    "matches": [
-      "class TeacherUI"
-    ]
+    "provides": "TeacherUI"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/Underviser.js",
-    "matches": [
-      "class Underviser"
-    ]
+    "provides": "Underviser"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupMember/GroupMember.js",
-    "matches": [
-      "class GroupMember"
-    ]
+    "provides": "GroupMember"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupMember/UIElements/AssignmentGroupMember.js",
-    "matches": [
-      "class AssignmentGroupMember"
-    ]
+    "provides": "AssignmentGroupMember"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupStudent/StudentGroup.js",
-    "matches": [
-      "class StudentGroup"
-    ]
+    "provides": "StudentGroup"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupStudent/UIElementer/StudentGroupUIE.js",
-    "matches": [
-      "class StudentGroupUIE"
-    ]
+    "provides": "StudentGroupUIE"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/TeacherGroup.js",
-    "matches": [
-      "class TeacherGroup"
-    ]
+    "provides": "TeacherGroup"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/UIElementer/HeaderbarCollapsed.js",
-    "matches": [
-      "class HeaderbarCollapsed"
-    ]
+    "provides": "HeaderbarCollapsed"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/UIElementer/HeaderbarExpanded.js",
-    "matches": [
-      "class HeaderbarExpanded"
-    ]
+    "provides": "HeaderbarExpanded"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupTeacher/UIElementer/TeacherGroupUIE.js",
-    "matches": [
-      "class TeacherGroupUIE"
-    ]
+    "provides": "TeacherGroupUIE"
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Program/BasicSolution.js",
-    "matches": [
-      "class BasicSolution"
-    ]
+    "provides": "BasicSolution"
   }
 ]
