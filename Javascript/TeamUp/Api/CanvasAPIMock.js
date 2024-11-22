@@ -1,4 +1,3 @@
-//export default class CanvasAPIMock {
 class CanvasAPIMock {
   #rolle;
   constructor(rolle) {

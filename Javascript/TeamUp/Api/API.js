@@ -1,6 +1,3 @@
-//import CanvasAPIMock from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Api/CanvasAPIMock.js";
-
-//export default class API{
 class API{
     #canvasApi;
     #msgBroker;
