@@ -5,12 +5,7 @@
     "requires": [
       "EzUI",
       "UIElement",
-      "ElementController",
-      "",
-      "",
-      "",
-      "",
-      ""
+      "ElementController"
     ]
   },
   {
@@ -18,24 +13,14 @@
     "provides": "EzUI",
     "requires": [
       "ElementNode",
-      "UIElement",
-      "",
-      "",
-      "",
-      "",
-      ""
+      "UIElement"
     ]
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js",
     "provides": "UIElement",
     "requires": [
-      "ElementNode",
-      "",
-      "",
-      "",
-      "",
-      ""
+      "ElementNode"
     ]
   },
   {
@@ -45,34 +30,19 @@
       "ElementNode",
       "EzUI",
       "UIElement",
-      "StateController",
-      "",
-      "",
-      "",
-      "",
-      ""
+      "StateController"
     ]
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/EzUI/InternalSupers/StateController.js",
     "provides": "StateController",
-    "requires": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "requires": []
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/Mains/Dev_Student_Main.js",
     "provides": "",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
       "CanvasAPI",
       "CanvasAPIMock",
       "MsgBrokerMock",
@@ -86,10 +56,6 @@
     "provides": "",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
       "CanvasAPI",
       "CanvasAPIMock",
       "MsgBrokerMock",
@@ -103,10 +69,6 @@
     "provides": "",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
       "CanvasAPI",
       "MsgBrokerMock",
       "PersistenceMock",
@@ -118,10 +80,6 @@
     "provides": "",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
       "CanvasAPI",
       "MsgBrokerMock",
       "PersistenceMock",
@@ -133,10 +91,6 @@
     "provides": "",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
       "CanvasAPI",
       "MsgBrokerMock",
       "PersistenceMock",
@@ -147,11 +101,6 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/API.js",
     "provides": "CanvasMsgBrokerMock",
     "requires": [
-      "",
-      "",
-      "",
-      "",
-      "",
       "MsgBrokerMock",
       "GroupMember"
     ]
@@ -160,11 +109,6 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/CanvasAPI.js",
     "provides": "CanvasAPI",
     "requires": [
-      "",
-      "",
-      "",
-      "",
-      "",
       "Student",
       "GroupMember"
     ]
@@ -173,11 +117,6 @@
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/CanvasAPIMock.js",
     "provides": "CanvasAPIMock",
     "requires": [
-      "",
-      "",
-      "",
-      "",
-      "",
       "CanvasAPI",
       "Student",
       "GroupMember"
@@ -186,24 +125,12 @@
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/MsgBrokerMock.js",
     "provides": "MsgBrokerMock",
-    "requires": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "requires": []
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/PersistenceMock.js",
     "provides": "PersistenceMock",
-    "requires": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "requires": []
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Bruker/Student.js",
@@ -211,11 +138,6 @@
     "requires": [
       "ElementNode",
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "CollapsedState",
       "ExpandedState",
       "StudentUI",
@@ -227,11 +149,6 @@
     "provides": "CollapsedState",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "Student"
     ]
   },
@@ -240,11 +157,6 @@
     "provides": "ExpandedState",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "Student"
     ]
   },
@@ -253,11 +165,6 @@
     "provides": "StudentUI",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "Student",
       "StudentGroup",
       "StudentGroupUIE"
@@ -269,11 +176,6 @@
     "requires": [
       "ElementNode",
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "TeacherGroup",
       "TeacherGroupUIE"
     ]
@@ -284,11 +186,6 @@
     "requires": [
       "ElementNode",
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "CollapsedState",
       "ExpandedState",
       "TeacherUI",
@@ -301,11 +198,6 @@
     "requires": [
       "ElementNode",
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "Student",
       "AssignmentGroupMember",
       "StudentGroup",
@@ -319,11 +211,6 @@
     "provides": "AssignmentGroupMember",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "GroupMember"
     ]
   },
@@ -333,11 +220,6 @@
     "requires": [
       "ElementNode",
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "Student",
       "StudentUI",
       "TeacherUI",
@@ -350,11 +232,6 @@
     "provides": "StudentGroupUIE",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "Student",
       "GroupMember",
       "AssignmentGroupMember",
@@ -367,11 +244,6 @@
     "requires": [
       "ElementNode",
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "TeacherUI",
       "GroupMember",
       "HeaderbarCollapsed",
@@ -384,11 +256,6 @@
     "provides": "HeaderbarCollapsed",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "TeacherGroup"
     ]
   },
@@ -397,11 +264,6 @@
     "provides": "HeaderbarExpanded",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "TeacherGroup"
     ]
   },
@@ -410,11 +272,6 @@
     "provides": "TeacherGroupUIE",
     "requires": [
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "GroupMember",
       "AssignmentGroupMember",
       "TeacherGroup",
@@ -428,11 +285,6 @@
     "requires": [
       "EzUI",
       "UIElement",
-      "",
-      "",
-      "",
-      "",
-      "",
       "Student",
       "Underviser"
     ]
