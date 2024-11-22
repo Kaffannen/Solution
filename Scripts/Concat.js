@@ -37,7 +37,8 @@ function traverseAndBuildJson(folder) {
             }
             result.push({
                 path: filepath,
-                provides: matches.length>0 ? matches[0].split(' ')[1] : ""
+                provides: matches.length>0 ? matches[0].split(' ')[1] : "",
+                requires: []
             });
         }
     });
@@ -46,7 +47,16 @@ function traverseAndBuildJson(folder) {
 }
 let classes = traverseAndBuildJson(folderpath);
 
-
+function discoverDependencies(classes) {
+    classes.forEach((thisclass) => {
+        let thisclassContent = fs.readFileSync(thisclass.path, 'utf8');
+        classes.forEach((otherclass) => {
+            if (thisclass.path !== otherclass.path && thisclassContent.includes(otherclass.provides)) {
+                thisclass.requires.push(otherclass.provides);
+            }
+        }); 
+    });
+}
 
 
 fs.writeFileSync(path.join(dist, 'classes.txt'), JSON.stringify(classes, null, 2));
