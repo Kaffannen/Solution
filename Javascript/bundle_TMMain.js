@@ -610,9 +610,6 @@ class CanvasDBMock {
 
 }
 
-//import UIElement from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/UIElement.js";
-
-//export default class AssignmentGroupMember extends UIElement {
 class AssignmentGroupMember extends UIElement {
 
     constructor(nexus) {
@@ -625,12 +622,7 @@ class AssignmentGroupMember extends UIElement {
             `;
         super(htmlString, nexus);
     }
-}//import AssignmentGroupMember from "https://kaffannen.github.io/Solution/Javascript/TeamUp/GroupMember/UIElements/AssignmentGroupMember.js";
-//import ElementNode from "https://kaffannen.github.io/Solution/Javascript/EzUI/DeveloperClasses/ElementNode.js";
-//import StudentGroup from "https://kaffannen.github.io/Solution/Javascript/TeamUp/Group/UIElementer/StudentGroup.js";
-
-//export default class GroupMember extends ElementNode {
-class GroupMember extends ElementNode {
+}class GroupMember extends ElementNode {
 
     defineUIElements() {
         this.addUIElement(new AssignmentGroupMember(this))
