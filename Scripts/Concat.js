@@ -83,7 +83,8 @@ function concatClasses(classes) {
     }
     return str;
 }
-fs.writeFileSync(path.join(dist, 'concat.js'), concatClasses(classes));
+let concatedClasses = concatClasses(classes);
+fs.writeFileSync(path.join(dist, 'concat.js'), concatedClasses);
 
 const concatContent = fs.readFileSync(path.join(dist, 'concat.js'), 'utf8');
 
@@ -92,6 +93,13 @@ const mainFiles = fs.readdirSync(mainsFolderPath);
 
 mainFiles.forEach(file => {
     console.log(`Processing ${file}`);
+    const mainFilePath = path.join(mainsFolderPath, file);
+    const mainFileContent = fs.readFileSync(mainFilePath, 'utf8');
+    const newFileName = file.replace('.js', '_Bundle.js');
+    const newFilePath = path.join(dist, newFileName);
+    const newFileContent = concatedClasses + '\n' + mainFileContent;
+    fs.writeFileSync(newFilePath, newFileContent);
+    console.log(`Created bundle file: ${newFileName}`);
 });
 
 console.log('Test file created!');
