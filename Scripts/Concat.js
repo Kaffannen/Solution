@@ -32,9 +32,12 @@ function traverseAndBuildJson(folder) {
         } else {
             const matches = getMatchesFromFile(filepath, /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g)
                 .map(match => match.trim());
+            if (matches.length !== 1) {
+                throw new Error(`File ${filepath} contains ${matches.length} class declarations. Expected exactly one.`);
+            }
             result.push({
                 path: filepath,
-                matches: matches
+                provides: matches[0].split(' ')[1] 
             });
         }
     });
