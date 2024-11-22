@@ -84,4 +84,15 @@ function concatClasses(classes) {
     return str;
 }
 fs.writeFileSync(path.join(dist, 'concat.js'), concatClasses(classes));
+
+const concatContent = fs.readFileSync(path.join(dist, 'concat.js'), 'utf8');
+
+
+const mainsFolderPath = path.join(__dirname, '..Javascript/Mains');
+const mainFiles = fs.readdirSync(mainsFolderPath);
+
+mainFiles.forEach(file => {
+    console.log(`Processing ${file}`);
+});
+
 console.log('Test file created!');
