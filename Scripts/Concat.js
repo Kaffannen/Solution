@@ -33,7 +33,7 @@ function traverseAndBuildJson(folder) {
             const matches = getMatchesFromFile(filepath, /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g)
                 .map(match => match.trim());
             if (matches.length !== 1) {
-                Console.log(`File ${filepath} contains ${matches.length} class declarations. Expected exactly one.`);
+                console.log(`File ${filepath} contains ${matches.length} class declarations. Expected exactly one.`);
             }
             result.push({
                 path: filepath,
@@ -45,6 +45,8 @@ function traverseAndBuildJson(folder) {
     return result;
 }
 let classes = traverseAndBuildJson(folderpath);
+
+
 
 
 fs.writeFileSync(path.join(dist, 'classes.txt'), JSON.stringify(classes, null, 2));
