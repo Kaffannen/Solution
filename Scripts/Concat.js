@@ -72,15 +72,12 @@ function concatClasses(classes) {
             if (thisclass.requires.length === 0 && thisclass.provides) {
                 let thisclassContent = fs.readFileSync(thisclass.path, 'utf8');
                 str += thisclassContent + '\n';
-                console.log(`Concatenated ${thisclass.path}`);
+                console.log(`Concatenated ${thisclass.provides}`);
                 classes = classes.filter(c => c.path !== thisclass.path);
                 classes.forEach((otherclass) => {
                     otherclass.requires = otherclass.requires.filter(r => r !== thisclass.provides);
                 });
                 workdone = true;
-            }
-            else {
-                console.log(`${thisclass.path} skipped`);
             }
         });
     }
