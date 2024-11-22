@@ -30,6 +30,26 @@
     ]
   },
   {
+    "path": "/home/runner/work/Solution/Solution/Javascript/Mains/Dev_Student_Main.js",
+    "matches": []
+  },
+  {
+    "path": "/home/runner/work/Solution/Solution/Javascript/Mains/Dev_Teacher_Main.js",
+    "matches": []
+  },
+  {
+    "path": "/home/runner/work/Solution/Solution/Javascript/Mains/TMMain.js",
+    "matches": []
+  },
+  {
+    "path": "/home/runner/work/Solution/Solution/Javascript/Mains/TMStudentProtoMain.js",
+    "matches": []
+  },
+  {
+    "path": "/home/runner/work/Solution/Solution/Javascript/Mains/TMTeacherProtoMain.js",
+    "matches": []
+  },
+  {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/API.js",
     "matches": [
       "class CanvasMsgBrokerMock",
@@ -45,21 +65,18 @@
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/CanvasAPIMock.js",
     "matches": [
-      "class CanvasAPIMock",
       "class CanvasAPIMock"
     ]
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/MsgBrokerMock.js",
     "matches": [
-      "class CanvasAPIMock",
       "class MsgBrokerMock"
     ]
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Api/PersistenceMock.js",
     "matches": [
-      "class CanvasAPIMock",
       "class PersistenceMock"
     ]
   },
@@ -98,14 +115,6 @@
     "matches": [
       "class Underviser"
     ]
-  },
-  {
-    "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Dev_Student_Main.js",
-    "matches": []
-  },
-  {
-    "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/Dev_Teacher_Main.js",
-    "matches": []
   },
   {
     "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/GroupMember/GroupMember.js",
@@ -160,17 +169,5 @@
     "matches": [
       "class BasicSolution"
     ]
-  },
-  {
-    "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/TMMain.js",
-    "matches": []
-  },
-  {
-    "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/TMStudentProtoMain.js",
-    "matches": []
-  },
-  {
-    "path": "/home/runner/work/Solution/Solution/Javascript/TeamUp/TMTeacherProtoMain.js",
-    "matches": []
   }
 ]
