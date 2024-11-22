@@ -37,7 +37,7 @@ function traverseAndBuildJson(folder) {
             }
             result.push({
                 path: filepath,
-                provides: matches.length>0 ? matches[0].split(' ')[1] : "",
+                provides: matches.length > 0 ? matches[0].split(' ')[1] : "",
                 requires: []
             });
         }
@@ -57,13 +57,30 @@ function discoverDependencies(classes) {
                     thisclass.requires.push(otherclass.provides);
                 }
             }
-        }); 
+        });
     });
 }
 discoverDependencies(classes);
-
-
 fs.writeFileSync(path.join(dist, 'classes.txt'), JSON.stringify(classes, null, 2));
 
-
+function concatClasses(classes) {
+    let str = ""
+    workdone = true;
+    while (workdone) {
+        workdone = false;
+        classes.forEach((thisclass) => {
+            if (thisclass.requires.length === 0 && thisclass.provides) {
+                let thisclassContent = fs.readFileSync(thisclass.path, 'utf8');
+                str += thisclassContent + '\n';
+                classes = classes.filter(c => c.path !== thisclass.path);
+                classes.forEach((otherclass) => {
+                    otherclass.requires = otherclass.requires.filter(r => r !== thisclass.provides);
+                });
+                workdone = true;
+            }
+        });
+    }
+    return str;
+}
+fs.writeFileSync(path.join(dist, 'concat.js'), concatClasses(classes));
 console.log('Test file created!');
