@@ -51,7 +51,7 @@ function discoverDependencies(classes) {
     classes.forEach((thisclass) => {
         let thisclassContent = fs.readFileSync(thisclass.path, 'utf8');
         classes.forEach((otherclass) => {
-            if (thisclass.path !== otherclass.path && thisclassContent.includes(otherclass.provides)) {
+            if (thisclass.path !== otherclass.path && otherclass.provides && thisclassContent.includes(otherclass.provides)) {
                 thisclass.requires.push(otherclass.provides);
             }
             else
