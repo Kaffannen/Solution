@@ -41,34 +41,10 @@ function traverseAndBuildJson(folder) {
 
     return result;
 }
+let classes = traverseAndBuildJson(folderpath);
 
-const jsonResult = traverseAndBuildJson(folderpath);
-console.log(JSON.stringify(jsonResult, null, 2));
 
-function concatenateFiles(folder) {
-    let content = '';
-    const files = fs.readdirSync(folder);
+fs.writeFileSync(path.join(dist, 'classes.txt'), JSON.stringify(classes, null, 2));
 
-    files.forEach(file => {
-        const filepath = path.join(folder, file);
-        const stat = fs.statSync(filepath);
-
-        if (stat.isDirectory()) {
-            content += concatenateFiles(filepath);
-        } else {
-            content += getMatchesFromFile(filepath, /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g)
-                .map(match => match.trim())  // Optional: Trim any excess whitespace
-                .join(', ') + '  : ' + filepath + '\n';
-
-        }
-    });
-    return content;
-}
-
-const concatenatedContent = concatenateFiles(folderpath);
-
-// Create the test file
-fs.writeFileSync(path.join(dist, 'concatTestarr.txt'), JSON.stringify(traverseAndBuildJson(folderpath), null, 2));
-//fs.writeFileSync(path.join(dist, 'concatTest.txt'), traverseAndBuildJson(folderpath));
 
 console.log('Test file created!');
