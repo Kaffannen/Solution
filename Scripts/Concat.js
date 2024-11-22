@@ -69,6 +69,6 @@ const concatenatedContent = concatenateFiles(folderpath);
 
 // Create the test file
 fs.writeFileSync(path.join(dist, 'concatTestarr.txt'), JSON.stringify(traverseAndBuildJson(folderpath), null, 2));
-fs.writeFileSync(path.join(dist, 'concatTest.txt'), traverseAndBuildJson(folderpath));
+//fs.writeFileSync(path.join(dist, 'concatTest.txt'), traverseAndBuildJson(folderpath));
 
 console.log('Test file created!');
