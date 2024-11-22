@@ -9,30 +9,56 @@
 // @grant        none
 // ==/UserScript==
 
-/** Velg override 'teacher', 'student' eller 'ingen'**/
-const override = "teacher" 
+/*
+    VELG EN OVERRIDE (kommenter bort de andre alternativene med '//')
 
-let scriptUrl;
-if (override === "teacher")
-    scriptUrl = 'https://kaffannen.github.io/Solution/Compiles/bundle_TMTeacherProtoMain.js';
-else if (override === "student")
-    scriptUrl = 'https://kaffannen.github.io/Solution/Compiles/bundle_TMStudentProtoMain.js';
-else
-    scriptUrl = 'https://kaffannen.github.io/Solution/Compiles/bundle_TMMain.js'; 
+    Gå inn på en valgfri oppgave til et valgfritt kurs, og se hva som dukker opp!
+
+*/
+
+//const override = "student"
+const override = "underviser"
+//const override = "ingen"
+
+
+/* */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 window.addEventListener("load", function () {
     setTimeout(function () {
-        // Select all span elements with data-testid="title"
         const spanElements = document.querySelectorAll('span[data-testid="title"]');
         let targetSpan = null;
 
-        // Loop through the span elements and find the one with data-testid="title"
         for (let span of spanElements) {
             targetSpan = span;
-            break; // Break after finding the first match
+            break;
         }
 
-    if (targetSpan) {                                                               
+    if (targetSpan) {
             const ezAnchor = document.createElement("div");
             ezAnchor.id = "EzAnchor";
             targetSpan.insertAdjacentElement("afterend", ezAnchor);
@@ -40,8 +66,15 @@ window.addEventListener("load", function () {
             console.error('No span with data-testid="title" found!');
         }
 
-        // Load the external script
         const script = document.createElement('script');
+        let scriptUrl;
+        if (override === "underviser")
+            scriptUrl = 'https://kaffannen.github.io/Solution/Compiles/TMTeacherProtoMain_Bundle.js';
+        else if (override === "student")
+            scriptUrl = 'https://kaffannen.github.io/Solution/Compiles/TMStudentProtoMain_Bundle.js';
+        else
+            scriptUrl = 'https://kaffannen.github.io/Solution/Compiles/TMMain_Bundle.js';
+
         script.src = scriptUrl;
         script.type = 'module';
         document.head.appendChild(script);
