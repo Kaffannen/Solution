@@ -51,11 +51,12 @@ function discoverDependencies(classes) {
     classes.forEach((thisclass) => {
         let thisclassContent = fs.readFileSync(thisclass.path, 'utf8');
         classes.forEach((otherclass) => {
-            if (thisclass.path !== otherclass.path && otherclass.provides && thisclassContent.includes(otherclass.provides)) {
-                thisclass.requires.push(otherclass.provides);
+            if (thisclass.path !== otherclass.path && otherclass.provides) {
+                const regex = new RegExp(`\\bnew\\s+${otherclass.provides}\\b|\\b${otherclass.provides}\\.name\\b|\\bextends\\s+${otherclass.provides}\\b`, 'g');
+                if (regex.test(thisclassContent)) {
+                    thisclass.requires.push(otherclass.provides);
+                }
             }
-            else
-                console.log(`\n ${otherclass.provides} not in:  ${thisclassContent} \n`);
         }); 
     });
 }
