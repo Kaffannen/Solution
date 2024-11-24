@@ -23,7 +23,6 @@ const prod = {
 console.log(`\nAnalyzing files of folder: ${javascriptRootFolderPath}\n`);
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
 
-
 try {
     compile(dev, allFileObjects);
     compile(test, allFileObjects);
@@ -31,7 +30,6 @@ try {
 } catch (error) {
     console.log("error:", error);
 }
-
 
 function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
@@ -52,7 +50,6 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
         console.log(`File ${output.outputFileName} created in ${outputPath} with content:\n${output.content}\n`);
     });
 }
-
 
 function traverseFolders(folder) {
     let result = [];
@@ -97,13 +94,11 @@ function traverseFolders(folder) {
         return [...new Set(matches || [])];
     }
     const classObjects = discoverDependencies(result);
-    for (let i = 0; i < classObjects.length; i++) {
+    classObjects.forEach((classObject, index) => {
         console.log(
-            `\t${i}: ${classObjects[i].path} 
-            \n\t\tprovides: ${classObjects[i].provides} 
-            \n\t\trequires: ${classObjects[i].requires}\n`
+            `\t${index}: ${classObject.path}\n\t\tprovides: ${classObject.provides}\n\t\trequires: ${classObject.requires.join(', ')}\n`
         );
-    }
+    });
     return classObjects;
 }
 
