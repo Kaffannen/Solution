@@ -85,14 +85,6 @@ console.log("lines:", JSON.stringify(lines, null, 2));
 
 function pruneAndReverseLines(lines) {
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
-    /**
-    const reversed = lines.map(line => line.reverse());
-    function removeDuplicates(arr) {
-        return [...new Set(arr)];
-    }
-    const prunedLines = lines.map(line => removeDuplicates(line));
-    return prunedLines.map(line => line.reverse());
-    **/
 }
 
 const prunedLines = pruneAndReverseLines(lines);
@@ -101,7 +93,7 @@ console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
 function createBundles(prunedLines) {
     const bundles = [];
     prunedLines.forEach(line => {
-        const firstFileName = path.basename(line[0].path, '.js');
+        const firstFileName = path.basename(line[line.length-1].path, '.js');
         const bundleFileName = `${firstFileName}_bundle.js`;
         const bundle = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
