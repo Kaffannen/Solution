@@ -889,15 +889,6 @@ class MsgBrokerMock {
 }
 class CanvasAPI {
 
-constructor(roleOverride = "none"){
-    if (roleOverride === "student")
-        this.roleOverride = "StudentEnrollment"
-    else if (roleOverride === "teacher")
-        this.roleOverride = "TeacherEnrollment"
-    else
-        this.roleOverride = "none"
-}
-
 getCourseId(){
     return window.location.pathname.split('/').filter(Boolean)[1];
 }
