@@ -173,7 +173,7 @@ function createJavaScriptBundle(prunedLines) {
     const outputs = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length-1].path, '.js');
-        const outPutFileName = `${firstFileName}_bundle.js`;
+        const outputFileName = `${firstFileName}_bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
         outputs.push({ outputFileName, content  });
@@ -185,7 +185,7 @@ function createHTMLOutputs(prunedLines) {
     const outputs = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length-1].path, '.js');
-        const outPutFileName = `${firstFileName}_bundle.js`;
+        const outputFileName = `${firstFileName}_bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
         outputs.push({ outputFileName, content });
