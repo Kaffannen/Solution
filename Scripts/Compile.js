@@ -120,13 +120,35 @@ function createLines(mainFileObjects, allFileObjects) {
         console.log("fileSet:", JSON.stringify(fileSet, null, 2));
         let arr = sortTopologically(fileSet);
         return arr;
+        
         function createFileSet(fileset, fileObject, fileObjects){
             let dependencies = fileObject.requires.map(req => fileObjects.find(file => file.provides.includes(req)));
             dependencies.forEach(dependency => {
-                createFileSet(fileset, dependency, fileObjects);
+                if (!fileset.has(dependency)) {
+                    createFileSet(fileset, dependency, fileObjects);
+                }
             });
             fileset.add(fileObject);
             return fileset;
+        }
+        
+        function sortTopologically(fileset) {
+            let sorted = [];
+            let visited = new Set();
+            
+            function visit(file) {
+                if (!visited.has(file)) {
+                    visited.add(file);
+                    let dependencies = file.requires.map(req => fileObjects.find(f => f.provides.includes(req)));
+                    dependencies.forEach(dependency => {
+                        if (dependency) visit(dependency);
+                    });
+                    sorted.push(file);
+                }
+            }
+            
+            fileset.forEach(file => visit(file));
+            return sorted;
         }
     }
 
