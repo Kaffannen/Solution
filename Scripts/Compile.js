@@ -167,7 +167,7 @@ function createHTMLOutputs(prunedLines) {
 
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
-        outputs.push({ outputFileName, content: htmlString });
+        outputs.push({ outputFileName, content: prettyHtmlString });
     });
     console.log("outputs:", JSON.stringify(outputs, null, 2));
     return outputs;
