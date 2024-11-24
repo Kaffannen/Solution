@@ -35,6 +35,11 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           #ls -R
           
+          mv Compiled/Dev/* Compiles/
+          mv Compiled/Test/* Compiles/
+          mv Compiled/Prod/* Compiles/
+
+          git add Compiles/*
           git add Compiled/*
 
           git commit -m "Add/update compiled bundles JS files"
