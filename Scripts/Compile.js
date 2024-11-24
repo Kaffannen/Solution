@@ -26,6 +26,13 @@ const allFileObjects = traverseFolders(javascriptRootFolderPath);
 */
 
 let filelist = flattenFolder(javascriptRootFolderPath)
+    .map(file => (
+        { 
+            path: file,
+            //content: fs.readFileSync(file, 'utf8'),
+            provides: getClassDefinitionsFromFile(fs.readFileSync(file, 'utf8'))
+         }))
+    
 console.log("filelist:", JSON.stringify(filelist, null, 2));
 
 function flattenFolder(folder) {
@@ -44,6 +51,16 @@ function flattenFolder(folder) {
     });
 
     return result;
+}
+
+function getClassDefinitionsFromFile(content) {
+    regex = /class\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
+    let allMatches = [];
+    let match;
+    while ((match = regex.exec(content)) !== null) {
+        allMatches.push(match[0]);
+    }
+    allMatches = Array.from(new Set(allMatches)).map(match => match.split(' ')[1]);
 }
 
 /*
