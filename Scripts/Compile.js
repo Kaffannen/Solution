@@ -34,7 +34,10 @@ try {
 
 function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
+    console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
+    console.log("classObjectList:", JSON.stringify(classObjectList, null, 2));
     const lines = createLines(mainFileObjects, classObjectList);
+    console.log("lines:", JSON.stringify(lines, null, 2));
     let outputs;
     if (outputType === 'HTML')
         outputs = createHTMLOutputs(lines);
