@@ -4,7 +4,7 @@ const path = require('path');
 const { JSDOM } = require('jsdom');
 
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
-/*
+
 const dev = {
     mainsPath: path.join(__dirname, '../Javascript/Mains/DevMains'),
     outputPath: path.join(__dirname, '../Compiled/Dev'),
@@ -23,7 +23,7 @@ const prod = {
 
 console.log(`\nAnalyzing files of folder: ${javascriptRootFolderPath}\n`);
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
-*/
+
 
 function createFileObjects(javascriptRootFolderPath){
     let filelist = flattenFolder(javascriptRootFolderPath)
@@ -79,15 +79,6 @@ function createFileObjects(javascriptRootFolderPath){
 }
 
 
-
-
-
-    
-console.log("filelist:", JSON.stringify(createFileObjects(javascriptRootFolderPath), null, 2));
-
-
-
-/*
 try {
     compile(dev, allFileObjects);
     compile(test, allFileObjects);
@@ -95,7 +86,7 @@ try {
 } catch (error) {
     console.log("error:", error);
 }
-*/
+
 
 function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
@@ -181,12 +172,28 @@ function createLines(mainFileObjects, allFileObjects) {
     function createLine(fileObject, fileObjects) {
         let arr = [];
         arr.push(fileObject);
+        fileObjects.forEach(otherFile => {
+            if (fileObject.path === otherFile.path) return;
+            const intersection = fileObject.requires.filter(req => otherFile.provides.includes(req));
+            if (intersection.length > 0) {
+                fileObject.requires = fileObject.requires.filter(req => !intersection.includes(req));
+                arr = arr.concat(createLine(otherFile, fileObjects));
+            }
+        });
+        return arr;
+    }
+
+    /*
+    function createLine(fileObject, fileObjects) {
+        let arr = [];
+        arr.push(fileObject);
         let dependencies = fileObjects.filter(f => fileObject.requires.includes(f.provides));
         dependencies.forEach(dependency => {
             arr = arr.concat(createLine(dependency, fileObjects));
         });
         return arr;
     }
+    */
 }
 
 function createJavaScriptOutputs(prunedLines) {
