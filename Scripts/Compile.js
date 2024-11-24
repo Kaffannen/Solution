@@ -1,30 +1,7 @@
-/***
-const args = process.argv.slice(2).reduce((acc, arg, index, array) => {
-    if (arg.startsWith('--')) {
-        acc[arg.slice(2)] = array[index + 1];
-    }
-    return acc;
-}, {});
-
-Object.entries(args).forEach(([key, value]) => {
-    console.log(`key: ${key}, value: ${value}`);
-});
-
-
-
-const mainsFolderPath = args.mainsFolderPath
-const javascriptRootFolderPath = args.javascriptRootFolderPath
-const outputFolderPath = args.outputFolderPath
-fs.mkdirSync(outputFolderPath, { recursive: true });
-*/
-
-
 const fs = require('fs');
 const { get } = require('http');
 const path = require('path');
 
-const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
-const outputFolderPath = path.join(__dirname, '../CompiledBundles');
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
 const dev = {
@@ -43,9 +20,8 @@ const prod = {
     outputType: 'Javascript'
 };
 
-fs.mkdirSync(outputFolderPath, { recursive: true });
-
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
+console.log("Javascript files analyzed:", JSON.stringify(allFileObjects, null, 2));
 
 try {
     compile(dev, allFileObjects);
@@ -57,20 +33,19 @@ try {
 
 
 function compile({mainsPath, outputPath, outputType}, classObjectList) {
-    console.log("mainsPath:", mainsPath);
-    console.log("outputPath:", outputPath);
-    console.log("outputType:", outputType);
-    console.log("classObjectList:", JSON.stringify(classObjectList, null, 2));
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
     console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
     const lines = createLines(mainFileObjects, classObjectList);
-    const prunedLines = pruneAndReverseLines(lines);
-    console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
+    lines.forEach(line => {
+        line.forEach(fileObject => {
+            console.log(`\t${fileObject.path}`);
+        }
+    );
     let outputs;
     if (outputType === 'HTML') 
-        outputs = createHTMLOutputs(prunedLines);
+        outputs = createHTMLOutputs(lines);
     else if (outputType === 'Javascript') 
-        outputs = createJavaScriptBundle(prunedLines);    
+        outputs = createJavaScriptBundle(lines);    
     console.log("outputs:", JSON.stringify(outputs, null, 2));
     outputs.forEach(output => {
         fs.mkdirSync(outputPath, { recursive: true });
@@ -78,17 +53,6 @@ function compile({mainsPath, outputPath, outputType}, classObjectList) {
     });
 }
 
-
-
-
-/*
-const mainFileObjects = allFileObjects.filter(fileObject => fileObject.path.includes(mainsFolderPath));
-const prunedLines = pruneAndReverseLines(lines);
-const bundles = createJavaScriptBundle(prunedLines);
-bundles.forEach(bundle => {
-    fs.writeFileSync(path.join(outputFolderPath, bundle.bundleFileName), bundle.bundle);
-});
-*/
 function traverseFolders(folder) {
     let result = [];
     const files = fs.readdirSync(folder);
@@ -137,14 +101,13 @@ function traverseFolders(folder) {
     return discoverDependencies(result);
 }
 
-
-
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
+        console.log("Creating line:", JSON.stringify(mainFileObject, null, 2));
         lines.push(createLine(mainFileObject, allFileObjects));
     });
-    return lines;
+    return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
     function createLine(fileObject, fileObjects) {
         let arr = [];
@@ -158,16 +121,6 @@ function createLines(mainFileObjects, allFileObjects) {
         return arr;
     }
 }
-
-/*
-
-const lines = createLines(mainFileObjects, allFileObjects);
-console.log("lines:", JSON.stringify(lines, null, 2));
-**/
-function pruneAndReverseLines(lines) {
-    return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
-}
-
 
 function createJavaScriptBundle(prunedLines) {
     const outputs = [];
