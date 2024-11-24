@@ -149,6 +149,9 @@ function createHTMLOutputs(prunedLines) {
         const document = dom.window.document;
         const titleElement = document.createElement('title');
         titleElement.textContent = firstFileName;
+        const metaElement = document.createElement('meta');
+        metaElement.setAttribute('charset', 'utf-8');
+        document.head.appendChild(metaElement);
         document.head.appendChild(titleElement);
         document.body.id = 'EzAnchor';
 
@@ -160,6 +163,7 @@ function createHTMLOutputs(prunedLines) {
         });
 
         const htmlString = dom.serialize();
+        const prettyHtmlString = htmlString.replace(/></g, '>\n<');
 
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
