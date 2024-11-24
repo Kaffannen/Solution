@@ -57,7 +57,7 @@ function traverseFolders(folder) {
 
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
 console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
-const mainFileObjects = traverseFolders(mainsFolderPath);
+const mainFileObjects = allFileObjects.filter(fileObject => fileObject.path.includes(mainsFolderPath));
 console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
 
 function createLines(mainFileObjects, allFileObjects) {
