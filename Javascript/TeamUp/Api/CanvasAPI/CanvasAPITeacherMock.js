@@ -1,4 +1,4 @@
-class CanvasAPIMock {
+class CanvasAPITeacherMock {
 
   getUserInfo() {
     return new Promise((resolve, reject) => {
