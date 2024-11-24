@@ -147,7 +147,10 @@ function createHTMLOutputs(prunedLines) {
 
         const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`);
         const document = dom.window.document;
-        document.head.title = firstFileName;
+        const titleElement = document.createElement('title');
+        titleElement.textContent = firstFileName;
+        document.head.appendChild(titleElement);
+        document.body.id = 'EzAnchor';
 
         line.forEach(fileObject => {
             const scriptElement = document.createElement('script'); 
