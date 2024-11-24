@@ -93,7 +93,7 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     //console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
     //console.log("classObjectList:", JSON.stringify(classObjectList, null, 2));
     const lines = createLines(mainFileObjects, classObjectList);
-    console.log("lines:", JSON.stringify(lines, null, 2));
+    //console.log("lines:", JSON.stringify(lines, null, 2));
     let outputs;
     if (outputType === 'HTML')
         outputs = createHTMLOutputs(lines);
@@ -109,7 +109,9 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
-        lines.push(createLine([], mainFileObject, allFileObjects));
+        let line = createLine([], mainFileObject, allFileObjects);
+        console.log("line:", JSON.stringify(line, null, 2));
+        lines.push(line);
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
