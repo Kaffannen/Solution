@@ -116,16 +116,16 @@ function createLines(mainFileObjects, allFileObjects) {
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
     function createLine(fileObject, fileObjects) {
-        let fileSet = createFileSet(new Set(), mainFileObject, allFileObjects);
+        let fileSet = createFileSet(new Set(), fileObject, fileObjects);
         console.log("fileSet:", JSON.stringify(fileSet, null, 2));
         let arr = sortTopologically(fileSet);
         return arr;
-        function createFileSet(fileset, mainFileObject, allFileObjects){
-            let dependencies = mainFileObject.requires.map(req => allFileObjects.find(file => file.provides.includes(req)));
+        function createFileSet(fileset, fileObject, fileObjects){
+            let dependencies = fileObject.requires.map(req => fileObjects.find(file => file.provides.includes(req)));
             dependencies.forEach(dependency => {
-                createFileSet(fileset, dependency, allFileObjects);
+                createFileSet(fileset, dependency, fileObjects);
             });
-            fileset.add(mainFileObject);
+            fileset.add(fileObject);
             return fileset;
         }
     }
