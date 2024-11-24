@@ -20,7 +20,7 @@ const prod = {
     outputType: 'Javascript'
 };
 
-console.log("\nAnalyzing files of folder: ", javascriptRootFolderPath), "\n";
+console.log(`\nAnalyzing files of folder: ${javascriptRootFolderPath}\n`);
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
 
 
@@ -97,11 +97,12 @@ function traverseFolders(folder) {
         return [...new Set(matches || [])];
     }
     const classObjects = discoverDependencies(result);
-    for (i = 0; i < classObjects.length; i++) {
+    for (let i = 0; i < classObjects.length; i++) {
         console.log(
-                `\t${i}: ${classObjects[i].path} 
-                \n\t\tprovides: ${classObjects[i].provides} 
-                \n\t\trequires: ${classObjects[i].requires}\n`);
+            `\t${i}: ${classObjects[i].path} 
+            \n\t\tprovides: ${classObjects[i].provides} 
+            \n\t\trequires: ${classObjects[i].requires}\n`
+        );
     }
     return classObjects;
 }
