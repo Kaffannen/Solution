@@ -2,6 +2,7 @@ const fs = require('fs');
 const { get } = require('http');
 const path = require('path');
 const { JSDOM } = require('jsdom');
+const { create } = require('domain');
 
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
@@ -121,14 +122,16 @@ function createLines(mainFileObjects, allFileObjects) {
         let arr = sortTopologically(fileSet);
         return arr;
         
-        function createFileSet(fileset, fileObject, fileObjects){
-            let dependencies = fileObject.requires.map(req => fileObjects.find(file => file.provides.includes(req)));
-            dependencies.forEach(dependency => {
-                if (!fileset.has(dependency)) {
-                    createFileSet(fileset, dependency, fileObjects);
-                }
-            });
+        function createFileSet(fileset, fileObject, fileObjects) {
             fileset.add(fileObject);
+            for (let dependency of fileObject.requires) {
+                let otherFile = fileObjects.find(f => f.provides.includes(dependency));
+                if (otherFile) {
+                    createFileSet(fileset, otherFile, fileObjects);
+                } else {
+                    console.warn(`Dependency ${dependency} not found in fileObjects.`);
+                }
+            }
             return fileset;
         }
         
