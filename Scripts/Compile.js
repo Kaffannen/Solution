@@ -62,7 +62,7 @@ function traverseFolders(folder) {
             result = result.concat(traverseFolders(filepath));
         } else {
             let content = fs.readFileSync(filepath, 'utf8');
-            const classDeclarationRegex = /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g;
+            const classDeclarationRegex = /class\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
             const matches = getMatchesFromContent(content, classDeclarationRegex)
                 .map(match => match.trim());
             result.push({
@@ -89,9 +89,12 @@ function traverseFolders(folder) {
         return classes;
     }
     function getMatchesFromContent(content, regex) {
-        const matches = content.match(regex);
-        console.log("matches:", JSON.stringify(matches, null, 2));
-        return [...new Set(matches || [])];
+        const matches = [];
+        let match;
+        while ((match = regex.exec(content)) !== null) {
+            matches.push(match[0]);
+        }
+        return [...new Set(matches)];
     }
     const classObjects = discoverDependencies(result);
     classObjects.forEach((classObject, index) => {
