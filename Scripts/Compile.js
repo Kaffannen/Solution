@@ -54,7 +54,9 @@ function traverseFolders(folder) {
 }
 
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
+console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
 const mainFileObjects = traverseFolders(mainsFolderPath);
+console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
 
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
@@ -75,6 +77,7 @@ function createLines(mainFileObjects, allFileObjects) {
 }
 
 const lines = createLines(mainFileObjects, allFileObjects);
+console.log("lines:", JSON.stringify(lines, null, 2));
 
 function pruneLines(lines) {
     const reversed = lines.map(line => line.reverse());
@@ -86,6 +89,7 @@ function pruneLines(lines) {
 }
 
 const prunedLines = pruneLines(lines);
+console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
 
 function createBundles(prunedLines) {
     const bundles = [];
