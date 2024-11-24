@@ -154,15 +154,16 @@ function pruneAndReverseLines(lines) {
 
 
 function createJavaScriptBundle(prunedLines) {
-    const bundles = [];
+    const outputs = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length-1].path, '.js');
-        const bundleFileName = `${firstFileName}_bundle.js`;
-        const bundle = line.map(fileObject => fs.readFileSync
+        const outPutFileName = `${firstFileName}_bundle.js`;
+        const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
-        bundles.push({ bundleFileName, bundle });
+        outputs.push({ bundleFileName, bundle: content });
     });
-    return bundles;
+    return outputs;
+    //fs.writeFileSync(path.join(outputPath, output.outputFileName), output.content);
 }
 
 function createHTMLOutputs(prunedLines) {
