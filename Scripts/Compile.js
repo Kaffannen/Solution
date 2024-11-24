@@ -1,7 +1,7 @@
 const fs = require('fs');
 const { get } = require('http');
 const path = require('path');
-//const { JSDOM } = require('jsdom');
+const { JSDOM } = require('jsdom');
 
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
