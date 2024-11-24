@@ -37,7 +37,7 @@ function flattenFolder(folder) {
         const stat = fs.statSync(filepath);
 
         if (stat.isDirectory()) {
-            result = result.concat(traverseFolders(filepath));
+            result = result.concat(flattenFolder(filepath));
         } else {
             result.push(filepath);
         }
