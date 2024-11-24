@@ -40,10 +40,12 @@ function discoverDependencies(thisFile, allFiles) {
     let content = fs.readFileSync(thisFile.path, 'utf8');
     for (let otherFile of allFiles) {
         if (thisFile.path === otherFile.path) continue;
-        const regex = new RegExp(`\\bnew\\s+${otherFile.provides}\\b|\\b${otherFile.provides}\\.name\\b|\\bextends\\s+${otherFile.provides}\\b`, 'g');
-        if (regex.test(content)) {
-            thisFile.requires.push(otherFile.provides);
-        }
+        otherFile.provides.forEach(classDef => {
+            const regex = new RegExp(`\\bnew\\s+${classDef}\\b|\\b${classDef}\\.name\\b|\\bextends\\s+${classDef}\\b`, 'g');
+            if (regex.test(content)) {
+                thisFile.requires.push(otherFile.provides);
+            }
+        });
     }
 }
     
