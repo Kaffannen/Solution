@@ -30,7 +30,7 @@ jobs:
           # Set up Git configuration
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
+          ls -R
           git add Compiled/*
 
           git commit -m "Add/update compiled bundles JS files"
