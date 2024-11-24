@@ -123,6 +123,7 @@ function createLines(mainFileObjects, allFileObjects) {
         return arr;
         
         function createFileSet(fileset, fileObject, fileObjects) {
+            if (fileset.has(fileObject)) return fileset;
             fileset.add(fileObject);
             for (let dependency of fileObject.requires) {
                 let otherFile = fileObjects.find(f => f.provides.includes(dependency));
