@@ -30,8 +30,22 @@ let filelist = flattenFolder(javascriptRootFolderPath)
         { 
             path: file,
             //content: fs.readFileSync(file, 'utf8'),
-            provides: getClassDefinitionsFromFile(fs.readFileSync(file, 'utf8'))
+            provides: getClassDefinitionsFromFile(fs.readFileSync(file, 'utf8')),
+            requires: []
          }))
+    .forEach(file => discoverDependencies(file, filelist));
+
+
+function discoverDependencies(thisFile, allFiles) {
+    let content = fs.readFileSync(thisFile.path, 'utf8');
+    for (let otherFile of allFiles) {
+        if (thisFile.path === otherFile.path) continue;
+        const regex = new RegExp(`\\bnew\\s+${otherFile.provides}\\b|\\b${otherFile.provides}\\.name\\b|\\bextends\\s+${otherFile.provides}\\b`, 'g');
+        if (regex.test(content)) {
+            thisFile.requires.push(otherFile.provides);
+        }
+    }
+}
     
 console.log("filelist:", JSON.stringify(filelist, null, 2));
 
