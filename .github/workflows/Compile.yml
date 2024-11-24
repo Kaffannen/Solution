@@ -31,21 +31,20 @@ jobs:
       - name: Commit and Push Concatenated Files
         run: |
           # Set up Git configuration
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          #ls -R
+          #git config --global user.name "github-actions[bot]"
+          #git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
-          cp -r Compiled/Dev/* Compiles/
-          cp -r Compiled/Test/* Compiles/
-          cp -r Compiled/Prod/* Compiles/
+          #cp -r Compiled/Dev/* Compiles/
+          #cp -r Compiled/Test/* Compiles/
+          #cp -r Compiled/Prod/* Compiles/
 
-          git add Compiles/*
+          #git add Compiles/*
           git add Compiled/*
 
-          git commit -m "Add/update compiled bundles JS files"
+          #git commit -m "Add/update compiled bundles JS files"
           
           # Authenticate with the token
-          git remote set-url origin https://github-actions:${{ secrets.GH_TOKEN }}@github.com/Kaffannen/Solution.git
+#          git remote set-url origin https://github-actions:${{ secrets.GH_TOKEN }}@github.com/Kaffannen/Solution.git
           
           # Push the changes
-          git push origin master
+ #         git push origin master

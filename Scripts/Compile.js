@@ -4,7 +4,7 @@ const path = require('path');
 const { JSDOM } = require('jsdom');
 
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
-
+/*
 const dev = {
     mainsPath: path.join(__dirname, '../Javascript/Mains/DevMains'),
     outputPath: path.join(__dirname, '../Compiled/Dev'),
@@ -23,7 +23,30 @@ const prod = {
 
 console.log(`\nAnalyzing files of folder: ${javascriptRootFolderPath}\n`);
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
+*/
 
+let filelist = flattenFolder(javascriptRootFolderPath)
+console.log("filelist:", JSON.stringify(filelist, null, 2));
+
+function flattenFolder(folder) {
+    let result = [];
+    const files = fs.readdirSync(folder);
+
+    files.forEach(file => {
+        const filepath = path.join(folder, file);
+        const stat = fs.statSync(filepath);
+
+        if (stat.isDirectory()) {
+            result = result.concat(traverseFolders(filepath));
+        } else {
+            result.push(filepath);
+        }
+    });
+
+    return result;
+}
+
+/*
 try {
     compile(dev, allFileObjects);
     compile(test, allFileObjects);
@@ -31,6 +54,7 @@ try {
 } catch (error) {
     console.log("error:", error);
 }
+*/
 
 function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
@@ -50,6 +74,7 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     });
 }
 
+/*
 function traverseFolders(folder) {
     let result = [];
     const files = fs.readdirSync(folder);
@@ -103,7 +128,7 @@ function traverseFolders(folder) {
         );
     });
     return classObjects;
-}
+}*/
 
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
