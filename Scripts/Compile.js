@@ -27,7 +27,6 @@ const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
 const outputFolderPath = path.join(__dirname, '../CompiledBundles');
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
-
 const dev = {
     mainsPath: path.join(__dirname, '../Javascript/DevMains'), 
     outputPath: path.join(__dirname, '../Compiled/DevHTML'),
@@ -44,7 +43,17 @@ const prod = {
     outputType: 'Javascript'
 };
 
+fs.mkdirSync(outputFolderPath, { recursive: true });
+
+const allFileObjects = traverseFolders(javascriptRootFolderPath);
+
+compile(dev, allFileObjects);
+compile(test, allFileObjects);
+compile(prod, allFileObjects);
+
 function compile({mainsPath, outputPath, outputType}, classObjectList) {
+    console.log("mainsPath:", mainsPath);
+    console.log("classObjectList:", JSON.stringify(classObjectList, null, 2));
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
     console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
     const lines = createLines(mainFileObjects, classObjectList);
@@ -63,14 +72,7 @@ function compile({mainsPath, outputPath, outputType}, classObjectList) {
 }
 
 
-fs.mkdirSync(outputFolderPath, { recursive: true });
 
-const allFileObjects = traverseFolders(javascriptRootFolderPath);
-console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
-
-compile(dev, allFileObjects);
-compile(test, allFileObjects);
-compile(prod, allFileObjects);
 
 /*
 const mainFileObjects = allFileObjects.filter(fileObject => fileObject.path.includes(mainsFolderPath));
