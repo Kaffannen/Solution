@@ -41,7 +41,7 @@ function discoverDependencies(thisFile, allFiles) {
     for (let otherFile of allFiles) {
         if (thisFile.path === otherFile.path) continue;
         otherFile.provides.forEach(classDef => {
-            const regex = new RegExp(`\\bnew\\s+${classDef}\\b|\\b${classDef}\\.name\\b|\\bextends\\s+${classDef}\\b`, 'g');
+            const regex = new RegExp(`\\bnew\\s+${classDef}\\b|\\b${classDef}\\.\\b|\\bextends\\s+${classDef}\\b`, 'g');
             if (regex.test(content)) {
                 thisFile.requires.push(classDef);
             }
