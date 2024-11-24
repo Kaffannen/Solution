@@ -137,18 +137,22 @@ function createHTMLOutputs(prunedLines) {
     console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
     const outputs = [];
 
-    const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`);
-    const document = dom.window.document;
-    const scriptElement = document.createElement('script');
-    scriptElement.src = 'https://example.com/made-up-url.js';
-    document.head.appendChild(scriptElement);
-    const htmlString = dom.serialize();
-    console.log(htmlString);
-
-
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
         const outputFileName = `${firstFileName}_bundle.js`;
+
+        const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`);
+        const document = dom.window.document;
+        document.head.title = firstFileName;
+
+        line.forEach(fileObject => {
+            const scriptElement = document.createElement('script'); 
+            scriptElement.src = fileObject.path;
+            document.head.appendChild(scriptElement);
+        });
+
+        const htmlString = dom.serialize();
+
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
         outputs.push({ outputFileName, content: htmlString });
