@@ -74,10 +74,4 @@ setPersistence(persistence){
 }
 
 
-class CanvasMsgBrokerMock {
-
-}
-class CanvasDBMock {
-
-}
 
