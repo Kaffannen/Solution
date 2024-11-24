@@ -155,7 +155,7 @@ function createLines(mainFileObjects, allFileObjects) {
 }
 
 function createJavaScriptOutputs(prunedLines) {
-    console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
+    //console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
     const outputs = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
@@ -164,12 +164,12 @@ function createJavaScriptOutputs(prunedLines) {
             (fileObject.path, 'utf8')).join('\n');
         outputs.push({ outputFileName, content });
     });
-    console.log("outputs:", JSON.stringify(outputs, null, 2));
+    //console.log("outputs:", JSON.stringify(outputs, null, 2));
     return outputs;
 }
 
 function createHTMLOutputs(prunedLines) {
-    console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
+    //console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
     const outputs = [];
 
     prunedLines.forEach(line => {
@@ -200,7 +200,7 @@ function createHTMLOutputs(prunedLines) {
             (fileObject.path, 'utf8')).join('\n');
         outputs.push({ outputFileName, content: prettyHtmlString });
     });
-    console.log("outputs:", JSON.stringify(outputs, null, 2));
+    //console.log("outputs:", JSON.stringify(outputs, null, 2));
     return outputs;
 }
 
