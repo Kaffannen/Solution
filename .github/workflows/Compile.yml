@@ -34,6 +34,10 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           #ls -R
+
+          cp -r Compiled/Dev/* Compiles/
+          cp -r Compiled/Test/* Compiles/
+          cp -r Compiled/Prod/* Compiles/
           
           mv Compiled/Dev/* Compiles/
           mv Compiled/Test/* Compiles/
