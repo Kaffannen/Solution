@@ -99,7 +99,7 @@ function traverseFolders(folder) {
     }
     const classObjects = discoverDependencies(result);
     for (i = 0; i < classObjects.length; i++) {
-        console.log(`$i: ${classObjects[i.path]} \n\tprovides: ${classObjects[i].provides} \n\trequires: ${classObjects[i].requires}`);
+        console.log(`${i}: ${classObjects[i].path} \n\tprovides: ${classObjects[i].provides} \n\trequires: ${classObjects[i].requires}\n`);
     }
     return classObjects;
 }
