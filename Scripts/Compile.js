@@ -116,13 +116,12 @@ function createLines(mainFileObjects, allFileObjects) {
     function createLine(arr, fileObject, fileObjects) {
         arr.push(fileObject);
         otherfiles = fileObjects.filter(f => f.path !== fileObject.path);
-        fileObject.requires.forEach(req => {
-            otherfiles.forEach(otherFile => {
-                if (otherFile.provides.includes(req)) {
-                    arr = arr.concat(createLine(arr, otherFile, fileObjects));
-                }
-            });
-        });
+        for (requirement of fileObject.requires) {
+            let requiredFile = otherfiles.find(f => f.provides.includes(requirement));
+            if (requiredFile) {
+                arr = arr.concat(createLine(arr, requiredFile, otherfiles));
+            }
+        }
         return arr;
     }
 
