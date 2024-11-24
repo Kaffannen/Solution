@@ -174,7 +174,7 @@ function createJavaScriptBundle(prunedLines) {
         const outPutFileName = `${firstFileName}_bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
-        outputs.push({ bundleFileName, bundle: content });
+        outputs.push({ outPutFileName, content  });
     });
     return outputs;
 }
@@ -186,7 +186,7 @@ function createHTMLOutputs(prunedLines) {
         const outPutFileName = `${firstFileName}_bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
-        outputs.push({ bundleFileName, bundle: content });
+        outputs.push({ outPutFileName, content });
     });
     return outputs;
 }
