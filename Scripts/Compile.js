@@ -28,17 +28,17 @@ const outputFolderPath = path.join(__dirname, '../CompiledBundles');
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
 const dev = {
-    mainsPath: path.join(__dirname, '../Javascript/DevMains'), 
+    mainsPath: path.join(__dirname, '../Javascript/Mains/DevMains'), 
     outputPath: path.join(__dirname, '../Compiled/DevHTML'),
     outputType: 'HTML'
 };
 const test = {
-    mainsPath: path.join(__dirname, '../Javascript/TestMains'), 
+    mainsPath: path.join(__dirname, '../Javascript/Mains/TestMains'), 
     outputPath: path.join(__dirname, '../Compiled/TestHTML'),
     outputType: 'Javascript'
 };
 const prod = {
-    mainsPath: path.join(__dirname, '../Javascript/ProdMains'), 
+    mainsPath: path.join(__dirname, '../Javascript/Mains/ProdMains'), 
     outputPath: path.join(__dirname, '../Compiled/ProdHTML'),
     outputType: 'Javascript'
 };
