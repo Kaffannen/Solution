@@ -48,19 +48,13 @@ function compile({mainsPath, outputPath, outputType}, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
     const lines = createLines(mainFileObjects, classObjectList);
     const prunedLines = pruneAndReverseLines(lines);
-    if (outputType === 'HTML') {
-        const bundles = createHTMLBundle(prunedLines);
-        bundles.forEach(bundle => {
-            fs.writeFileSync(path.join(outputPath, bundle.bundleFileName), bundle.bundle);
-        });
-    } else if (outputType === 'Javascript') {
-        const bundles = createJavaScriptBundle(prunedLines);
-        bundles.forEach(bundle => {
-            fs.writeFileSync(path.join(outputPath, bundle.bundleFileName), bundle.bundle);
-        });
-    }
-    bundles.forEach(bundle => {
-        fs.writeFileSync(path.join(outputPath, bundle.bundleFileName), bundle.bundle);
+    let outputs;
+    if (outputType === 'HTML') 
+        outputs = createHTMLOutputs(prunedLines);
+    else if (outputType === 'Javascript') 
+        outputs = createJavaScriptBundle(prunedLines);    
+    outputs.forEach(output => {
+        fs.writeFileSync(path.join(outputPath, output.outputFileName), output.content);
     });
 }
 
@@ -171,7 +165,7 @@ function createJavaScriptBundle(prunedLines) {
     return bundles;
 }
 
-function createHTMLBundle(prunedLines) {
+function createHTMLOutputs(prunedLines) {
     const bundles = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length-1].path, '.js');
