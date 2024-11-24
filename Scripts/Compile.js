@@ -5,17 +5,17 @@ const path = require('path');
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
 const dev = {
-    mainsPath: path.join(__dirname, '../Javascript/Mains/DevMains'), 
+    mainsPath: path.join(__dirname, '../Javascript/Mains/DevMains'),
     outputPath: path.join(__dirname, '../Compiled/DevHTML'),
     outputType: 'HTML'
 };
 const test = {
-    mainsPath: path.join(__dirname, '../Javascript/Mains/TestMains'), 
+    mainsPath: path.join(__dirname, '../Javascript/Mains/TestMains'),
     outputPath: path.join(__dirname, '../Compiled/TestHTML'),
     outputType: 'Javascript'
 };
 const prod = {
-    mainsPath: path.join(__dirname, '../Javascript/Mains/ProdMains'), 
+    mainsPath: path.join(__dirname, '../Javascript/Mains/ProdMains'),
     outputPath: path.join(__dirname, '../Compiled/ProdHTML'),
     outputType: 'Javascript'
 };
@@ -32,7 +32,7 @@ try {
 }
 
 
-function compile({mainsPath, outputPath, outputType}, classObjectList) {
+function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
     console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
     const lines = createLines(mainFileObjects, classObjectList);
@@ -40,18 +40,19 @@ function compile({mainsPath, outputPath, outputType}, classObjectList) {
         line.forEach(fileObject => {
             console.log(`\t${fileObject.path}`);
         }
-    );
+    });
     let outputs;
-    if (outputType === 'HTML') 
+    if (outputType === 'HTML')
         outputs = createHTMLOutputs(lines);
-    else if (outputType === 'Javascript') 
-        outputs = createJavaScriptBundle(lines);    
-    console.log("outputs:", JSON.stringify(outputs, null, 2));
+    else if (outputType === 'Javascript')
+        outputs = createJavaScriptBundle(lines);
     outputs.forEach(output => {
         fs.mkdirSync(outputPath, { recursive: true });
         fs.writeFileSync(path.join(outputPath, output.outputFileName), output.content);
+        console.log(`File ${output.outputFileName} created in ${outputPath} with content:\n${output.content}\n`);
     });
 }
+
 
 function traverseFolders(folder) {
     let result = [];
@@ -125,11 +126,11 @@ function createLines(mainFileObjects, allFileObjects) {
 function createJavaScriptBundle(prunedLines) {
     const outputs = [];
     prunedLines.forEach(line => {
-        const firstFileName = path.basename(line[line.length-1].path, '.js');
+        const firstFileName = path.basename(line[line.length - 1].path, '.js');
         const outputFileName = `${firstFileName}_bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
-        outputs.push({ outputFileName, content  });
+        outputs.push({ outputFileName, content });
     });
     return outputs;
 }
@@ -137,7 +138,7 @@ function createJavaScriptBundle(prunedLines) {
 function createHTMLOutputs(prunedLines) {
     const outputs = [];
     prunedLines.forEach(line => {
-        const firstFileName = path.basename(line[line.length-1].path, '.js');
+        const firstFileName = path.basename(line[line.length - 1].path, '.js');
         const outputFileName = `${firstFileName}_bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
