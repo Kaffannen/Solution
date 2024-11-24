@@ -1,3 +1,4 @@
+/***
 const args = process.argv.slice(2).reduce((acc, arg, index, array) => {
     if (arg.startsWith('--')) {
         acc[arg.slice(2)] = array[index + 1];
@@ -18,11 +19,64 @@ const mainsFolderPath = args.mainsFolderPath
 const javascriptRootFolderPath = args.javascriptRootFolderPath
 const outputFolderPath = args.outputFolderPath
 fs.mkdirSync(outputFolderPath, { recursive: true });
+*/
+const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
+const outputFolderPath = path.join(__dirname, '../CompiledBundles');
+const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
-//const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
-//const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
-//const outputFolderPath = path.join(__dirname, '../CompiledBundles');
-//fs.mkdirSync(outputFolderPath, { recursive: true });
+
+const dev = {
+    mainsPath: path.join(__dirname, '../Javascript/DevMains'), 
+    outputPath: path.join(__dirname, '../Compiled/DevHTML'),
+    outputType: 'HTML'
+};
+const test = {
+    mainsPath: path.join(__dirname, '../Javascript/TestMains'), 
+    outputPath: path.join(__dirname, '../Compiled/TestHTML'),
+    outputType: 'Javascript'
+};
+const prod = {
+    mainsPath: path.join(__dirname, '../Javascript/ProdMains'), 
+    outputPath: path.join(__dirname, '../Compiled/ProdHTML'),
+    outputType: 'Javascript'
+};
+
+function compile({mainsPath, outputPath, outputType}, classObjectList) {
+    const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
+    lines = createLines(mainFileObjects, classObjectList);
+    const prunedLines = pruneAndReverseLines(lines);
+    if (outputType === 'HTML') {
+        const bundles = createHTMLBundle(prunedLines);
+        bundles.forEach(bundle => {
+            fs.writeFileSync(path.join(outputPath, bundle.bundleFileName), bundle.bundle);
+        });
+    } else if (outputType === 'Javascript') {
+        const bundles = createJavaScriptBundle(prunedLines);
+        bundles.forEach(bundle => {
+            fs.writeFileSync(path.join(outputPath, bundle.bundleFileName), bundle.bundle);
+        });
+    }
+    bundles.forEach(bundle => {
+        fs.writeFileSync(path.join(outputPath, bundle.bundleFileName), bundle.bundle);
+    });
+}
+
+
+fs.mkdirSync(outputFolderPath, { recursive: true });
+
+const allFileObjects = traverseFolders(javascriptRootFolderPath);
+
+compile(dev, allFileObjects);
+compile(test, allFileObjects);
+compile(prod, allFileObjects);
+
+
+const mainFileObjects = allFileObjects.filter(fileObject => fileObject.path.includes(mainsFolderPath));
+const prunedLines = pruneAndReverseLines(lines);
+const bundles = createJavaScriptBundle(prunedLines);
+bundles.forEach(bundle => {
+    fs.writeFileSync(path.join(outputFolderPath, bundle.bundleFileName), bundle.bundle);
+});
 
 function traverseFolders(folder) {
     let result = [];
@@ -72,10 +126,7 @@ function traverseFolders(folder) {
     return discoverDependencies(result);
 }
 
-const allFileObjects = traverseFolders(javascriptRootFolderPath);
-console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
-const mainFileObjects = allFileObjects.filter(fileObject => fileObject.path.includes(mainsFolderPath));
-console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
+
 
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
@@ -104,10 +155,8 @@ function pruneAndReverseLines(lines) {
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 }
 
-const prunedLines = pruneAndReverseLines(lines);
-console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
 
-function createBundles(prunedLines) {
+function createJavaScriptBundle(prunedLines) {
     const bundles = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length-1].path, '.js');
@@ -119,11 +168,33 @@ function createBundles(prunedLines) {
     return bundles;
 }
 
-const bundles = createBundles(prunedLines);
-
-bundles.forEach(bundle => {
-    fs.writeFileSync(path.join(outputFolderPath, bundle.bundleFileName), bundle.bundle);
-});
+function createHTMLBundle(prunedLines) {
+    const bundles = [];
+    prunedLines.forEach(line => {
+        const firstFileName = path.basename(line[line.length-1].path, '.js');
+        const bundleFileName = `${firstFileName}_bundle.html`;
+        const bundle = line.map(fileObject => fs.readFileSync
+            (fileObject.path, 'utf8')).join('\n');
+        const htmlContent = `
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>${firstFileName} Bundle</title>
+            </head>
+            <body>
+            <h1>hei</h1>
+            <script>
+                ${bundle}
+            </script>
+            </body>
+            </html>
+        `;
+        bundles.push({ bundleFileName, bundle: htmlContent });
+    });
+    return bundles;
+}
 
 
 

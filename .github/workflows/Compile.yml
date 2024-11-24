@@ -23,11 +23,7 @@ jobs:
 
       - name: Concatenate JavaScript Files with Node.js
         run: |
-          #node ./Scripts/Compile.js  # Run the Node.js script to concatenate the JS files
-          node ./Scripts/Compile.js \
-            --javascriptRootFolderPath ./Javascript \
-            --mainsFolderPath ./Javascript/Mains \
-            --outputFolderPath ./CompiledBundles
+          node ./Scripts/Compile.js 
 
       - name: Commit and Push Concatenated Files
         run: |
