@@ -66,6 +66,7 @@ function compile({mainsPath, outputPath, outputType}, classObjectList) {
 fs.mkdirSync(outputFolderPath, { recursive: true });
 
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
+console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
 
 compile(dev, allFileObjects);
 compile(test, allFileObjects);
