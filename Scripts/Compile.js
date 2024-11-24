@@ -46,7 +46,7 @@ const prod = {
 
 function compile({mainsPath, outputPath, outputType}, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
-    lines = createLines(mainFileObjects, classObjectList);
+    const lines = createLines(mainFileObjects, classObjectList);
     const prunedLines = pruneAndReverseLines(lines);
     if (outputType === 'HTML') {
         const bundles = createHTMLBundle(prunedLines);
