@@ -27,7 +27,7 @@ const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
 const outputFolderPath = path.join(__dirname, '../CompiledBundles');
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
-
+        
 const dev = {
     mainsPath: path.join(__dirname, '../Javascript/DevMains'), 
     outputPath: path.join(__dirname, '../Compiled/DevHTML'),
@@ -145,9 +145,11 @@ function createLines(mainFileObjects, allFileObjects) {
     }
 }
 
+/*
+
 const lines = createLines(mainFileObjects, allFileObjects);
 console.log("lines:", JSON.stringify(lines, null, 2));
-
+**/
 function pruneAndReverseLines(lines) {
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 }
