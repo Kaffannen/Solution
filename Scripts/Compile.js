@@ -104,7 +104,7 @@ function traverseFolders(folder) {
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
-        createLine(mainFileObject, allFileObjects);
+        lines.push(createLine(mainFileObject, allFileObjects));
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
