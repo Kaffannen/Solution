@@ -18,7 +18,9 @@ function traverseFolders(folder) {
         if (stat.isDirectory()) {
             result = result.concat(traverseFolders(filepath));
         } else {
-            const matches = getMatchesFromFile(filepath, /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g)
+            let content = fs.readFileSync(filepath, 'utf8');
+            const classDeclarationRegex = /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g;
+            const matches = getMatchesFromContent(content, classDeclarationRegex)
                 .map(match => match.trim());
             if (matches.length !== 1) {
                 console.log(`File ${filepath} contains ${matches.length} class declarations. Expected exactly one.`);
@@ -42,11 +44,11 @@ function traverseFolders(folder) {
                     }
                 }
             });
+            thisclass.requires = [...new Set(thisclass.requires)];
         });
         return classes;
     }
-    function getMatchesFromFile(filepath, regex) {
-        const content = fs.readFileSync(filepath, 'utf8');
+    function getMatchesFromContent(content, regex) {
         const matches = content.match(regex);
         return [...new Set(matches || [])];
     }
