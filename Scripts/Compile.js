@@ -27,7 +27,7 @@ const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
 const outputFolderPath = path.join(__dirname, '../CompiledBundles');
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
-        
+
 const dev = {
     mainsPath: path.join(__dirname, '../Javascript/DevMains'), 
     outputPath: path.join(__dirname, '../Compiled/DevHTML'),
@@ -54,6 +54,7 @@ function compile({mainsPath, outputPath, outputType}, classObjectList) {
     else if (outputType === 'Javascript') 
         outputs = createJavaScriptBundle(prunedLines);    
     outputs.forEach(output => {
+        fs.mkdirSync(outputPath, { recursive: true });
         fs.writeFileSync(path.join(outputPath, output.outputFileName), output.content);
     });
 }
