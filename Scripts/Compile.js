@@ -101,7 +101,8 @@ function traverseFolders(folder) {
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
-        lines.push(createLine(mainFileObject, allFileObjects));
+        console.log("Creating line:", JSON.stringify(mainFileObject, null, 2));
+    (createLine(mainFileObject, allFileObjects));
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
@@ -145,7 +146,7 @@ function createHTMLOutputs(prunedLines) {
         const outputFileName = `${firstFileName}_bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
-        outputs.push({ outputFileName, htmlString });
+        outputs.push({ outputFileName, content: htmlString });
     });
     console.log("outputs:", JSON.stringify(outputs, null, 2));
     return outputs;
