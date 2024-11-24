@@ -44,6 +44,11 @@ function traverseFolders(folder) {
         });
         return classes;
     }
+    function getMatchesFromFile(filepath, regex) {
+        const content = fs.readFileSync(filepath, 'utf8');
+        const matches = content.match(regex);
+        return [...new Set(matches || [])];
+    }
     return discoverDependencies(result);
 }
 
