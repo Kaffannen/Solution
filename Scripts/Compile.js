@@ -60,7 +60,7 @@ function getClassDefinitionsFromFile(content) {
     while ((match = regex.exec(content)) !== null) {
         allMatches.push(match[0]);
     }
-    allMatches = Array.from(new Set(allMatches)).map(match => match.split(' ')[1]);
+    return Array.from(new Set(allMatches)).map(match => match.split(' ')[1]);
 }
 
 /*
