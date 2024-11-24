@@ -5,7 +5,7 @@ const args = process.argv.slice(2).reduce((acc, arg, index, array) => {
     return acc;
 }, {});
 
-args.forEach((value, key) => {
+Object.entries(args).forEach(([key, value]) => {
     console.log(key, value);
 });
 
