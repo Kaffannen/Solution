@@ -71,6 +71,7 @@ function createLines(mainFileObjects, allFileObjects) {
         let arr = [];
         arr.push(fileObject);
         let dependencies = fileObjects.filter(f => fileObject.requires.includes(f.provides));
+        console.log("dependencies of", fileObject.provides, ":", JSON.stringify(fileObject.dependencies, null, 2));
         console.log("dependencies of", fileObject.provides, ":", JSON.stringify(dependencies, null, 2));
         dependencies.forEach(dependency => {
             arr = arr.concat(createLine(dependency, fileObjects));
