@@ -39,7 +39,7 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     if (outputType === 'HTML')
         outputs = createHTMLOutputs(lines);
     else if (outputType === 'Javascript')
-        outputs = createJavaScriptBundle(lines);
+        outputs = createJavaScriptOutputs(lines);
     outputs.forEach(output => {
         fs.mkdirSync(outputPath, { recursive: true });
         fs.writeFileSync(path.join(outputPath, output.outputFileName), output.content);
@@ -101,8 +101,7 @@ function traverseFolders(folder) {
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
-        console.log("Creating line:", JSON.stringify(mainFileObject, null, 2));
-    (createLine(mainFileObject, allFileObjects));
+        createLine(mainFileObject, allFileObjects);
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
@@ -117,7 +116,7 @@ function createLines(mainFileObjects, allFileObjects) {
     }
 }
 
-function createJavaScriptBundle(prunedLines) {
+function createJavaScriptOutputs(prunedLines) {
     const outputs = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
@@ -131,7 +130,7 @@ function createJavaScriptBundle(prunedLines) {
 
 function createHTMLOutputs(prunedLines) {
     const outputs = [];
-    
+
     const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`);
     const document = dom.window.document;
     const scriptElement = document.createElement('script');
