@@ -1,22 +1,23 @@
 const fs = require('fs');
 const { get } = require('http');
 const path = require('path');
+const { JSDOM } = require('jsdom');
 
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
 const dev = {
     mainsPath: path.join(__dirname, '../Javascript/Mains/DevMains'),
-    outputPath: path.join(__dirname, '../Compiled/DevHTML'),
+    outputPath: path.join(__dirname, '../Compiled/Dev'),
     outputType: 'HTML'
 };
 const test = {
     mainsPath: path.join(__dirname, '../Javascript/Mains/TestMains'),
-    outputPath: path.join(__dirname, '../Compiled/TestHTML'),
+    outputPath: path.join(__dirname, '../Compiled/Test'),
     outputType: 'Javascript'
 };
 const prod = {
     mainsPath: path.join(__dirname, '../Javascript/Mains/ProdMains'),
-    outputPath: path.join(__dirname, '../Compiled/ProdHTML'),
+    outputPath: path.join(__dirname, '../Compiled/Prod'),
     outputType: 'Javascript'
 };
 
@@ -34,11 +35,6 @@ try {
 function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
     const lines = createLines(mainFileObjects, classObjectList);
-    lines.forEach(line => {
-        line.forEach(fileObject => {
-            console.log(`\t${fileObject.path}`);
-        });
-    });
     let outputs;
     if (outputType === 'HTML')
         outputs = createHTMLOutputs(lines);
@@ -105,7 +101,6 @@ function traverseFolders(folder) {
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
-        console.log("Creating line:", JSON.stringify(mainFileObject, null, 2));
         lines.push(createLine(mainFileObject, allFileObjects));
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
@@ -135,12 +130,22 @@ function createJavaScriptBundle(prunedLines) {
 
 function createHTMLOutputs(prunedLines) {
     const outputs = [];
+    
+    const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`);
+    const document = dom.window.document;
+    const scriptElement = document.createElement('script');
+    scriptElement.src = 'https://example.com/made-up-url.js';
+    document.head.appendChild(scriptElement);
+    const htmlString = dom.serialize();
+    console.log(htmlString);
+
+
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
         const outputFileName = `${firstFileName}_bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
-        outputs.push({ outputFileName, content });
+        outputs.push({ outputFileName, htmlString });
     });
     return outputs;
 }
