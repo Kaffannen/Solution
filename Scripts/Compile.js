@@ -1,3 +1,15 @@
+const args = process.argv.slice(2).reduce((acc, arg, index, array) => {
+    if (arg.startsWith('--')) {
+        acc[arg.slice(2)] = array[index + 1];
+    }
+    return acc;
+}, {});
+
+args.forEach((value, key) => {
+    console.log(key, value);
+});
+
+
 const fs = require('fs');
 const { get } = require('http');
 const path = require('path');
