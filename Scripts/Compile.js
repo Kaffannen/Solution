@@ -139,7 +139,7 @@ function createHTMLOutputs(prunedLines) {
 
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
-        const outputFileName = `${firstFileName}_bundle.js`;
+        const outputFileName = `${firstFileName}.html`;
 
         const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`);
         const document = dom.window.document;
