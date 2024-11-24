@@ -25,7 +25,7 @@ const path = require('path');
 
 const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
 const outputFolderPath = path.join(__dirname, '../CompiledBundles');
-const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
+const javascriptRootFolderPath = path.join(__dirname, '../');
 
 const dev = {
     mainsPath: path.join(__dirname, '../Javascript/DevMains'), 
