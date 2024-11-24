@@ -25,7 +25,8 @@ console.log(`\nAnalyzing files of folder: ${javascriptRootFolderPath}\n`);
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
 */
 
-let filelist = flattenFolder(javascriptRootFolderPath)
+function createFileObjects(javascriptRootFolderPath){
+    let filelist = flattenFolder(javascriptRootFolderPath)
     .map(file => (
         { 
             path: file,
@@ -33,51 +34,58 @@ let filelist = flattenFolder(javascriptRootFolderPath)
             provides: getClassDefinitionsFromFile(fs.readFileSync(file, 'utf8')),
             requires: []
          }))
-filelist.forEach(file => discoverDependencies(file, filelist));
+    filelist.forEach(file => discoverDependencies(file, filelist));
 
-
-function discoverDependencies(thisFile, allFiles) {
-    let content = fs.readFileSync(thisFile.path, 'utf8');
-    for (let otherFile of allFiles) {
-        if (thisFile.path === otherFile.path) continue;
-        otherFile.provides.forEach(classDef => {
-            const regex = new RegExp(`\\bnew\\s+${classDef}\\b|\\b${classDef}\\.\\b|\\bextends\\s+${classDef}\\b`, 'g');
-            if (regex.test(content)) {
-                thisFile.requires.push(classDef);
+    function discoverDependencies(thisFile, allFiles) {
+        let content = fs.readFileSync(thisFile.path, 'utf8');
+        for (let otherFile of allFiles) {
+            if (thisFile.path === otherFile.path) continue;
+            otherFile.provides.forEach(classDef => {
+                const regex = new RegExp(`\\bnew\\s+${classDef}\\b|\\b${classDef}\\.\\b|\\bextends\\s+${classDef}\\b`, 'g');
+                if (regex.test(content)) {
+                    thisFile.requires.push(classDef);
+                }
+            });
+        }
+    }
+    function flattenFolder(folder) {
+        let result = [];
+        const files = fs.readdirSync(folder);
+    
+        files.forEach(file => {
+            const filepath = path.join(folder, file);
+            const stat = fs.statSync(filepath);
+    
+            if (stat.isDirectory()) {
+                result = result.concat(flattenFolder(filepath));
+            } else {
+                result.push(filepath);
             }
         });
-    }
-}
     
-console.log("filelist:", JSON.stringify(filelist, null, 2));
-
-function flattenFolder(folder) {
-    let result = [];
-    const files = fs.readdirSync(folder);
-
-    files.forEach(file => {
-        const filepath = path.join(folder, file);
-        const stat = fs.statSync(filepath);
-
-        if (stat.isDirectory()) {
-            result = result.concat(flattenFolder(filepath));
-        } else {
-            result.push(filepath);
-        }
-    });
-
-    return result;
-}
-
-function getClassDefinitionsFromFile(content) {
-    regex = /class\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
-    let allMatches = [];
-    let match;
-    while ((match = regex.exec(content)) !== null) {
-        allMatches.push(match[0]);
+        return result;
     }
-    return Array.from(new Set(allMatches)).map(match => match.split(' ')[1]);
+    
+    function getClassDefinitionsFromFile(content) {
+        regex = /class\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
+        let allMatches = [];
+        let match;
+        while ((match = regex.exec(content)) !== null) {
+            allMatches.push(match[0]);
+        }
+        return Array.from(new Set(allMatches)).map(match => match.split(' ')[1]);
+    }
+    return filelist;
 }
+
+
+
+
+
+    
+console.log("filelist:", JSON.stringify(createFileObjects(javascriptRootFolderPath), null, 2));
+
+
 
 /*
 try {
