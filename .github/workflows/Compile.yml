@@ -38,10 +38,6 @@ jobs:
           cp -r Compiled/Dev/* Compiles/
           cp -r Compiled/Test/* Compiles/
           cp -r Compiled/Prod/* Compiles/
-          
-          mv Compiled/Dev/* Compiles/
-          mv Compiled/Test/* Compiles/
-          mv Compiled/Prod/* Compiles/
 
           git add Compiles/*
           git add Compiled/*
