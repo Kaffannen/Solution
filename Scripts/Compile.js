@@ -156,7 +156,7 @@ function createHTMLOutputs(prunedLines) {
         document.body.id = 'EzAnchor';
 
         line.forEach(fileObject => {
-            const scriptElement = document.createElement('script'); 
+            const scriptElement = document.createElement('script');
             const relativePath = fileObject.path.replace('/home/runner/work/Solution/Solution/Javascript', '../../Javascript');
             scriptElement.src = relativePath;
             document.head.appendChild(scriptElement);
