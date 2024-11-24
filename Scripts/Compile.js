@@ -14,10 +14,15 @@ const fs = require('fs');
 const { get } = require('http');
 const path = require('path');
 
-const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
-const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
-const outputFolderPath = path.join(__dirname, '../CompiledBundles');
+const mainsFolderPath = args.mainsFolderPath
+const javascriptRootFolderPath = args.javascriptRootFolderPath
+const outputFolderPath = args.outputFolderPath
 fs.mkdirSync(outputFolderPath, { recursive: true });
+
+//const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
+//const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
+//const outputFolderPath = path.join(__dirname, '../CompiledBundles');
+//fs.mkdirSync(outputFolderPath, { recursive: true });
 
 function traverseFolders(folder) {
     let result = [];
