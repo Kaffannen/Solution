@@ -11,15 +11,18 @@ Object.entries(args).forEach(([key, value]) => {
 });
 
 
-const fs = require('fs');
-const { get } = require('http');
-const path = require('path');
 
 const mainsFolderPath = args.mainsFolderPath
 const javascriptRootFolderPath = args.javascriptRootFolderPath
 const outputFolderPath = args.outputFolderPath
 fs.mkdirSync(outputFolderPath, { recursive: true });
 */
+
+
+const fs = require('fs');
+const { get } = require('http');
+const path = require('path');
+
 const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
 const outputFolderPath = path.join(__dirname, '../CompiledBundles');
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
