@@ -147,6 +147,7 @@ function createHTMLOutputs(prunedLines) {
 
         line.forEach(fileObject => {
             const scriptElement = document.createElement('script'); 
+            const relativePath = fileObject.path.replace('/home/runner/work/Solution/Solution/Javascript', '../../Javascript');
             scriptElement.src = fileObject.path;
             document.head.appendChild(scriptElement);
         });
