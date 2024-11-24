@@ -90,6 +90,7 @@ function traverseFolders(folder) {
     }
     function getMatchesFromContent(content, regex) {
         const matches = content.match(regex);
+        console.log("matches:", JSON.stringify(matches, null, 2));
         return [...new Set(matches || [])];
     }
     const classObjects = discoverDependencies(result);
