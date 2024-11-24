@@ -117,6 +117,7 @@ function createLines(mainFileObjects, allFileObjects) {
 }
 
 function createJavaScriptOutputs(prunedLines) {
+    console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
     const outputs = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
@@ -130,6 +131,7 @@ function createJavaScriptOutputs(prunedLines) {
 }
 
 function createHTMLOutputs(prunedLines) {
+    console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
     const outputs = [];
 
     const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`);
