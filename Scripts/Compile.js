@@ -128,7 +128,7 @@ function createLines(mainFileObjects, allFileObjects) {
             for (let dependency of fileObject.requires) {
                 let otherFile = fileObjects.find(f => f.provides.includes(dependency));
                 if (otherFile) {    
-                    createFileSet(fileset, otherFile, fileObjects);
+                    fileset.join(createFileSet(fileset, otherFile, fileObjects));
                 } else {
                     console.warn(`Dependency ${dependency} not found in fileObjects.`);
                 }
