@@ -109,17 +109,17 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
-        lines.push(createLine(mainFileObject, allFileObjects));
+        lines.push(createLine([], mainFileObject, allFileObjects));
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
-    function createLine(fileObject, fileObjects) {
-        let arr = [];
+    function createLine(arr, fileObject, fileObjects) {
         arr.push(fileObject);
+        otherfiles = fileObjects.filter(f => f.path !== fileObject.path);
         fileObject.requires.forEach(req => {
-            fileObjects.forEach(otherFile => {
+            otherfiles.forEach(otherFile => {
                 if (otherFile.provides.includes(req)) {
-                    arr = arr.concat(createLine(otherFile, fileObjects));
+                    arr = arr.concat(createLine(arr, otherFile, fileObjects));
                 }
             });
         });
