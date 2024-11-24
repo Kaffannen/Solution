@@ -128,7 +128,7 @@ function createJavaScriptOutputs(prunedLines) {
     const outputs = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
-        const outputFileName = `${firstFileName}_bundle.js`;
+        const outputFileName = `${firstFileName}_Bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
         outputs.push({ outputFileName, content });
