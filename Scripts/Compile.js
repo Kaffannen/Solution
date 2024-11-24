@@ -33,7 +33,7 @@ let filelist = flattenFolder(javascriptRootFolderPath)
             provides: getClassDefinitionsFromFile(fs.readFileSync(file, 'utf8')),
             requires: []
          }))
-    .forEach(file => discoverDependencies(file, filelist));
+filelist.forEach(file => discoverDependencies(file, filelist));
 
 
 function discoverDependencies(thisFile, allFiles) {
