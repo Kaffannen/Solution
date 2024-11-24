@@ -58,6 +58,8 @@ try {
 
 function compile({mainsPath, outputPath, outputType}, classObjectList) {
     console.log("mainsPath:", mainsPath);
+    console.log("outputPath:", outputPath);
+    console.log("outputType:", outputType);
     console.log("classObjectList:", JSON.stringify(classObjectList, null, 2));
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
     console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
