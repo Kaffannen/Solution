@@ -109,22 +109,25 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
-        let line = createLine([], mainFileObject, allFileObjects);
+        let line = createLine(mainFileObject, allFileObjects);
         console.log("line:", JSON.stringify(line, null, 2));
         lines.push(line);
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
-    function createLine(arr, fileObject, fileObjects) {
-        arr.push(fileObject);
-        otherfiles = fileObjects.filter(f => f.path !== fileObject.path);
-        for (requirement of fileObject.requires) {
-            let requiredFile = otherfiles.find(f => f.provides.includes(requirement));
-            if (requiredFile) {
-                arr = arr.concat(createLine(arr, requiredFile, otherfiles));
-            }
-        }
+    function createLine(fileObject, fileObjects) {
+        let fileSet = createFileSet(new Set(), mainFileObject, allFileObjects);
+        console.log("fileSet:", JSON.stringify(fileSet, null, 2));
+        let arr = sortTopologically(fileSet);
         return arr;
+        function createFileSet(fileset, mainFileObject, allFileObjects){
+            let dependencies = mainFileObject.requires.map(req => allFileObjects.find(file => file.provides.includes(req)));
+            dependencies.forEach(dependency => {
+                createFileSet(fileset, dependency, allFileObjects);
+            });
+            fileset.add(mainFileObject);
+            return fileset;
+        }
     }
 
 /*
