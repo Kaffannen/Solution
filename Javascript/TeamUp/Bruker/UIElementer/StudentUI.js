@@ -5,6 +5,7 @@ class StudentUI extends UIElement {
         let htmlString
             =`
 <fieldset class="fieldset-reset">
+    <p>Velkommen til TeamUp</p>
     <div data-anchor=${StudentGroupUIE.name}></div>
 </fieldset>
             `;
