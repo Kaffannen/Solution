@@ -71,7 +71,7 @@ function createLines(mainFileObjects, allFileObjects) {
         let arr = [];
         arr.push(fileObject);
         let dependencies = fileObjects.filter(f => fileObject.requires.includes(f.provides));
-        console.log("dependencies of", fileObject.provides, ":", JSON.stringify(fileObject.dependencies, null, 2));
+        console.log("dependencies of", fileObject.provides, ":", JSON.stringify(fileObject.requires, null, 2));
         console.log("dependencies of", fileObject.provides, ":", JSON.stringify(dependencies, null, 2));
         dependencies.forEach(dependency => {
             arr = arr.concat(createLine(dependency, fileObjects));
@@ -83,16 +83,19 @@ function createLines(mainFileObjects, allFileObjects) {
 const lines = createLines(mainFileObjects, allFileObjects);
 console.log("lines:", JSON.stringify(lines, null, 2));
 
-function pruneLines(lines) {
+function pruneAndReverseLines(lines) {
+    return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
+    /**
     const reversed = lines.map(line => line.reverse());
     function removeDuplicates(arr) {
         return [...new Set(arr)];
     }
     const prunedLines = lines.map(line => removeDuplicates(line));
     return prunedLines.map(line => line.reverse());
+    **/
 }
 
-const prunedLines = pruneLines(lines);
+const prunedLines = pruneAndReverseLines(lines);
 console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
 
 function createBundles(prunedLines) {
