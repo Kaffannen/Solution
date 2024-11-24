@@ -67,14 +67,14 @@ compile(dev, allFileObjects);
 compile(test, allFileObjects);
 compile(prod, allFileObjects);
 
-
+/*
 const mainFileObjects = allFileObjects.filter(fileObject => fileObject.path.includes(mainsFolderPath));
 const prunedLines = pruneAndReverseLines(lines);
 const bundles = createJavaScriptBundle(prunedLines);
 bundles.forEach(bundle => {
     fs.writeFileSync(path.join(outputFolderPath, bundle.bundleFileName), bundle.bundle);
 });
-
+*/
 function traverseFolders(folder) {
     let result = [];
     const files = fs.readdirSync(folder);
@@ -163,35 +163,18 @@ function createJavaScriptBundle(prunedLines) {
         outputs.push({ bundleFileName, bundle: content });
     });
     return outputs;
-    //fs.writeFileSync(path.join(outputPath, output.outputFileName), output.content);
 }
 
 function createHTMLOutputs(prunedLines) {
-    const bundles = [];
+    const outputs = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length-1].path, '.js');
-        const bundleFileName = `${firstFileName}_bundle.html`;
-        const bundle = line.map(fileObject => fs.readFileSync
+        const outPutFileName = `${firstFileName}_bundle.js`;
+        const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');
-        const htmlContent = `
-            <!DOCTYPE html>
-            <html lang="en">
-            <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>${firstFileName} Bundle</title>
-            </head>
-            <body>
-            <h1>hei</h1>
-            <script>
-                ${bundle}
-            </script>
-            </body>
-            </html>
-        `;
-        bundles.push({ bundleFileName, bundle: htmlContent });
+        outputs.push({ bundleFileName, bundle: content });
     });
-    return bundles;
+    return outputs;
 }
 
 
