@@ -20,8 +20,9 @@ const prod = {
     outputType: 'Javascript'
 };
 
+console.log("Analysing files of folder: ", javascriptRootFolderPath);
 const allFileObjects = traverseFolders(javascriptRootFolderPath);
-console.log("Javascript files analyzed:", JSON.stringify(allFileObjects, null, 2));
+
 
 try {
     compile(dev, allFileObjects);
@@ -69,9 +70,6 @@ function traverseFolders(folder) {
             const classDeclarationRegex = /class\s[a-zA-Z_$][a-zA-Z0-9_$]*\s/g;
             const matches = getMatchesFromContent(content, classDeclarationRegex)
                 .map(match => match.trim());
-            if (matches.length !== 1) {
-                console.log(`File ${filepath} contains ${matches.length} class declarations. Expected exactly one.`);
-            }
             result.push({
                 path: filepath,
                 provides: matches.length > 0 ? matches[0].split(' ')[1] : "",
@@ -99,7 +97,11 @@ function traverseFolders(folder) {
         const matches = content.match(regex);
         return [...new Set(matches || [])];
     }
-    return discoverDependencies(result);
+    const classObjects = discoverDependencies(result);
+    for (i = 0; i < classObjects.length; i++) {
+        console.log(`$i: ${classObjects[i.path]} \n\tprovides: ${classObjects[i].provides} \n\trequires: ${classObjects[i].requires}`);
+    }
+    return classObjects;
 }
 
 function createLines(mainFileObjects, allFileObjects) {
@@ -114,8 +116,6 @@ function createLines(mainFileObjects, allFileObjects) {
         let arr = [];
         arr.push(fileObject);
         let dependencies = fileObjects.filter(f => fileObject.requires.includes(f.provides));
-        console.log("dependencies of", fileObject.provides, ":", JSON.stringify(fileObject.requires, null, 2));
-        console.log("dependencies of", fileObject.provides, ":", JSON.stringify(dependencies, null, 2));
         dependencies.forEach(dependency => {
             arr = arr.concat(createLine(dependency, fileObjects));
         });
