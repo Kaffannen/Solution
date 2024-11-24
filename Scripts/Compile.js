@@ -5,6 +5,7 @@ const { JSDOM } = require('jsdom');
 
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
 
+/*
 const dev = {
     mainsPath: path.join(__dirname, '../Javascript/Mains/DevMains'),
     outputPath: path.join(__dirname, '../Compiled/Dev'),
@@ -20,10 +21,8 @@ const prod = {
     outputPath: path.join(__dirname, '../Compiled/Prod'),
     outputType: 'Javascript'
 };
-
+*/
 console.log(`\nAnalyzing files of folder: ${javascriptRootFolderPath}\n`);
-
-
 
 function createFileObjects(javascriptRootFolderPath){
     let filelist = flattenFolder(javascriptRootFolderPath)
@@ -78,7 +77,8 @@ function createFileObjects(javascriptRootFolderPath){
     return filelist;
 }
 const allFileObjects = createFileObjects(javascriptRootFolderPath);
-
+console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
+/*
 try {
     compile(dev, allFileObjects);
     compile(test, allFileObjects);
@@ -105,7 +105,7 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
         console.log(`File ${output.outputFileName} created in ${outputPath} with content:\n${output.content}\n`);
     });
 }
-
+*/
 /*
 function traverseFolders(folder) {
     let result = [];
