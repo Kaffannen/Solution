@@ -1,5 +1,5 @@
 let api = new API()
-        .setCanvasApi(new CanvasAPITeacherMock('teacher'))
+        .setCanvasApi(new CanvasAPITeacherMock())
         .setMsgBroker(new MsgBrokerMock())
         .setPersistence(new PersistenceMock())
 

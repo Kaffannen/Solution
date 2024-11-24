@@ -1,7 +1,7 @@
 let program;
 document.addEventListener("DOMContentLoaded", async function () {
     let api = new API()
-        .setCanvasApi(new CanvasAPIMock("underviser"))
+        .setCanvasApi(new CanvasAPIMock())
         .setMsgBroker(new MsgBrokerMock())
         .setPersistence(new PersistenceMock())
     window.program = new BasicSolution(api)

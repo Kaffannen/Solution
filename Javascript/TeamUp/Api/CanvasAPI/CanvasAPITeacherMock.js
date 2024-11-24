@@ -1,16 +1,4 @@
 class CanvasAPIMock {
-  #rolle;
-  constructor(rolle) {
-    if (rolle === "student") {
-      this.#rolle = "StudentEnrollment"
-    }
-    else if (rolle === "underviser") {
-      this.#rolle = "TeacherEnrollment"
-    }
-    else {
-      throw new Error("Ugyldig rolle, velg student eller underviser")
-    }
-  }
 
   getUserInfo() {
     return new Promise((resolve, reject) => {
