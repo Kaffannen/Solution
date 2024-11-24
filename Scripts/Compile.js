@@ -52,7 +52,7 @@ try {
     compile(test, allFileObjects);
     compile(prod, allFileObjects);
 } catch (error) {
-    console.log(error);
+    console.log("error:", error);
 }
 
 
