@@ -30,12 +30,8 @@ jobs:
           # Set up Git configuration
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-          # Move any file in dist to the Compiles directory
-          mkdir -p Compiles2
-          mv dist/* Compiles2/
           
-          git add Compiles/*
+          git add CompiledBundles/*
           git commit -m "Add/update compiled bundles JS files"
           
           # Authenticate with the token

@@ -4,7 +4,7 @@ const path = require('path');
 
 const mainsFolderPath = path.join(__dirname, '../Javascript/Mains');
 const javascriptRootFolderPath = path.join(__dirname, '../Javascript');
-const outputFolderPath = path.join(__dirname, '../dist');
+const outputFolderPath = path.join(__dirname, '../CompiledBundles');
 fs.mkdirSync(outputFolderPath, { recursive: true });
 
 function traverseFolders(folder) {
