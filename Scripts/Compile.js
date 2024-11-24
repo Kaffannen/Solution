@@ -22,7 +22,7 @@ const prod = {
 };
 
 console.log(`\nAnalyzing files of folder: ${javascriptRootFolderPath}\n`);
-const allFileObjects = traverseFolders(javascriptRootFolderPath);
+
 
 
 function createFileObjects(javascriptRootFolderPath){
@@ -77,7 +77,7 @@ function createFileObjects(javascriptRootFolderPath){
     }
     return filelist;
 }
-
+const allFileObjects = createFileObjects(javascriptRootFolderPath);
 
 try {
     compile(dev, allFileObjects);
