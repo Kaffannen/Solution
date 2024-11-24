@@ -147,6 +147,7 @@ function createHTMLOutputs(prunedLines) {
             (fileObject.path, 'utf8')).join('\n');
         outputs.push({ outputFileName, htmlString });
     });
+    console.log("outputs:", JSON.stringify(outputs, null, 2));
     return outputs;
 }
 
