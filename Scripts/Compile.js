@@ -39,7 +39,7 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     lines.forEach(line => {
         line.forEach(fileObject => {
             console.log(`\t${fileObject.path}`);
-        }
+        });
     });
     let outputs;
     if (outputType === 'HTML')
