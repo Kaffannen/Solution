@@ -46,13 +46,16 @@ const prod = {
 
 function compile({mainsPath, outputPath, outputType}, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
+    console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
     const lines = createLines(mainFileObjects, classObjectList);
     const prunedLines = pruneAndReverseLines(lines);
+    console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
     let outputs;
     if (outputType === 'HTML') 
         outputs = createHTMLOutputs(prunedLines);
     else if (outputType === 'Javascript') 
         outputs = createJavaScriptBundle(prunedLines);    
+    console.log("outputs:", JSON.stringify(outputs, null, 2));
     outputs.forEach(output => {
         fs.mkdirSync(outputPath, { recursive: true });
         fs.writeFileSync(path.join(outputPath, output.outputFileName), output.content);
