@@ -159,8 +159,10 @@ function createLines(mainFileObjects, allFileObjects) {
                 });
                 workdone = true;
             }
-            console.log("topologically sorted:", JSON.stringify(arr, null, 2));
-            console.log("remainder:", JSON.stringify(fileArray.map, null, 2));
+            console.log(`${arr.length} files sorted topologically:`, JSON.stringify(arr, null, 2));
+            console.log(`${fileArray.length} files remaining:`, JSON.stringify(fileArray, null, 2));
+            //console.log("topologically sorted:", JSON.stringify(arr, null, 2));
+            //console.log("remainder:", JSON.stringify(fileArray.map, null, 2));
             
             return arr;
         }
