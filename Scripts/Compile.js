@@ -80,6 +80,7 @@ function createFileObjects(javascriptRootFolderPath) {
 }
 const allFileObjects = createFileObjects(javascriptRootFolderPath);
 console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
+console.log("***********************\n\n");
 
 try {
     compile(dev, allFileObjects);
@@ -113,9 +114,9 @@ function createLines(mainFileObjects, allFileObjects) {
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
     function createLine(fileObject, fileObjects) {
-        console.log(`before createFileSet() fileObjects size: ${fileObjects.length}`);
+        //console.log(`before createFileSet() fileObjects size: ${fileObjects.length}`);
         let fileSet = createFileSet(new Set().add(fileObject), fileObjects);
-        console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
+        //console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
         //console.log("fileset entries:", JSON.stringify(Array.from(fileSet), null, 2));
         let arr = sortTopologically(fileSet);
         //console.log(`line belonging to ${fileObject.path}: has ${arr.length} files.`);
@@ -123,27 +124,24 @@ function createLines(mainFileObjects, allFileObjects) {
         return arr;
 
         function createFileSet(fileset, fileObjects) {
-            if (fileset.size === 1) 
-                console.log(`Creating fileset for: ${Array.from(fileset)[0].path}`);
-            else
-                console.log(`Bad error: fileset size is ${fileset.size}`);
-            console.log(`\tfileObjects size: ${fileObjects.length}`);
+            console.log(`Creating fileset for: ${path.basename(Array.from(fileset)[0].path)} Fileset initial size is ${fileset.size}`);
             let workdone = true;
             while (workdone) {
                 workdone = false;
                 fileset.forEach(file => {
+                    console.log(`Checking file ${path.basename(file.path)} for requirements.`);
                     file.requires.forEach(req => {
+                        console.log(`File ${path.basename(file.path)} requires ${req}.`);
                         let requiredFile = fileObjects.find(f => f.provides.includes(req));
                         if (requiredFile) {
+                            console.log(`file ${path.basename(requiredFile.path)} provides it.`);
                             if (!fileset.has(requiredFile)) {
-                                console.log(`File ${file.path} requires ${req} and file ${requiredFile.path} provides it.`);
-                                console.log(`Adding file ${requiredFile.path} to fileset.`);
+                                console.log(`File is ${path.basename(requiredFile.path)}, adding to set.`);
                                 fileset.add(requiredFile);
                                 workdone = true;
                             }
                             else{
-                                console.log(`File ${file.path} requires ${req} and file ${requiredFile.path} provides it.`);
-                                console.log(`File ${requiredFile.path} already in fileset.`);
+                                console.log(`File ${requiredFile.path} already in fileset, skipping.`);
                             }
                         }
                         else
