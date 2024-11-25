@@ -91,10 +91,7 @@ try {
 
 function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     const mainFileObjects = classObjectList.filter(fileObject => fileObject.path.includes(mainsPath));
-    //console.log("mainFileObjects:", JSON.stringify(mainFileObjects, null, 2));
-    //console.log("classObjectList:", JSON.stringify(classObjectList, null, 2));
     const lines = createLines(mainFileObjects, classObjectList);
-    //console.log("lines:", JSON.stringify(lines, null, 2));
     let outputs;
     if (outputType === 'HTML')
         outputs = createHTMLOutputs(lines);
@@ -103,7 +100,6 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
     outputs.forEach(output => {
         fs.mkdirSync(outputPath, { recursive: true });
         fs.writeFileSync(path.join(outputPath, output.outputFileName), output.content);
-        //console.log(`File ${output.outputFileName} created in ${outputPath} with content:\n${output.content}\n`);
     });
 }
 
@@ -111,6 +107,7 @@ function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
         let line = createLine(mainFileObject, allFileObjects);
+        console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
         console.log("line:", JSON.stringify(line, null, 2));
         lines.push(line);
     });
@@ -118,7 +115,6 @@ function createLines(mainFileObjects, allFileObjects) {
 
     function createLine(fileObject, fileObjects) {
         let fileSet = createFileSet(new Set().add(fileObject), fileObjects);
-        console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
         let arr = sortTopologically(fileSet);
         return arr;
         
@@ -192,7 +188,6 @@ function createLines(mainFileObjects, allFileObjects) {
 }
 
 function createJavaScriptOutputs(prunedLines) {
-    //console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
     const outputs = [];
     prunedLines.forEach(line => {
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
@@ -201,12 +196,10 @@ function createJavaScriptOutputs(prunedLines) {
             (fileObject.path, 'utf8')).join('\n');
         outputs.push({ outputFileName, content });
     });
-    //console.log("outputs:", JSON.stringify(outputs, null, 2));
     return outputs;
 }
 
 function createHTMLOutputs(prunedLines) {
-    //console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
     const outputs = [];
 
     prunedLines.forEach(line => {
@@ -237,7 +230,6 @@ function createHTMLOutputs(prunedLines) {
             (fileObject.path, 'utf8')).join('\n');
         outputs.push({ outputFileName, content: prettyHtmlString });
     });
-    //console.log("outputs:", JSON.stringify(outputs, null, 2));
     return outputs;
 }
 
