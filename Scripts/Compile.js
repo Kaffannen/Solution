@@ -117,21 +117,27 @@ function createLines(mainFileObjects, allFileObjects) {
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
     function createLine(fileObject, fileObjects) {
-        let fileSet = createFileSet(new Set(), fileObject, fileObjects);
-        console.log("fileSet:", JSON.stringify(fileSet, null, 2));
+        let fileSet = createFileSet(new Set().add(fileObject), fileObjects);
+        console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
         let arr = sortTopologically(fileSet);
         return arr;
         
-        function createFileSet(fileset, fileObject, fileObjects) {
-            if (fileset.has(fileObject)) return fileset;
-            fileset.add(fileObject);
-            for (let dependency of fileObject.requires) {
-                let otherFile = fileObjects.find(f => f.provides.includes(dependency));
-                if (otherFile) {    
-                    fileset.join(createFileSet(fileset, otherFile, fileObjects));
-                } else {
-                    console.warn(`Dependency ${dependency} not found in fileObjects.`);
-                }
+        function createFileSet(fileset, fileObjects) {
+            let workdone = true;
+            while (workdone) {
+                workdone = false;
+                fileset.forEach(file => {
+                    file.requires.forEach(req => {
+                        let requiredFile = fileObjects.find(f => f.provides.includes(req));
+                        if (requiredFile) 
+                            if (!fileset.has(requiredFile)) {
+                                fileset.add(requiredFile);
+                                workdone = true;
+                            }
+                        else
+                            console.log(`File ${file.path} requires ${req} but no file provides it.`);
+                    });
+                });       
             }
             return fileset;
         }
