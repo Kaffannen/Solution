@@ -155,6 +155,8 @@ function createLines(mainFileObjects, allFileObjects) {
                     file.requires = file.requires.filter(req => !noDependencies.map(f => f.provides).flat().includes(req));
                 });
             }
+            if (fileArray.length > 0)
+                console.log(`The following files have circular dependencies: ${fileArray.map(file => file.path).join(', ')}`);
             return arr;
         }
         return arr;
