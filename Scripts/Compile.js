@@ -184,7 +184,7 @@ function createLines(mainFileObjects, allFileObjects) {
         return arr;
     }
     */
-}
+
 
 function createJavaScriptOutputs(prunedLines) {
     const outputs = [];
