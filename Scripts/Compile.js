@@ -219,7 +219,7 @@ function createHTMLOutputs(prunedLines) {
 
     prunedLines.forEach(line => {
         line = line.reverse();
-        console.log("line:", JSON.stringify(line, null, 2));
+        //console.log("line:", JSON.stringify(line, null, 2));
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
         const outputFileName = `${firstFileName}.html`;
 
