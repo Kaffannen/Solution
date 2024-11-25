@@ -214,6 +214,7 @@ function createLine(fileObject, fileObjects) {
 function createJavaScriptOutputs(prunedLines) {
     const outputs = [];
     prunedLines.forEach(line => {
+        line = line.reverse();
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
         const outputFileName = `${firstFileName}_Bundle.js`;
         const content = line.map(fileObject => fs.readFileSync
