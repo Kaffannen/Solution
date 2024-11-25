@@ -123,7 +123,10 @@ function createLines(mainFileObjects, allFileObjects) {
         return arr;
 
         function createFileSet(fileset, fileObjects) {
-            console.log(`fileset firstele: ${Array.from(fileset)[0].path}`);
+            if (fileset.size === 1) 
+                console.log(`Creating fileset for: ${Array.from(fileset)[0].provides[0]}`);
+            else
+                console.log(`Bad error: fileset size is ${fileset.size}`);
             console.log(`fileObjects size: ${fileObjects.length}`);
             let workdone = true;
             while (workdone) {
