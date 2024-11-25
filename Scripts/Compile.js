@@ -148,19 +148,14 @@ function createLines(mainFileObjects, allFileObjects) {
             while (workdone) {
                 workdone = false;
                 let noDependencies = fileArray.filter(file => file.requires.length === 0);
-                arr.concat(noDependencies);
-                noDependencies.forEach(file => {
-                    file.provides.forEach(providedClass => {
-                        fileArray.forEach(f => {
-                            f.requires = f.requires.filter(req => req !== providedClass);
-                        });
-                    });
-                    workdone = true;
-                });
+                fileArray = fileArray.filter(file => !noDependencies.includes(file));
+                arr = arr.concat(noDependencies);
+                workdone = noDependencies.length > 0;
             }
-            return arr;
         }
+        return arr;
     }
+}
 
     /*
         function createLine(fileObject, fileObjects) {
