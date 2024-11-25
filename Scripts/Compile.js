@@ -84,8 +84,8 @@ console.log("***********************\n\n");
 
 try {
     compile(dev, allFileObjects);
-    //compile(test, allFileObjects);
-    //compile(prod, allFileObjects);
+    compile(test, allFileObjects);
+    compile(prod, allFileObjects);
 } catch (error) {
     console.log("error:", error);
 }
