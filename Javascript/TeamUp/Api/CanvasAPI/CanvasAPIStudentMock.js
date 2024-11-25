@@ -142,7 +142,7 @@ class CanvasAPIStudentMock {
     })
   }
   async getSelfGroup() {
-    selfGroup = {
+    let selfGroup = {
       "id": "5555",
       "name:": "Gruppe 22",
       members: [

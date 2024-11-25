@@ -107,7 +107,9 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
+        console.log(`allFileObjects.length before: ${allFileObjects.length}`);
         let line = createLine(mainFileObject, allFileObjects);
+        console.log(`allFileObjects.length after: ${allFileObjects.length}`);
         lines.push(line);
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
@@ -240,7 +242,7 @@ function createHTMLOutputs(prunedLines) {
 
         const htmlString = dom.serialize();
         const prettyHtmlString = htmlString.replace(/></g, '>\n<');
-        console.log(prettyHtmlString);
+        //console.log(prettyHtmlString);
 
         const content = line.map(fileObject => fs.readFileSync
             (fileObject.path, 'utf8')).join('\n');

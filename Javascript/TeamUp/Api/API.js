@@ -1,43 +1,43 @@
-class API{
+class API {
     #canvasApi;
     #msgBroker;
     #persistence;
 
-setCanvasApi(canvasApi){
-    this.#canvasApi = canvasApi;
-    return this;
-}
-setMsgBroker(msgBroker){
-    this.#msgBroker = msgBroker;
-    return this;
-}
-setPersistence(persistence){
-    this.#persistence = persistence;
-    return this;
-}
+    setCanvasApi(canvasApi) {
+        this.#canvasApi = canvasApi;
+        return this;
+    }
+    setMsgBroker(msgBroker) {
+        this.#msgBroker = msgBroker;
+        return this;
+    }
+    setPersistence(persistence) {
+        this.#persistence = persistence;
+        return this;
+    }
 
-    onLoadInfo(){
+    onLoadInfo() {
         return Promise.all([
             this.#canvasApi.getUserInfo(),
             this.#canvasApi.getCourseInfo(),
             this.#canvasApi.getAssignmentInfo()])
-        .then(([user, course, assignment]) => {
-            return {
-            id: user.id,
-            user: user,
-            course: course,
-            assignment: assignment
-        }
-    })
+            .then(([user, course, assignment]) => {
+                return {
+                    id: user.id,
+                    user: user,
+                    course: course,
+                    assignment: assignment
+                }
+            })
     }
-    fetchGroup(assignmentGroupId){
-        return this.#canvasApi.getAssignmentGroup(assignmentGroupId)
+    fetchGroup(assignmentGroupId) {
+        return this.#canvasApi.getSelfGroup(assignmentGroupId)
     }
-    fetchGroupMembers(selfId){
+    fetchGroupMembers(selfId) {
         return this.#canvasApi.getGroupMembers(selfId)
     }
 
-    fetchObject(endpoint, rejectreason, body= null) {
+    fetchObject(endpoint, rejectreason, body = null) {
         return new Promise((resolve, reject) => {
             fetch(endpoint, {
                 method: 'POST',
@@ -66,7 +66,7 @@ setPersistence(persistence){
                 });
         });
     }
-    fetchGroups(assignmentId){
+    fetchGroups(assignmentId) {
         return this.#canvasApi.fetchGroups()
     }
 }

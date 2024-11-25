@@ -14,6 +14,12 @@ class StudentGroup extends ElementNode {
         }
     };
     fetchGroupMembers(){
+        this.getData().members.forEach(memberInfo => {
+            let member = new GroupMember(memberInfo,this)
+                .defineUIElements()
+                .setState(GroupMember.STATES.ATTACHED);
+        });
+        /**
         program.getApi().fetchGroupMembers(this.getParentNode().getData().id)
             .then(groupMembersInfo => {
                 groupMembersInfo.forEach(memberInfo => {
@@ -25,5 +31,6 @@ class StudentGroup extends ElementNode {
             .catch(error => {
                 console.log("Error fetching group members: " + error);
             });
+             */
     }
 }
