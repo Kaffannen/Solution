@@ -114,6 +114,7 @@ function createLines(mainFileObjects, allFileObjects) {
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
     function createLine(fileObject, fileObjects) {
+        fileObjects = createFileObjects(javascriptRootFolderPath)
         //console.log(`before createFileSet() fileObjects size: ${fileObjects.length}`);
         let fileSet = createFileSet(new Set().add(fileObject), fileObjects);
         //console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
@@ -141,11 +142,11 @@ function createLines(mainFileObjects, allFileObjects) {
                                 workdone = true;
                             }
                             else{
-                                console.log(`File ${requiredFile.path} already in fileset, skipping.`);
+                                console.log(`File ${path.basename(requiredFile.path)} already in fileset, skipping.`);
                             }
                         }
                         else
-                            console.log(`File ${file.path} requires ${req} but no file provides it.`);
+                            console.log(`File ${path.basename(file.path)} requires ${req} but no file provides it.`);
                     });
                 });
             }
