@@ -25,15 +25,15 @@ const prod = {
 
 console.log(`\nAnalyzing files of folder: ${javascriptRootFolderPath}\n`);
 
-function createFileObjects(javascriptRootFolderPath){
+function createFileObjects(javascriptRootFolderPath) {
     let filelist = flattenFolder(javascriptRootFolderPath)
-    .map(file => (
-        { 
-            path: file,
-            //content: fs.readFileSync(file, 'utf8'),
-            provides: getClassDefinitionsFromFile(fs.readFileSync(file, 'utf8')),
-            requires: []
-         }))
+        .map(file => (
+            {
+                path: file,
+                //content: fs.readFileSync(file, 'utf8'),
+                provides: getClassDefinitionsFromFile(fs.readFileSync(file, 'utf8')),
+                requires: []
+            }))
     filelist.forEach(file => discoverDependencies(file, filelist));
 
     function discoverDependencies(thisFile, allFiles) {
@@ -51,21 +51,21 @@ function createFileObjects(javascriptRootFolderPath){
     function flattenFolder(folder) {
         let result = [];
         const files = fs.readdirSync(folder);
-    
+
         files.forEach(file => {
             const filepath = path.join(folder, file);
             const stat = fs.statSync(filepath);
-    
+
             if (stat.isDirectory()) {
                 result = result.concat(flattenFolder(filepath));
             } else {
                 result.push(filepath);
             }
         });
-    
+
         return result;
     }
-    
+
     function getClassDefinitionsFromFile(content) {
         regex = /class\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
         let allMatches = [];
@@ -114,10 +114,10 @@ function createLines(mainFileObjects, allFileObjects) {
     function createLine(fileObject, fileObjects) {
         let fileSet = createFileSet(new Set().add(fileObject), fileObjects);
         console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
-        console.log("fileset entries:", JSON.stringify(fileSet, null, 2));
+        console.log("fileset entries:", JSON.stringify(Array.from(fileSet), null, 2));
         let arr = sortTopologically(fileSet);
         return arr;
-        
+
         function createFileSet(fileset, fileObjects) {
             let workdone = true;
             while (workdone) {
@@ -125,23 +125,24 @@ function createLines(mainFileObjects, allFileObjects) {
                 fileset.forEach(file => {
                     file.requires.forEach(req => {
                         let requiredFile = fileObjects.find(f => f.provides.includes(req));
-                        if (requiredFile) 
+                        if (requiredFile) {
                             if (!fileset.has(requiredFile)) {
                                 fileset.add(requiredFile);
                                 workdone = true;
                             }
+                        }
                         else
                             console.log(`File ${file.path} requires ${req} but no file provides it.`);
                     });
-                });       
+                });
             }
             return fileset;
         }
-        
+
         function sortTopologically(fileset) {
             let sorted = [];
             let visited = new Set();
-            
+
             function visit(file) {
                 if (!visited.has(file)) {
                     visited.add(file);
@@ -152,27 +153,27 @@ function createLines(mainFileObjects, allFileObjects) {
                     sorted.push(file);
                 }
             }
-            
+
             fileset.forEach(file => visit(file));
             return sorted;
         }
     }
 
-/*
-    function createLine(fileObject, fileObjects) {
-        let arr = [];
-        arr.push(fileObject);
-        fileObjects.forEach(otherFile => {
-            if (fileObject.path === otherFile.path) return;
-            const intersection = fileObject.requires.filter(req => otherFile.provides.includes(req));
-            if (intersection.length > 0) {
-                fileObject.requires = fileObject.requires.filter(req => !intersection.includes(req));
-                arr = arr.concat(createLine(otherFile, fileObjects));
-            }
-        });
-        return arr;
-    }
-*/
+    /*
+        function createLine(fileObject, fileObjects) {
+            let arr = [];
+            arr.push(fileObject);
+            fileObjects.forEach(otherFile => {
+                if (fileObject.path === otherFile.path) return;
+                const intersection = fileObject.requires.filter(req => otherFile.provides.includes(req));
+                if (intersection.length > 0) {
+                    fileObject.requires = fileObject.requires.filter(req => !intersection.includes(req));
+                    arr = arr.concat(createLine(otherFile, fileObjects));
+                }
+            });
+            return arr;
+        }
+    */
 
     /*
     function createLine(fileObject, fileObjects) {
