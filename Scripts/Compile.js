@@ -127,7 +127,7 @@ function createLines(mainFileObjects, allFileObjects) {
                 console.log(`Creating fileset for: ${Array.from(fileset)[0].path}`);
             else
                 console.log(`Bad error: fileset size is ${fileset.size}`);
-            console.log(`fileObjects size: ${fileObjects.length}`);
+            console.log(`\tfileObjects size: ${fileObjects.length}`);
             let workdone = true;
             while (workdone) {
                 workdone = false;
@@ -136,8 +136,14 @@ function createLines(mainFileObjects, allFileObjects) {
                         let requiredFile = fileObjects.find(f => f.provides.includes(req));
                         if (requiredFile) {
                             if (!fileset.has(requiredFile)) {
+                                console.log(`File ${file.path} requires ${req} and file ${requiredFile.path} provides it.`);
+                                console.log(`Adding file ${requiredFile.path} to fileset.`);
                                 fileset.add(requiredFile);
                                 workdone = true;
+                            }
+                            else{
+                                console.log(`File ${file.path} requires ${req} and file ${requiredFile.path} provides it.`);
+                                console.log(`File ${requiredFile.path} already in fileset.`);
                             }
                         }
                         else
