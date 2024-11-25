@@ -114,7 +114,7 @@ function createLines(mainFileObjects, allFileObjects) {
     function createLine(fileObject, fileObjects) {
         let fileSet = createFileSet(new Set().add(fileObject), fileObjects);
         console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
-        //console.log("fileset entries:", JSON.stringify(Array.from(fileSet), null, 2));
+        console.log("fileset entries:", JSON.stringify(Array.from(fileSet), null, 2));
         let arr = sortTopologically(fileSet);
         console.log(`line belonging to ${fileObject.path}: has ${arr.length} files.`);
         console.log("line entries:", JSON.stringify(arr, null, 2));
