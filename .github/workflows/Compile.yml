@@ -38,7 +38,7 @@ jobs:
           cp -r Compiled/Test/* Compiles/
           cp -r Compiled/Prod/* Compiles/
 
-          git add Compiles/*
+          #git add Compiles/*
           git add Compiled/*
 
           git commit -m "Add/update compiled bundles JS files"
