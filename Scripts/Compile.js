@@ -107,9 +107,7 @@ function compile({ mainsPath, outputPath, outputType }, classObjectList) {
 function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
-        console.log(`allFileObjects.length before: ${allFileObjects.length}`);
         let line = createLine(mainFileObject, allFileObjects);
-        console.log(`allFileObjects.length after: ${allFileObjects.length}`);
         lines.push(line);
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
@@ -124,6 +122,7 @@ function createLines(mainFileObjects, allFileObjects) {
         return arr;
 
         function createFileSet(fileset, fileObjects) {
+            console.log(`fileset firstele: ${Array.from(fileset)[0].path}`);
             let workdone = true;
             while (workdone) {
                 workdone = false;
