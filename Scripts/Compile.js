@@ -216,6 +216,7 @@ function createHTMLOutputs(prunedLines) {
     const outputs = [];
 
     prunedLines.forEach(line => {
+        console.log("line:", JSON.stringify(line, null, 2));
         const firstFileName = path.basename(line[line.length - 1].path, '.js');
         const outputFileName = `${firstFileName}.html`;
 
