@@ -78,7 +78,7 @@ function createFileObjects(javascriptRootFolderPath) {
     return filelist;
 }
 const allFileObjects = createFileObjects(javascriptRootFolderPath);
-console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
+//console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
 
 try {
     compile(dev, allFileObjects);
@@ -113,7 +113,7 @@ function createLines(mainFileObjects, allFileObjects) {
 
     function createLine(fileObject, fileObjects) {
         let fileSet = createFileSet(new Set().add(fileObject), fileObjects);
-        //console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
+        console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
         //console.log("fileset entries:", JSON.stringify(Array.from(fileSet), null, 2));
         let arr = sortTopologically(fileSet);
         console.log(`line belonging to ${fileObject.path}: has ${arr.length} files.`);
@@ -142,19 +142,18 @@ function createLines(mainFileObjects, allFileObjects) {
         }
 
         function sortTopologically(fileset) {
+            let fileArray = Array.from(fileset);
             let workdone = true;
             let arr = []
             while (workdone) {
                 workdone = false;
-                let noDependencies = Array.from(fileset).filter(file => file.requires.size === 0);
+                let noDependencies = fileArray.filter(file => file.requires.length === 0);
                 noDependencies.forEach(file => {
                     arr.push(file);
-                    fileset.delete(file);
-                    fileset.forEach(otherFile => {
-                        file.provides.forEach(prov => {
-                            if (otherFile.requires.has(prov)) {
-                                otherFile.requires = otherFile.requires.filter(req => req !== prov);
-                            }
+                    fileArray = fileArray.filter(f => f !== file);
+                    file.provides.forEach(providedClass => {
+                        fileArray.forEach(f => {
+                            f.requires = f.requires.filter(req => req !== providedClass);
                         });
                     });
                     workdone = true;
