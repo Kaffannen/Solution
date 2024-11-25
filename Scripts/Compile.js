@@ -151,6 +151,9 @@ function createLines(mainFileObjects, allFileObjects) {
                 fileArray = fileArray.filter(file => !noDependencies.includes(file));
                 arr = arr.concat(noDependencies);
                 workdone = noDependencies.length > 0;
+                fileArray.forEach(file => {
+                    file.requires = file.requires.filter(req => !noDependencies.map(f => f.provides).flat().includes(req));
+                });
             }
             return arr;
         }
