@@ -83,8 +83,8 @@ const allFileObjects = createFileObjects(javascriptRootFolderPath);
 
 try {
     compile(dev, allFileObjects);
-    compile(test, allFileObjects);
-    compile(prod, allFileObjects);
+    //compile(test, allFileObjects);
+    //compile(prod, allFileObjects);
 } catch (error) {
     console.log("error:", error);
 }
@@ -213,6 +213,7 @@ function createJavaScriptOutputs(prunedLines) {
 }
 
 function createHTMLOutputs(prunedLines) {
+    console.log("prunedLines:", JSON.stringify(prunedLines, null, 2));
     const outputs = [];
 
     prunedLines.forEach(line => {
