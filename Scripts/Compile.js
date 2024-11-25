@@ -148,9 +148,8 @@ function createLines(mainFileObjects, allFileObjects) {
             while (workdone) {
                 workdone = false;
                 let noDependencies = fileArray.filter(file => file.requires.length === 0);
+                arr.concat(noDependencies);
                 noDependencies.forEach(file => {
-                    arr.push(file);
-                    fileArray = fileArray.filter(f => f !== file);
                     file.provides.forEach(providedClass => {
                         fileArray.forEach(f => {
                             f.requires = f.requires.filter(req => req !== providedClass);
