@@ -79,7 +79,7 @@ function createFileObjects(javascriptRootFolderPath) {
     return filelist;
 }
 const allFileObjects = createFileObjects(javascriptRootFolderPath);
-//console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
+console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
 
 try {
     compile(dev, allFileObjects);
