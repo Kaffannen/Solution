@@ -152,6 +152,7 @@ function createLines(mainFileObjects, allFileObjects) {
                 arr = arr.concat(noDependencies);
                 workdone = noDependencies.length > 0;
             }
+            return arr;
         }
         return arr;
     }
