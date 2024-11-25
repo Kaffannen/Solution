@@ -140,22 +140,25 @@ function createLines(mainFileObjects, allFileObjects) {
         }
 
         function sortTopologically(fileset) {
-            let sorted = [];
-            let visited = new Set();
-
-            function visit(file) {
-                if (!visited.has(file)) {
-                    visited.add(file);
-                    let dependencies = file.requires.map(req => fileObjects.find(f => f.provides.includes(req)));
-                    dependencies.forEach(dependency => {
-                        if (dependency) visit(dependency);
+            let workdone = true;
+            let arr = []
+            while (workdone) {
+                workdone = false;
+                let noDependencies = Array.from(fileset).filter(file => file.requires.size === 0);
+                noDependencies.forEach(file => {
+                    arr.push(file);
+                    fileset.delete(file);
+                    fileset.forEach(otherFile => {
+                        file.provides.forEach(prov => {
+                            if (otherFile.requires.has(prov)) {
+                                otherFile.requires = otherFile.requires.filter(req => req !== prov);
+                            }
+                        });
                     });
-                    sorted.push(file);
-                }
+                    workdone = true;
+                });
             }
-
-            fileset.forEach(file => visit(file));
-            return sorted;
+            return arr;
         }
     }
 
