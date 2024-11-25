@@ -113,6 +113,7 @@ function createLines(mainFileObjects, allFileObjects) {
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
     function createLine(fileObject, fileObjects) {
+        console.log(`before createFileSet() fileObjects size: ${fileObjects.length}`);
         let fileSet = createFileSet(new Set().add(fileObject), fileObjects);
         console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
         //console.log("fileset entries:", JSON.stringify(Array.from(fileSet), null, 2));
