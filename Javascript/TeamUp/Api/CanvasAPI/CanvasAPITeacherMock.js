@@ -59,7 +59,7 @@ class CanvasAPITeacherMock {
         "enrollments": [
           {
             "type": "student",
-            "role": this.#rolle,
+            "role": "TeacherEnrollment",
             "role_id": 3,
             "user_id": 81736,
             "enrollment_state": "active",
