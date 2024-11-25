@@ -107,14 +107,14 @@ function createLines(mainFileObjects, allFileObjects) {
     let lines = [];
     mainFileObjects.forEach(mainFileObject => {
         let line = createLine(mainFileObject, allFileObjects);
-        console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
-        console.log("line:", JSON.stringify(line, null, 2));
         lines.push(line);
     });
     return lines.map(line => line.reverse()).map(line => [...new Set(line)]);
 
     function createLine(fileObject, fileObjects) {
         let fileSet = createFileSet(new Set().add(fileObject), fileObjects);
+        console.log(`fileset belonging to ${fileObject.path}: has ${fileSet.size} files.`);
+        console.log("fileset entries:", JSON.stringify(fileSet, null, 2));
         let arr = sortTopologically(fileSet);
         return arr;
         
