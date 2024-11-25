@@ -17,7 +17,6 @@
     5: Velg en 'override', som vist under
     6: Naviger til en oppgave i et valgfritt kurs på Canvas 
     
-    //TODO: opplyse om dev mode!
 
     Gå inn på en valgfri oppgave til et valgfritt kurs, og se hva som dukker opp!
 

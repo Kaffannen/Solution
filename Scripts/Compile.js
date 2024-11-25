@@ -24,13 +24,24 @@ const prod = {
 };
 
 console.log(`\nAnalyzing files of folder: ${javascriptRootFolderPath}\n`);
+const allFileObjects = createFileObjects(javascriptRootFolderPath);
+console.log(`${allFileObjects.size} files: `, JSON.stringify(allFileObjects, null, 2));
+console.log("***********************\n\n");
+
+
+try {
+    compile(dev, allFileObjects);
+    compile(test, allFileObjects);
+    compile(prod, allFileObjects);
+} catch (error) {
+    console.log("error:", error);
+}
 
 function createFileObjects(javascriptRootFolderPath) {
     let filelist = flattenFolder(javascriptRootFolderPath)
         .map(file => (
             {
                 path: file,
-                //content: fs.readFileSync(file, 'utf8'),
                 provides: getClassDefinitionsFromFile(fs.readFileSync(file, 'utf8')),
                 requires: []
             }))
@@ -41,7 +52,6 @@ function createFileObjects(javascriptRootFolderPath) {
         for (let otherFile of allFiles) {
             if (thisFile.path === otherFile.path) continue;
             otherFile.provides.forEach(classDef => {
-                //const regex = new RegExp(`\\bnew\\s+${classDef}\\b|\\b${classDef}\\.\\b|\\bextends\\s+${classDef}\\b`, 'g');
                 const regex = new RegExp(`\\bnew\\s+${classDef}\\b|\\bextends\\s+${classDef}\\b`, 'g');
                 if (regex.test(content)) {
                     thisFile.requires.push(classDef);
@@ -78,17 +88,9 @@ function createFileObjects(javascriptRootFolderPath) {
     }
     return filelist;
 }
-const allFileObjects = createFileObjects(javascriptRootFolderPath);
-console.log("allFileObjects:", JSON.stringify(allFileObjects, null, 2));
-console.log("***********************\n\n");
 
-try {
-    compile(dev, allFileObjects);
-    compile(test, allFileObjects);
-    compile(prod, allFileObjects);
-} catch (error) {
-    console.log("error:", error);
-}
+
+
 
 
 function compile({ mainsPath, outputPath, outputType }, classObjectList) {
@@ -173,43 +175,12 @@ function createLines(mainFileObjects, allFileObjects) {
             }
             console.log(`${arr.length} files sorted topologically:`, JSON.stringify(arr, null, 2));
             console.log(`${fileArray.length} files remaining:`, JSON.stringify(fileArray, null, 2));
-            //console.log("topologically sorted:", JSON.stringify(arr, null, 2));
-            //console.log("remainder:", JSON.stringify(fileArray.map, null, 2));
             
             return arr;
         }
         return arr;
     }
 }
-
-/*
-    function createLine(fileObject, fileObjects) {
-        let arr = [];
-        arr.push(fileObject);
-        fileObjects.forEach(otherFile => {
-            if (fileObject.path === otherFile.path) return;
-            const intersection = fileObject.requires.filter(req => otherFile.provides.includes(req));
-            if (intersection.length > 0) {
-                fileObject.requires = fileObject.requires.filter(req => !intersection.includes(req));
-                arr = arr.concat(createLine(otherFile, fileObjects));
-            }
-        });
-        return arr;
-    }
-*/
-
-/*
-function createLine(fileObject, fileObjects) {
-    let arr = [];
-    arr.push(fileObject);
-    let dependencies = fileObjects.filter(f => fileObject.requires.includes(f.provides));
-    dependencies.forEach(dependency => {
-        arr = arr.concat(createLine(dependency, fileObjects));
-    });
-    return arr;
-}
-*/
-
 
 function createJavaScriptOutputs(prunedLines) {
     const outputs = [];
@@ -260,61 +231,3 @@ function createHTMLOutputs(prunedLines) {
     });
     return outputs;
 }
-
-
-
-/*
-function traverseFolders(folder) {
-    let result = [];
-    const files = fs.readdirSync(folder);
-
-    files.forEach(file => {
-        const filepath = path.join(folder, file);
-        const stat = fs.statSync(filepath);
-
-        if (stat.isDirectory()) {
-            result = result.concat(traverseFolders(filepath));
-        } else {
-            let content = fs.readFileSync(filepath, 'utf8');
-            const classDeclarationRegex = /class\s+([a-zA-Z_$][a-zA-Z0-9_$]*)/g;
-            const matches = getMatchesFromContent(content, classDeclarationRegex)
-                .map(match => match.trim());
-            result.push({
-                path: filepath,
-                provides: matches.length > 0 ? matches[0].split(' ')[1] : "",
-                requires: []
-            });
-        }
-    });
-
-    function discoverDependencies(classes) {
-        classes.forEach((thisclass) => {
-            let thisclassContent = fs.readFileSync(thisclass.path, 'utf8');
-            classes.forEach((otherclass) => {
-                if (thisclass.path !== otherclass.path && otherclass.provides) {
-                    const regex = new RegExp(`\\bnew\\s+${otherclass.provides}\\b|\\b${otherclass.provides}\\.name\\b|\\bextends\\s+${otherclass.provides}\\b`, 'g');
-                    if (regex.test(thisclassContent)) {
-                        thisclass.requires.push(otherclass.provides);
-                    }
-                }
-            });
-            thisclass.requires = [...new Set(thisclass.requires)];
-        });
-        return classes;
-    }
-    function getMatchesFromContent(content, regex) {
-        const matches = [];
-        let match;
-        while ((match = regex.exec(content)) !== null) {
-            matches.push(match[0]);
-        }
-        return [...new Set(matches)];
-    }
-    const classObjects = discoverDependencies(result);
-    classObjects.forEach((classObject, index) => {
-        console.log(
-            `\t${index}: ${classObject.path}\n\t\tprovides: ${classObject.provides}\n\t\trequires: ${classObject.requires.join(', ')}\n`
-        );
-    });
-    return classObjects;
-}*/
