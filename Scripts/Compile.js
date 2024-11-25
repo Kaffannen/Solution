@@ -150,7 +150,7 @@ function createLines(mainFileObjects, allFileObjects) {
                 let noDependencies = fileArray.filter(file => file.requires.length === 0);
                 if (noDependencies.length === 0) break;
                 file = noDependencies[0];
-                fileArray = fileArray.filter(file => file !== file);
+                fileArray = fileArray.filter(f => f !== file);
                 arr.push(file);
                 file.provides.forEach(req => {
                     fileArray.forEach(f => {
@@ -158,7 +158,6 @@ function createLines(mainFileObjects, allFileObjects) {
                     });
                 });
                 workdone = true;
-
             }
             return arr;
         }
