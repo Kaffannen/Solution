@@ -162,102 +162,84 @@ function createLines(mainFileObjects, allFileObjects) {
             }
             return arr;
         }
-        /*function sortTopologically(fileset) {
-            let fileArray = Array.from(fileset);
-            let workdone = true;
-            let arr = []
-            while (workdone) {
-                workdone = false;
-                let noDependencies = fileArray.filter(file => file.requires.length === 0);
-                fileArray = fileArray.filter(file => !noDependencies.includes(file));
-                arr = arr.concat(noDependencies);
-                workdone = noDependencies.length > 0;
-                fileArray.forEach(file => {
-                    file.requires = file.requires.filter(req => !noDependencies.map(f => f.provides).flat().includes(req));
-                });
-            }
-            if (fileArray.length > 0)
-                console.log(`The following files have circular dependencies: ${fileArray.map(file => file.path).join(', ')}`);
-            return arr;
-        }/*
         return arr;
     }
 }
 
-    /*
-        function createLine(fileObject, fileObjects) {
-            let arr = [];
-            arr.push(fileObject);
-            fileObjects.forEach(otherFile => {
-                if (fileObject.path === otherFile.path) return;
-                const intersection = fileObject.requires.filter(req => otherFile.provides.includes(req));
-                if (intersection.length > 0) {
-                    fileObject.requires = fileObject.requires.filter(req => !intersection.includes(req));
-                    arr = arr.concat(createLine(otherFile, fileObjects));
-                }
-            });
-            return arr;
-        }
-    */
+/*
+    function createLine(fileObject, fileObjects) {
+        let arr = [];
+        arr.push(fileObject);
+        fileObjects.forEach(otherFile => {
+            if (fileObject.path === otherFile.path) return;
+            const intersection = fileObject.requires.filter(req => otherFile.provides.includes(req));
+            if (intersection.length > 0) {
+                fileObject.requires = fileObject.requires.filter(req => !intersection.includes(req));
+                arr = arr.concat(createLine(otherFile, fileObjects));
+            }
+        });
+        return arr;
+    }
+*/
 
-        /*
-        function createLine(fileObject, fileObjects) {
-            let arr = [];
-            arr.push(fileObject);
-            let dependencies = fileObjects.filter(f => fileObject.requires.includes(f.provides));
-            dependencies.forEach(dependency => {
-                arr = arr.concat(createLine(dependency, fileObjects));
-            });
-            return arr;
-        }
-        */
+/*
+function createLine(fileObject, fileObjects) {
+    let arr = [];
+    arr.push(fileObject);
+    let dependencies = fileObjects.filter(f => fileObject.requires.includes(f.provides));
+    dependencies.forEach(dependency => {
+        arr = arr.concat(createLine(dependency, fileObjects));
+    });
+    return arr;
+}
+*/
 
 
-        function createJavaScriptOutputs(prunedLines) {
-            const outputs = [];
-            prunedLines.forEach(line => {
-                const firstFileName = path.basename(line[line.length - 1].path, '.js');
-                const outputFileName = `${firstFileName}_Bundle.js`;
-                const content = line.map(fileObject => fs.readFileSync
-                    (fileObject.path, 'utf8')).join('\n');
-                outputs.push({ outputFileName, content });
-            });
-            return outputs;
-        }
+function createJavaScriptOutputs(prunedLines) {
+    const outputs = [];
+    prunedLines.forEach(line => {
+        const firstFileName = path.basename(line[line.length - 1].path, '.js');
+        const outputFileName = `${firstFileName}_Bundle.js`;
+        const content = line.map(fileObject => fs.readFileSync
+            (fileObject.path, 'utf8')).join('\n');
+        outputs.push({ outputFileName, content });
+    });
+    return outputs;
+}
 
-        function createHTMLOutputs(prunedLines) {
-            const outputs = [];
+function createHTMLOutputs(prunedLines) {
+    const outputs = [];
 
-            prunedLines.forEach(line => {
-                const firstFileName = path.basename(line[line.length - 1].path, '.js');
-                const outputFileName = `${firstFileName}.html`;
+    prunedLines.forEach(line => {
+        const firstFileName = path.basename(line[line.length - 1].path, '.js');
+        const outputFileName = `${firstFileName}.html`;
 
-                const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`);
-                const document = dom.window.document;
-                const titleElement = document.createElement('title');
-                titleElement.textContent = firstFileName;
-                const metaElement = document.createElement('meta');
-                metaElement.setAttribute('charset', 'utf-8');
-                document.head.appendChild(metaElement);
-                document.head.appendChild(titleElement);
-                document.body.id = 'EzAnchor';
+        const dom = new JSDOM(`<!DOCTYPE html><html><head></head><body></body></html>`);
+        const document = dom.window.document;
+        const titleElement = document.createElement('title');
+        titleElement.textContent = firstFileName;
+        const metaElement = document.createElement('meta');
+        metaElement.setAttribute('charset', 'utf-8');
+        document.head.appendChild(metaElement);
+        document.head.appendChild(titleElement);
+        document.body.id = 'EzAnchor';
 
-                line.forEach(fileObject => {
-                    const scriptElement = document.createElement('script');
-                    const relativePath = fileObject.path.replace('/home/runner/work/Solution/Solution/Javascript', '../../Javascript');
-                    scriptElement.src = relativePath;
-                    document.head.appendChild(scriptElement);
-                });
+        line.forEach(fileObject => {
+            const scriptElement = document.createElement('script');
+            const relativePath = fileObject.path.replace('/home/runner/work/Solution/Solution/Javascript', '../../Javascript');
+            scriptElement.src = relativePath;
+            document.head.appendChild(scriptElement);
+        });
 
-                const htmlString = dom.serialize();
-                const prettyHtmlString = htmlString.replace(/></g, '>\n<');
+        const htmlString = dom.serialize();
+        const prettyHtmlString = htmlString.replace(/></g, '>\n<');
 
-                const content = line.map(fileObject => fs.readFileSync
-                    (fileObject.path, 'utf8')).join('\n');
-                outputs.push({ outputFileName, content: prettyHtmlString });
-            });
-            return outputs;
-        }
+        const content = line.map(fileObject => fs.readFileSync
+            (fileObject.path, 'utf8')).join('\n');
+        outputs.push({ outputFileName, content: prettyHtmlString });
+    });
+    return outputs;
+}
 
 
 
