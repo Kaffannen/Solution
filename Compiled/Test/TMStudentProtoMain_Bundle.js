@@ -457,7 +457,7 @@ class StudentUI extends UIElement {
         let htmlString
             =`
 <fieldset class="fieldset-reset">
-    <p>Velkommen til TeamUp</p>
+    <p>HeiIII</p>
     <div data-anchor=${StudentGroupUIE.name}></div>
 </fieldset>
             `;
@@ -493,7 +493,7 @@ class TeacherUI extends UIElement{
         let htmlString
             =`
 <fieldset class="fieldset-reset">
-    <p>yo #Antall studenter i kurset</p>
+    <p>Hello #Antall studenter i kurset</p>
     <p>Drag & drop funksjonalitet?</p>
     <div data-anchor=${TeacherGroupUIE.name}></div>
     <p>stor gruppe med studenter 'i enmannsgruppe' (rent logisk)</p>
