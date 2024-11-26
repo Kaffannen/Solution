@@ -1499,8 +1499,11 @@ class GroupController extends ElementNode {
             this.getUIElement(TeacherUI).attach();
         }
     };
-    createGroupController(){
-        let controller = new GroupController(this)
+    createGroupControllers(){
+        OkayGroupsController(this)
+            .defineUIElements()
+            .setState(GroupController.STATES.COLLAPSED);
+        RemainderGroupsController(this)
             .defineUIElements()
             .setState(GroupController.STATES.COLLAPSED);
     }
