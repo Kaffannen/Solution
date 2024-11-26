@@ -1,12 +1,15 @@
-class StudentUI extends UIElement {
-
+class TeacherGroupUIE extends UIElement {
     constructor(nexus) {
-
+        let jsonElement = nexus.getData();
         let htmlString
             =`
 <fieldset class="fieldset-reset">
-    <p>Heiduder!</p>
-    <div data-anchor=${StudentGroupUIE.name}></div>
+    <p>
+        'Gruppenavn | medlemmer: ${jsonElement.members.length} | (Oblig levert Y/N | Oblig godkjent Y/N)'
+        <span data-anchor=${HeaderbarCollapsed.name}></div>
+        <span data-anchor=${HeaderbarExpanded.name}></div>
+    </p>
+    <div data-anchor=${AssignmentGroupMember.name}></div>
 </fieldset>
             `;
         super(htmlString, nexus);
@@ -27,8 +30,5 @@ class StudentUI extends UIElement {
             .catch(error => alert(error))
         this.getInputElement("username").value = "";
         this.getInputElement("password").value = "";
-    }
-    closeTeamUp() {
-        this.getNode().setState(Student.STATES.COLLAPSED);
     }
 }
