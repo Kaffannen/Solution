@@ -7,15 +7,13 @@ class TeacherUI extends UIElement{
         let htmlString
             =`
 <fieldset class="fieldset-reset">
-    <p>#Antall studenter i kurset</p>
-    <p>#Antall studenter som er i grupper som oppfyller min/max krav</p>
-    <p>#Antall studenter som IKKE er grupper som oppfyller min/max krav</p>
-
-    <div data-anchor=${GroupControllerUIE.name}></div>
+    <p>Hello #Antall studenter i kurset</p>
+    <p>Drag & drop funksjonalitet?</p>
+    <div data-anchor=${TeacherGroupUIE.name}></div>
     <p>stor gruppe med studenter 'i enmannsgruppe' (rent logisk)</p>
     <input data-input="regButton" type="button" value ="Magisk algoritmeknapp som organiserer 'rest' studenter i grupper"
         onclick='find(this).doAction()'
-        onkeydown="if (event.key === 'Escape') find(this).getNode().doAction(Bruker.STATES.LOGGED_OUT)"
+        onkeydown="if (event.key === 'Escape') find(this).getNode().setState(Bruker.STATES.LOGGED_OUT)"
     ">
     <br>
 </fieldset>
@@ -31,4 +29,19 @@ class TeacherUI extends UIElement{
             })
             .catch(error => alert(error));
     }
+
+    startUpShit(){
+        const promises = [];
+        promises.push(fetch('https://api.example.com/data1').then(res => res.json()));
+        promises.push(fetch('https://api.example.com/data2').then(res => res.json()));
+        /**
+        try {
+            return await Promise.all(promises);
+        } catch (error) {
+            console.error("An error occurred:", error);
+            throw error;
+        }
+        */
+    }
+
 }
