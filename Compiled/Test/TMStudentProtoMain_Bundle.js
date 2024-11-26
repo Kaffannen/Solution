@@ -1090,13 +1090,6 @@ class Underviser extends ElementNode {
         }
     };
     fetchGroups(){
-            /**
-            https://hvl.instructure.com/api/v1/courses/29406/assignments/80710/users/82310/group_members
-            https://hvl.instructure.com/api/v1/courses/25563/assignments/75844/users/15686/group_members
-            gir tilgang til alle gruppemedlemmer i en gruppe - for alle jeg har ID på.
-            https://hvl.instructure.com/api/v1/courses/25563/users?page=1&per_page=1000&enrollment_type=teacher gir alle teachers
-            https://hvl.instructure.com/api/v1/courses/25563/users?page=1&per_page=1000&enrollment_type=student gir alle students
-            **/
             return program.getApi().fetchGroups(this.getData().assignment.assignment_group_id)
                 .then(userGroups => {
                     userGroups.studentgroups.forEach(groupInfo=>{
