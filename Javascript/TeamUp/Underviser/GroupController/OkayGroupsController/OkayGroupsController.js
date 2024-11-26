@@ -1,7 +1,7 @@
 class OkayGroupsController extends ElementNode {
 
     defineUIElements() {
-        this.addUIElement(new GroupControllerUIE(this))
+        this.addUIElement(new OkayGroupsControllerUIE(this))
             .fixTo();
         super.defineUIElements();
         this.createGroupControllers();

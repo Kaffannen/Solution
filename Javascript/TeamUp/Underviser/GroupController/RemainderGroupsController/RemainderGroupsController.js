@@ -1,7 +1,7 @@
 class RemainderGroupsController extends ElementNode {
 
     defineUIElements() {
-        this.addUIElement(new GroupControllerUIE(this))
+        this.addUIElement(new RemainderGroupControllerUIE(this))
             .fixTo();
         super.defineUIElements();
         this.createGroupControllers();
