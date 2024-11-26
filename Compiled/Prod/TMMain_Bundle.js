@@ -539,6 +539,20 @@ class TeacherGroupUIE extends UIElement {
         this.getInputElement("password").value = "";
     }
 }
+class GroupControllerUIE extends UIElement
+{
+    constructor(nexus) {
+        let jsonElement = nexus.getData();
+        let htmlString
+            = `
+<div>
+    <div data-anchor=${OkayGroupsController.name}></div>
+    <div data-anchor=${RemainderGroupsController.name}></div>
+</div>
+            `;
+        super(htmlString,nexus);
+    }
+}
 class StateController {
     /**
      * A map of the statefunctions
@@ -815,6 +829,37 @@ class EzUI extends ElementNode{
             pojo=pojo.getChildNode(pathArray.pop());
         }
         return pojo.getUIElement(elementClassName);
+    }
+}
+
+class GroupController extends ElementNode {
+
+    defineUIElements() {
+        this.addUIElement(new GroupControllerUIE(this))
+            .fixTo();
+        super.defineUIElements();
+        this.createGroupControllers();
+        return this;
+    }
+
+    static STATES = {
+        INIT: function () {
+        },
+        COLLAPSED: function () {
+            this.getUIElement(CollapsedState).attach();
+            this.getUIElement(ExpandedState).detach();
+            this.getUIElement(TeacherUI).detach();
+        },
+        EXPANDED: function () {
+            this.getUIElement(CollapsedState).detach();
+            this.getUIElement(ExpandedState).attach();
+            this.getUIElement(TeacherUI).attach();
+        }
+    };
+    createGroupController(){
+        let controller = new GroupController(this)
+            .defineUIElements()
+            .setState(GroupController.STATES.COLLAPSED);
     }
 }
 
