@@ -11,7 +11,4 @@ class GroupControllerUIE extends UIElement
             `;
         super(htmlString,nexus);
     }
-    minimer() {
-        this.getNode().setState(Student.STATES.COLLAPSED);
-    }
 }
