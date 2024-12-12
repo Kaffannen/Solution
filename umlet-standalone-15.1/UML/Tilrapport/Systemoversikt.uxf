@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.1">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>416</x>
+      <y>184</y>
+      <w>208</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>TeamUp
+--
+Identifiserer brukers rolle og laster inn
+riktig brukergrensesnitt
+
+Gir tilgang til DataStore </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>184</y>
+      <w>240</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>Brukergrensesnitt #1
+--
+Hver brukerrolle har sitt eget 
+brukergrensesnitt.
+
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>104</x>
+      <y>272</y>
+      <w>272</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>MeldingService
+--
+Håndterer kommunikasjon på vegne av brukere
+etter hvert som de bruker programmets funksjonalitet</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>104</x>
+      <y>352</y>
+      <w>272</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>DatabaseService
+--
+Lagrer programmets tilstand etter hvert som 
+brukere utfører handlinger.
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>416</x>
+      <y>360</y>
+      <w>208</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>DataStore
+--
+Samler tilgjengeliggjør 
+funksjonalitet som brukergrensesnittene
+er avhengige av.
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>104</x>
+      <y>184</y>
+      <w>272</w>
+      <h>64</h>
+    </coordinates>
+    <panel_attributes>CanvasAPI
+--
+Henter informasjon om bruker, kurs og 
+grupper fra Instructure sin API</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>200</y>
+      <w>112</w>
+      <h>176</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;200.0;120.0;150.0;30.0;150.0;30.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>264</y>
+      <w>112</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>120.0;120.0;120.0;70.0;30.0;70.0;30.0;10.0;30.0;30.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>264</y>
+      <w>112</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>120.0;120.0;120.0;70.0;30.0;70.0;30.0;10.0;30.0;130.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>512</x>
+      <y>280</y>
+      <w>40</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1..1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;100.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>392</x>
+      <y>256</y>
+      <w>40</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>..1</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>272</y>
+      <w>40</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>1..</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>352</y>
+      <w>40</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>1..</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>368</x>
+      <y>192</y>
+      <w>40</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>1..</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>296</y>
+      <w>240</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Brukergrensesnitt #2
+--
+Henter informasjon fra DataStore og viser 
+den til bruker ved hjelp av HTML / CSS
+
+Tilbyr brukeren relevant funksjoner ved hjelp
+av HTML / CSS input elementer
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>424</y>
+      <w>240</w>
+      <h>104</h>
+    </coordinates>
+    <panel_attributes>Brukergrensesnitt #n 
+--
+Sender meldinger til andre brukere vha
+DatabaseService modulen
+
+Prosseserer nye meldinger og lagrer dem i
+databasen vha DatabaseService modulen.
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>616</x>
+      <y>192</y>
+      <w>80</w>
+      <h>264</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0;50.0;160.0;80.0;160.0;50.0;160.0;50.0;310.0;80.0;310.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>184</y>
+      <w>48</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes/>
+    <additional_attributes>10.0;20.0;40.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>632</x>
+      <y>184</y>
+      <w>40</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>1..</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>184</y>
+      <w>40</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>..#1</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>424</y>
+      <w>40</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>..#n</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>648</x>
+      <y>304</y>
+      <w>40</w>
+      <h>32</h>
+    </coordinates>
+    <panel_attributes>..#2</panel_attributes>
+    <additional_attributes>10.0;20.0;30.0;20.0</additional_attributes>
+  </element>
+</diagram>
